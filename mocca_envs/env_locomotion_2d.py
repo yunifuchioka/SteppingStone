@@ -89,8 +89,10 @@ class Walker2DCustomEnv(EnvBase):
         # calculate rewards and if episode should be terminated
         self.calc_env_state(action)
 
+        upright_reward = 1 if -np.pi / 9 < self.robot.body_rpy[1] < np.pi / 9 else 0
         reward = self.progress - self.energy_penalty
-        reward += self.tall_bonus - self.joints_penalty
+        reward += self.tall_bonus - self.joints_penalty + upright_reward
+
 
         # for rendering only, in the pybullet gui, press
         # <space> to pause, 'r' to reset, etc
