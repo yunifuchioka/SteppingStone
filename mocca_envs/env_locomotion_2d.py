@@ -111,7 +111,7 @@ class Walker2DCustomEnv(EnvBase):
     def calc_potential(self):
 
         walk_target_delta = self.walk_target - self.robot.body_xyz
-        print("walk target delta" + str(walk_target_delta))
+        #print("walk target delta" + str(walk_target_delta))
 
         self.distance_to_target = (
             walk_target_delta[0] ** 2 + walk_target_delta[1] ** 2
