@@ -29,7 +29,8 @@ class Walker2DCustomEnv(EnvBase):
 
         # goal is to walk as far forward as possible
         # +x axis is forward, set to some large value
-        self.walk_target = np.array([2, 0, 0])
+        self.walk_target = np.array([1000, 0, 0])
+        self.step_target = np.array([2, 0, 0])
 
         # Observation space is just robot's state, see robot.calc_state()
         high = np.inf * np.ones(self.robot.observation_space.shape[0])
@@ -101,7 +102,7 @@ class Walker2DCustomEnv(EnvBase):
             self.camera.track(pos=self.robot.body_xyz)
 
         # Update target to be another 2 steps futher (Jessica)
-        self.walk_target = self.robot.body_xyz + np.array([2, 0, 0])
+        self.step_target += np.array([2, 0, 0]);
 
         # step() should return observation, reward, done (boolean), and info (dict)
         # info can be anything, some people return individual reward components
@@ -111,11 +112,12 @@ class Walker2DCustomEnv(EnvBase):
     def calc_potential(self):
 
         walk_target_delta = self.walk_target - self.robot.body_xyz
+        step_target_delta = self.step_target - np.array([self.robot.body_xyz[0], 0, 0])
         #print("walk target delta" + str(walk_target_delta))
 
         self.distance_to_target = (
-            walk_target_delta[0] ** 2 + walk_target_delta[1] ** 2
-        ) ** (1 / 2)
+            walk_target_delta[0] ** 2 + walk_target_delta[1] ** 2 + step_target_delta[0] ** 2
+        ) ** (1 / 2) 
 
         # reward is sum of progress, scaling by dt here makes sum equal to distance travelled
         self.linear_potential = -self.distance_to_target / self.scene.dt

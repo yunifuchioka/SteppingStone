@@ -3,6 +3,7 @@ __pycache__/
 
 logs/
 dump/
+runs/test/
 
 # User-specific stuff
 .idea/
