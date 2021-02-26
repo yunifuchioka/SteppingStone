@@ -30,7 +30,6 @@ class Walker2DCustomEnv(EnvBase):
         # goal is to walk as far forward as possible
         # +x axis is forward, set to some large value
         self.walk_target = np.array([1000, 0, 0])
-        self.step_target = np.array([2, 0, 0])
 
         # Observation space is just robot's state, see robot.calc_state()
         high = np.inf * np.ones(self.robot.observation_space.shape[0])
@@ -68,6 +67,25 @@ class Walker2DCustomEnv(EnvBase):
         if not self.state_id >= 0:
             self.state_id = self._p.saveState()
 
+        # desired trajectory
+        self.traj_len = 600
+        self.body_des_traj = np.array([
+            #np.repeat(0, self.traj_len),
+            np.linspace(0,10,self.traj_len), # body x
+            np.repeat(0, self.traj_len), # body y
+            np.repeat(1.2, self.traj_len) # body z
+            ]).T
+        self.feet_des_traj = np.array([
+            np.linspace(0,10,self.traj_len), # foot 1 x
+            np.repeat(0, self.traj_len), # foot 1 y
+            np.repeat(0, self.traj_len), # foot 1 z
+            np.linspace(0,10,self.traj_len), # foot 2 x
+            np.repeat(0, self.traj_len), # foot 2 y
+            np.repeat(0, self.traj_len) # foot 2 z
+        ]).T
+        # index for keeping track of trajectory time
+        self.traj_idx = 0
+
         # environment's observation space is just robot's state
         # see robot.calc_state() for what's included in the state
         return self.robot_state
@@ -91,18 +109,38 @@ class Walker2DCustomEnv(EnvBase):
         self.calc_env_state(action)
 
         upright_reward = 1 if -np.pi / 9 < self.robot.body_rpy[1] < np.pi / 9 else 0
-        reward = self.progress - self.energy_penalty
+        #reward = self.progress - self.energy_penalty
+        reward = - self.energy_penalty # encourage walking via trajectory and not progress
         reward += self.tall_bonus - self.joints_penalty + upright_reward
 
+        # determine desired body + feet positions from reference trajectory and index
+        if self.traj_idx < self.traj_len:
+            body_des = self.body_des_traj[self.traj_idx,:]
+            feet_des = self.feet_des_traj[self.traj_idx, :].reshape(2,3)
+        else:
+            # if already reached end of trajectory, arbitrarily set to final state in trajectory
+            body_des = self.body_des_traj[-1, :]
+            feet_des = self.feet_des_traj[-1, :].reshape(2,3)
+        self.traj_idx += 1
+
+        # deepmimic style trajectory rewards. TODO: velocity reference
+        reward += 1 * np.exp(
+            -1 * np.dot(body_des-self.robot.body_xyz, body_des-self.robot.body_xyz))
+        # temporary hack to track only x position of feet
+        reward += 0.2 * np.exp(-1 * (feet_des[0,1] - self.robot.feet_xyz[0,1]) ** 2)
+        reward += 0.2 * np.exp(-1 * (feet_des[1,1] - self.robot.feet_xyz[1,1]) ** 2)
+        '''
+        reward += 0.2 * np.exp(
+            -1 * np.dot(feet_des[0,:]-self.robot.feet_xyz[0,:], feet_des[0,:]-self.robot.feet_xyz[0,:]))
+        reward += 0.2 * np.exp(
+            -1 * np.dot(feet_des[1,:]-self.robot.feet_xyz[1,:], feet_des[1,:]-self.robot.feet_xyz[1,:]))
+        '''
 
         # for rendering only, in the pybullet gui, press
         # <space> to pause, 'r' to reset, etc
         if self.is_rendered or self.use_egl:
             self._handle_keyboard()
             self.camera.track(pos=self.robot.body_xyz)
-
-        # Update target to be another 2 steps futher (Jessica)
-        self.step_target += np.array([2, 0, 0]);
 
         # step() should return observation, reward, done (boolean), and info (dict)
         # info can be anything, some people return individual reward components
@@ -112,11 +150,10 @@ class Walker2DCustomEnv(EnvBase):
     def calc_potential(self):
 
         walk_target_delta = self.walk_target - self.robot.body_xyz
-        step_target_delta = self.step_target - np.array([self.robot.body_xyz[0], 0, 0])
         #print("walk target delta" + str(walk_target_delta))
 
         self.distance_to_target = (
-            walk_target_delta[0] ** 2 + walk_target_delta[1] ** 2 + step_target_delta[0] ** 2
+            walk_target_delta[0] ** 2 + walk_target_delta[1] ** 2
         ) ** (1 / 2) 
 
         # reward is sum of progress, scaling by dt here makes sum equal to distance travelled
