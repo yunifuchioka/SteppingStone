@@ -68,18 +68,20 @@ class Walker2DCustomEnv(EnvBase):
             self.state_id = self._p.saveState()
 
         # desired trajectory
-        self.traj_len = 600
+        loaded_traj = np.load('trajectories/lip_traj2.npy') # load precomputed lip trajectory
+        # rows of loaded_traj are [foot1_x, foot1_x, pelvis_x]
+        # TODO: traj should also include pelvis_y for compatibility with point mass trajectory
+        self.traj_len = loaded_traj.shape[1]
         self.body_des_traj = np.array([
-            #np.repeat(0, self.traj_len),
-            np.linspace(0,10,self.traj_len), # body x
+            loaded_traj[2,:],
             np.repeat(0, self.traj_len), # body y
-            np.repeat(1.2, self.traj_len) # body z
+            np.repeat(0.9, self.traj_len) # body z
             ]).T
         self.feet_des_traj = np.array([
-            np.linspace(0,10,self.traj_len), # foot 1 x
+            loaded_traj[0,:], # foot 1 x
             np.repeat(0, self.traj_len), # foot 1 y
             np.repeat(0, self.traj_len), # foot 1 z
-            np.linspace(0,10,self.traj_len), # foot 2 x
+            loaded_traj[1,:], # foot 2 x
             np.repeat(0, self.traj_len), # foot 2 y
             np.repeat(0, self.traj_len) # foot 2 z
         ]).T
@@ -123,18 +125,15 @@ class Walker2DCustomEnv(EnvBase):
             feet_des = self.feet_des_traj[-1, :].reshape(2,3)
         self.traj_idx += 1
 
-        # deepmimic style trajectory rewards. TODO: velocity reference
+        # deepmimic style trajectory rewards.
+        # TODO: velocity reference
+        # TODO: trajectory look-ahead in network
         reward += 1 * np.exp(
             -1 * np.dot(body_des-self.robot.body_xyz, body_des-self.robot.body_xyz))
-        # temporary hack to track only x position of feet
-        reward += 0.2 * np.exp(-1 * (feet_des[0,1] - self.robot.feet_xyz[0,1]) ** 2)
-        reward += 0.2 * np.exp(-1 * (feet_des[1,1] - self.robot.feet_xyz[1,1]) ** 2)
-        '''
         reward += 0.2 * np.exp(
             -1 * np.dot(feet_des[0,:]-self.robot.feet_xyz[0,:], feet_des[0,:]-self.robot.feet_xyz[0,:]))
         reward += 0.2 * np.exp(
             -1 * np.dot(feet_des[1,:]-self.robot.feet_xyz[1,:], feet_des[1,:]-self.robot.feet_xyz[1,:]))
-        '''
 
         # for rendering only, in the pybullet gui, press
         # <space> to pause, 'r' to reset, etc
