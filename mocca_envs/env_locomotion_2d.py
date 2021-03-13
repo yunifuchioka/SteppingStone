@@ -68,6 +68,7 @@ class Walker2DCustomEnv(EnvBase):
             self.state_id = self._p.saveState()
 
         # desired trajectory
+        """
         loaded_traj = np.load('trajectories/lip_traj2.npy') # load precomputed lip trajectory
         # rows of loaded_traj are [foot1_x, foot1_x, pelvis_x]
         # TODO: traj should also include pelvis_y for compatibility with point mass trajectory
@@ -84,6 +85,25 @@ class Walker2DCustomEnv(EnvBase):
             loaded_traj[1,:], # foot 2 x
             np.repeat(0, self.traj_len), # foot 2 y
             np.repeat(0, self.traj_len) # foot 2 z
+        ]).T
+        # index for keeping track of trajectory time
+        self.traj_idx = 0
+        """
+        loaded_traj = np.load('trajectories/pmm_traj1.npy')  # load precomputed lip trajectory
+        # rows of loaded_traj are [right_foot_x, right_foot_z, left_foot_x, left_foot_z, com_x, com_z]
+        self.traj_len = loaded_traj.shape[1]
+        self.body_des_traj = np.array([
+            loaded_traj[4, :], # body x
+            np.repeat(0, self.traj_len),  # body y
+            loaded_traj[5, :] # body z
+        ]).T
+        self.feet_des_traj = np.array([
+            loaded_traj[0, :],  # foot 1 x
+            np.repeat(0, self.traj_len),  # foot 1 y
+            loaded_traj[1, :],   # foot 1 z
+            loaded_traj[2, :],  # foot 2 x
+            np.repeat(0, self.traj_len),  # foot 2 y
+            loaded_traj[3, :], # foot 2 z
         ]).T
         # index for keeping track of trajectory time
         self.traj_idx = 0
