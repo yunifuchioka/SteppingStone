@@ -148,11 +148,11 @@ class Walker2DCustomEnv(EnvBase):
         # deepmimic style trajectory rewards.
         # TODO: velocity reference
         # TODO: trajectory look-ahead in network
-        reward += 1 * np.exp(
+        reward += 0.5 * np.exp(
             -1 * np.dot(body_des-self.robot.body_xyz, body_des-self.robot.body_xyz))
-        reward += 0.2 * np.exp(
+        reward += 0.5 * np.exp(
             -1 * np.dot(feet_des[0,:]-self.robot.feet_xyz[0,:], feet_des[0,:]-self.robot.feet_xyz[0,:]))
-        reward += 0.2 * np.exp(
+        reward += 0.5 * np.exp(
             -1 * np.dot(feet_des[1,:]-self.robot.feet_xyz[1,:], feet_des[1,:]-self.robot.feet_xyz[1,:]))
 
         # for rendering only, in the pybullet gui, press
