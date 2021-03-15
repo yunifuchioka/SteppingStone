@@ -89,7 +89,7 @@ class Walker2DCustomEnv(EnvBase):
         # index for keeping track of trajectory time
         self.traj_idx = 0
         """
-        loaded_traj = np.load('trajectories/pmm_traj1.npy')  # load precomputed lip trajectory
+        loaded_traj = np.load('trajectories/pmm_traj3.npy')  # load precomputed lip trajectory
         # rows of loaded_traj are [right_foot_x, right_foot_z, left_foot_x, left_foot_z, com_x, com_z]
         self.traj_len = loaded_traj.shape[1]
         self.body_des_traj = np.array([
