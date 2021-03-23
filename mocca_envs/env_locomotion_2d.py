@@ -141,7 +141,16 @@ class Walker2DCustomEnv(EnvBase):
         )
 
         # tall bonus encourages robot to stay upright
-        self.tall_bonus = 1.0 if self.robot_state[0] > self.termination_height else -1.0
+        # note1: roll and pitch, corresponding to self.robot_state[4:6], are defined so that
+        #   pitch is always within (-pi/2, pi/2) and roll has discrete values -pi, 0, pi
+        #   depending on whether the biped is "bent over" or not (0 if not bent over)
+        # note2: self.robot_state[4:6] and self.robot.body_rpy[0:2] have the same values up to
+        #   numerical differences due to np.float32 casting
+        if (self.robot_state[0] > self.termination_height
+                and np.abs(self.robot_state[4]) < np.pi):
+            self.tall_bonus = 1.0
+        else:
+            self.tall_bonus = -1.0
 
         # since getting up can be hard to learn
         # terminate the episode when robot falls
