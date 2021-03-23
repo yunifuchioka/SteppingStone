@@ -30,13 +30,9 @@ class Walker2DCustomEnv(EnvBase):
         # goal is to walk as far forward as possible
         # +x axis is forward, set to some large value
         self.walk_target = np.array([1000, 0, 0])
-        """
+
         # Observation space is just robot's state, see robot.calc_state()
         high = np.inf * np.ones(self.robot.observation_space.shape[0])
-        """
-        # Observation space is robot's state + foot and body locations
-        #  + reference foot and body locations
-        high = np.inf * np.ones(self.robot.observation_space.shape[0] + 9 + 9)
         self.observation_space = gym.spaces.Box(-high, high, dtype=np.float32)
 
         # Action space is for the robot
@@ -71,61 +67,6 @@ class Walker2DCustomEnv(EnvBase):
         if not self.state_id >= 0:
             self.state_id = self._p.saveState()
 
-        # desired trajectory
-        """
-        loaded_traj = np.load('trajectories/lip_traj2.npy') # load precomputed lip trajectory
-        # rows of loaded_traj are [foot1_x, foot1_x, pelvis_x]
-        # TODO: traj should also include pelvis_y for compatibility with point mass trajectory
-        self.traj_len = loaded_traj.shape[1]
-        self.body_des_traj = np.array([
-            loaded_traj[2,:],
-            np.repeat(0, self.traj_len), # body y
-            np.repeat(0.9, self.traj_len) # body z
-            ]).T
-        self.feet_des_traj = np.array([
-            loaded_traj[0,:], # foot 1 x
-            np.repeat(0, self.traj_len), # foot 1 y
-            np.repeat(0, self.traj_len), # foot 1 z
-            loaded_traj[1,:], # foot 2 x
-            np.repeat(0, self.traj_len), # foot 2 y
-            np.repeat(0, self.traj_len) # foot 2 z
-        ]).T
-        # index for keeping track of trajectory time
-        self.traj_idx = 0
-        """
-        loaded_traj = np.load('trajectories/pmm_traj1.npy')  # load precomputed lip trajectory
-        # rows of loaded_traj are [right_foot_x, right_foot_z, left_foot_x, left_foot_z, com_x, com_z]
-        self.traj_len = loaded_traj.shape[1]
-        self.body_des_traj = np.array([
-            loaded_traj[4, :], # body x
-            np.repeat(0, self.traj_len),  # body y
-            loaded_traj[5, :] # body z
-        ]).T
-        self.feet_des_traj = np.array([
-            loaded_traj[0, :],  # foot 1 x
-            np.repeat(0, self.traj_len),  # foot 1 y
-            loaded_traj[1, :],   # foot 1 z
-            loaded_traj[2, :],  # foot 2 x
-            np.repeat(0, self.traj_len),  # foot 2 y
-            loaded_traj[3, :], # foot 2 z
-        ]).T
-        # index for keeping track of trajectory time
-        self.traj_idx = 0
-
-        # append absolute feet and body position to robot state
-        feet_body = np.hstack((self.robot.feet_xyz.flatten(), self.robot.body_xyz))
-        feet_body_des = np.hstack((self.feet_des_traj[self.traj_idx, :], self.body_des_traj[self.traj_idx, :]))
-        self.robot_state = np.hstack((self.robot_state, feet_body, feet_body_des))
-        """
-        # append relative feet and body position to robot state
-        feet_body = np.hstack((
-            self.robot.feet_xyz.flatten()-np.tile(self.robot.body_xyz, 2),
-            self.robot.body_xyz))
-        feet_body_des = np.hstack((
-            self.feet_des_traj[self.traj_idx, :]-np.tile(self.body_des_traj[self.traj_idx, :], 2),
-            self.body_des_traj[self.traj_idx, :]))
-        self.robot_state = np.hstack((self.robot_state, feet_body, feet_body_des))
-        """
         # environment's observation space is just robot's state
         # see robot.calc_state() for what's included in the state
         return self.robot_state
@@ -148,55 +89,8 @@ class Walker2DCustomEnv(EnvBase):
         # calculate rewards and if episode should be terminated
         self.calc_env_state(action)
 
-        upright_reward = 1 if -np.pi / 9 < self.robot.body_rpy[1] < np.pi / 9 else 0
-        #reward = self.progress - self.energy_penalty
-        reward = - self.energy_penalty # encourage walking via trajectory and not progress
-        reward += self.tall_bonus - self.joints_penalty + upright_reward
-
-        # determine desired body + feet positions from reference trajectory and index
-        if self.traj_idx < self.traj_len:
-            body_des = self.body_des_traj[self.traj_idx,:]
-            feet_des = self.feet_des_traj[self.traj_idx, :].reshape(2,3)
-            self.traj_idx += 1
-        else:
-            # if already reached end of trajectory, arbitrarily set to final state in trajectory
-            body_des = self.body_des_traj[-1, :]
-            feet_des = self.feet_des_traj[-1, :].reshape(2,3)
-            self.traj_idx = self.traj_len  # for good measure, should be unnecessary
-
-        # append absolute feet and body position to robot state
-        feet_body = np.hstack((self.robot.feet_xyz.flatten(), self.robot.body_xyz))
-        feet_body_des = np.hstack((feet_des.flatten(), body_des))
-        self.robot_state = np.hstack((self.robot_state, feet_body, feet_body_des))
-        """
-        # append relative feet and body position to robot state
-        feet_body = np.hstack((
-            self.robot.feet_xyz.flatten() - np.tile(self.robot.body_xyz, 2),
-            self.robot.body_xyz))
-        feet_body_des = np.hstack((
-            feet_des.flatten() - np.tile(body_des, 2),
-            body_des))
-        self.robot_state = np.hstack((self.robot_state, feet_body, feet_body_des))
-        """
-
-        # deepmimic style trajectory rewards.
-        # TODO: velocity reference
-        # TODO: trajectory look-ahead in network
-        reward += 0.5 * np.exp(
-            -1 * np.dot(body_des-self.robot.body_xyz, body_des-self.robot.body_xyz))
-        reward += 0.5 * np.exp(
-            -1 * np.dot(feet_des[0,:]-self.robot.feet_xyz[0,:], feet_des[0,:]-self.robot.feet_xyz[0,:]))
-        reward += 0.5 * np.exp(
-            -1 * np.dot(feet_des[1,:]-self.robot.feet_xyz[1,:], feet_des[1,:]-self.robot.feet_xyz[1,:]))
-        """
-        # relative reference tracking rewards
-        reward += 0.3 * np.exp( # right foot
-            -1 * np.dot((feet_body-feet_body_des)[:3], (feet_body-feet_body_des)[:3]))
-        reward += 0.3 * np.exp( # left foot
-            -1 * np.dot((feet_body - feet_body_des)[3:6], (feet_body - feet_body_des)[3:6]))
-        reward += 1.0 * np.exp( # body
-            -1 * np.dot((feet_body-feet_body_des)[6:], (feet_body-feet_body_des)[6:]))
-        """
+        reward = self.progress - self.energy_penalty
+        reward += self.tall_bonus - self.joints_penalty
 
         # for rendering only, in the pybullet gui, press
         # <space> to pause, 'r' to reset, etc
@@ -212,11 +106,10 @@ class Walker2DCustomEnv(EnvBase):
     def calc_potential(self):
 
         walk_target_delta = self.walk_target - self.robot.body_xyz
-        #print("walk target delta" + str(walk_target_delta))
 
         self.distance_to_target = (
             walk_target_delta[0] ** 2 + walk_target_delta[1] ** 2
-        ) ** (1 / 2) 
+        ) ** (1 / 2)
 
         # reward is sum of progress, scaling by dt here makes sum equal to distance travelled
         self.linear_potential = -self.distance_to_target / self.scene.dt
