@@ -36,7 +36,7 @@ Rs_l = Rs_r
 ps_l = ps_r
 # ps_l = np.array([0, 0, 0.3])[:,None]
 
-tf = 20  # final time of interval
+tf = 8  # final time of interval
 N = int(tf * 4)  # number of hermite-simpson finite elements. Total # of points = 2*N+1
 t = np.linspace(0, tf, 2 * N + 1)  # discretized time
 
@@ -48,7 +48,7 @@ Qcd = np.full((nj3), 10)
 RF = np.full((nj3), 0.0001)
 
 # footstep planner parameters
-stride = np.array([0.4, torso_size[1], 0.3])  # forward step length, leg width, max foot height
+stride = np.array([0, torso_size[1], 0.3])  # forward step length, leg width, max foot height
 stride_std = np.array([0.0, 0.0, 0.0])  # random std dev of step x and y locations
 T_step = 0.5  # step period
 duty = 0.5  # duty cycle - proportion of gait where foot is on the ground
@@ -336,7 +336,7 @@ plt.title("y trajectories")
 plt.show()
 """
 
-np.save('../trajectories/pmm_traj3.npy', pmm_traj)
+np.save('../trajectories/pmm_stepInPlace1.npy', pmm_traj)
 
 """
 
