@@ -1,0 +1,46 @@
+{
+  "experiment_info": {
+    "base_dir": "/home/uni/Documents/python/optim/SteppingStone/common",
+    "dependencies": [
+      "numpy==1.19.5",
+      "sacred==0.8.2",
+      "torch==1.7.1"
+    ],
+    "mainfile": "sacred_utils.py",
+    "name": "sacred_utils",
+    "repositories": [
+      {
+        "commit": "2a97fd2a077f38c38dd9018fb28e1de1b29d8e01",
+        "dirty": true,
+        "url": "https://github.com/yunifuchioka/SteppingStone.git"
+      }
+    ],
+    "sources": [
+      [
+        "sacred_utils.py",
+        "4065247d7341441f2a3aa79f46bb20e8"
+      ]
+    ]
+  },
+  "host_info": {
+    "ENV": {},
+    "cpu": "Intel(R) Core(TM) i5-10210U CPU @ 1.60GHz",
+    "hostname": "unilinux",
+    "os": [
+      "Linux",
+      "Linux-5.6.0-1050-oem-x86_64-with-debian-bullseye-sid"
+    ],
+    "python_version": "3.6.10"
+  },
+  "start_time": [
+    2021,
+    3,
+    24,
+    5,
+    31,
+    44,
+    2,
+    83,
+    -1
+  ]
+}

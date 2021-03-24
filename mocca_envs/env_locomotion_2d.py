@@ -25,11 +25,13 @@ class Walker2DCustomEnv(EnvBase):
         # used for calculating energy penalty
         self.electricity_cost = 2.0
         self.stall_torque_cost = 0.1
-        self.joints_at_limit_cost = 0.1
+        self.joints_at_limit_cost = 0.7
 
-        # goal is to walk as far forward as possible
-        # +x axis is forward, set to some large value
-        self.walk_target = np.array([1000, 0, 0])
+        self.body_xyz_track_weight = 1.0
+        self.body_rpy_track_weight = 1.0
+
+        self.body_xyz_target = np.array([0, 0, 1.0])
+        self.body_rpy_target = np.array([0, 0, 0])
 
         # Observation space is just robot's state, see robot.calc_state()
         high = np.inf * np.ones(self.robot.observation_space.shape[0])
@@ -58,11 +60,6 @@ class Walker2DCustomEnv(EnvBase):
         if self.is_rendered or self.use_egl:
             self.camera.lookat(self.robot.body_xyz)
 
-        # calculate distance to the target
-        # needs to be done every time robot or target position is manually moved
-        # or else the reward will not be correct
-        self.calc_potential()
-
         # save a checkpoint after first environment reset
         if not self.state_id >= 0:
             self.state_id = self._p.saveState()
@@ -89,7 +86,7 @@ class Walker2DCustomEnv(EnvBase):
         # calculate rewards and if episode should be terminated
         self.calc_env_state(action)
 
-        reward = self.progress - self.energy_penalty
+        reward = self.track - self.energy_penalty
         reward += self.tall_bonus - self.joints_penalty
 
         # for rendering only, in the pybullet gui, press
@@ -103,16 +100,13 @@ class Walker2DCustomEnv(EnvBase):
         # like, {"progress": self.progress, "energy": self.energy_penalty, ...}
         return self.robot_state, reward, self.done, {}
 
-    def calc_potential(self):
+    def calc_track_rewards(self):
 
-        walk_target_delta = self.walk_target - self.robot.body_xyz
+        body_xyz_error = self.robot.body_xyz - self.body_xyz_target
+        body_rpy_error = self.robot.body_rpy - self.body_rpy_target
 
-        self.distance_to_target = (
-            walk_target_delta[0] ** 2 + walk_target_delta[1] ** 2
-        ) ** (1 / 2)
-
-        # reward is sum of progress, scaling by dt here makes sum equal to distance travelled
-        self.linear_potential = -self.distance_to_target / self.scene.dt
+        self.body_xyz_reward = np.exp( -1.0 * (body_xyz_error**2).sum() )
+        self.body_rpy_reward = np.exp( -2.0 * (body_rpy_error**2).sum() )
 
     def calc_env_state(self, action):
         # in case if neural net explodes
@@ -121,11 +115,9 @@ class Walker2DCustomEnv(EnvBase):
             self.done = True
 
         # calculate rewards
-        # main reward is progress, i.e. how much closer we're towards target
-        old_linear_potential = self.linear_potential
-        self.calc_potential()
-        linear_progress = self.linear_potential - old_linear_potential
-        self.progress = linear_progress
+        self.calc_track_rewards()
+        self.track = self.body_xyz_track_weight * self.body_xyz_reward \
+            + self.body_rpy_track_weight * self.body_rpy_reward
 
         # standard energy penalty based on applied action
         self.energy_penalty = self.electricity_cost * float(
@@ -148,7 +140,7 @@ class Walker2DCustomEnv(EnvBase):
         #   numerical differences due to np.float32 casting
         if (self.robot_state[0] > self.termination_height
                 and np.abs(self.robot_state[4]) < np.pi):
-            self.tall_bonus = 1.0
+            self.tall_bonus = 0.0
         else:
             self.tall_bonus = -1.0
 
