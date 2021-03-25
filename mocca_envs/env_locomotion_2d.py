@@ -27,15 +27,24 @@ class Walker2DCustomEnv(EnvBase):
         self.stall_torque_cost = 0.1
         self.joints_at_limit_cost = 0.7
 
+        # reference tracking reward weights
         self.body_vel_track_weight = 0.2
         self.body_rpy_track_weight = 0.2
         self.feet_rel_track_weight = 0.6
 
-        self.body_vel_target = np.array([0, 0, 0])
-        self.body_rpy_target = np.array([0, 0, 0])
-        self.feet_rel_target = np.array([
-            [0.0, 0.0, -1.0],
-            [0.0, 0.0, -1.0]])
+        # reference trajectories for tracking. Values are assumed to have been pre-interpolated to have
+        # the same time frequency as this environment, ie 1/self.control_step Hz
+        # axis 0 is time, and the remaining dimensions match the dimension of the corresponding variable
+        # TODO: replace lines below with loading externally calculated trajectories,
+        #  eg. by trajectory optimization
+        self.traj_len = 1200
+        time = np.linspace(0, self.control_step*self.traj_len, self.traj_len)
+        self.body_vel_target = np.zeros((self.traj_len, 3))
+        self.body_rpy_target = np.zeros((self.traj_len, 3))
+        self.feet_rel_target = np.stack((
+            0*time, 0*time, -1*np.ones(self.traj_len),
+            0*time, 0*time, -1*np.ones(self.traj_len)
+        ), axis=1).reshape(self.traj_len, 2, 3)
 
         # Observation space is the augmented state, see calc_aug_state()
         self.reset() # must be called for self.aug_state to be initialized properly
@@ -47,6 +56,8 @@ class Walker2DCustomEnv(EnvBase):
 
     def reset(self):
         self.done = False
+
+        self.traj_idx = 0
 
         # restoreState resets simulation to a saved checkpoint
         # including robot position and pose, and all other objects
@@ -106,15 +117,19 @@ class Walker2DCustomEnv(EnvBase):
             self._handle_keyboard()
             self.camera.track(pos=self.robot.body_xyz)
 
+        # step the reference trajectory index forward, after all simulation, state, and reward calculations
+        if self.traj_idx < self.traj_len-1:
+            self.traj_idx += 1
+
         # step() should return observation, reward, done (boolean), and info (dict)
         # info can be anything, some people return individual reward components
         # like, {"progress": self.progress, "energy": self.energy_penalty, ...}
         return self.aug_state, reward, self.done, {}
 
     def calc_track_rewards(self):
-        body_vel_error = self.robot.body_vel - self.body_vel_target
-        body_rpy_error = self.robot.body_rpy - self.body_rpy_target
-        feet_rel_error = (self.robot.feet_xyz - self.robot.body_xyz) - self.feet_rel_target
+        body_vel_error = self.robot.body_vel - self.body_vel_target[self.traj_idx]
+        body_rpy_error = self.robot.body_rpy - self.body_rpy_target[self.traj_idx]
+        feet_rel_error = (self.robot.feet_xyz - self.robot.body_xyz) - self.feet_rel_target[self.traj_idx]
 
         self.body_vel_reward = np.exp( -1.0 * (body_vel_error**2).sum() )
         self.body_rpy_reward = np.exp( -30.0 * (body_rpy_error**2).sum() )
@@ -122,12 +137,17 @@ class Walker2DCustomEnv(EnvBase):
 
     def calc_aug_state(self):
         # calculates the augmented state that is to be fed into the network
-        feet_rel = (self.robot.feet_xyz - self.robot.body_xyz).flatten()
+        feet_rel_flat = (self.robot.feet_xyz - self.robot.body_xyz).flatten()
+        feet_rel_target_flat = self.feet_rel_target[self.traj_idx].flatten()
         self.aug_state = np.concatenate((
             self.robot_state,
             self.robot.body_vel,
             self.robot.body_rpy,
-            feet_rel))
+            feet_rel_flat,
+            self.body_vel_target[self.traj_idx],
+            self.body_rpy_target[self.traj_idx],
+            feet_rel_target_flat
+        ))
 
     def calc_env_state(self, action):
         # in case if neural net explodes
