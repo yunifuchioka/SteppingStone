@@ -1,2 +1,0 @@
-iter,total_num_steps,fps,entropy,value_loss,action_loss,mean_rew,median_rew,min_rew,max_rew
-1,40000,1222,10.080812957959298,46.534184739528555,-0.021248347702072724,-76.368891952,-64.942902,-291.009128,-32.634388

@@ -37,8 +37,9 @@ class Walker2DCustomEnv(EnvBase):
             [0.0, 0.0, -1.0],
             [0.0, 0.0, -1.0]])
 
-        # Observation space is just robot's state, see robot.calc_state()
-        high = np.inf * np.ones(self.robot.observation_space.shape[0])
+        # Observation space is the augmented state, see calc_aug_state()
+        self.reset() # must be called for self.aug_state to be initialized properly
+        high = np.inf * np.ones(self.aug_state.shape[0])
         self.observation_space = gym.spaces.Box(-high, high, dtype=np.float32)
 
         # Action space is for the robot
@@ -60,6 +61,9 @@ class Walker2DCustomEnv(EnvBase):
             vel=self.robot_init_velocity,
         )
 
+        # calculate the augmented state to be input into the network
+        self.calc_aug_state()
+
         # make camera point to robot's root joint
         if self.is_rendered or self.use_egl:
             self.camera.lookat(self.robot.body_xyz)
@@ -68,9 +72,9 @@ class Walker2DCustomEnv(EnvBase):
         if not self.state_id >= 0:
             self.state_id = self._p.saveState()
 
-        # environment's observation space is just robot's state
-        # see robot.calc_state() for what's included in the state
-        return self.robot_state
+        # environment's observation space is robot's state plus additional variables to aid in training
+        # see self.calc_aug_state() for what's included in the observation
+        return self.aug_state
 
     def step(self, action):
         # set torque for each joint
@@ -90,6 +94,9 @@ class Walker2DCustomEnv(EnvBase):
         # calculate rewards and if episode should be terminated
         self.calc_env_state(action)
 
+        # calculate the augmented state to be input into the network
+        self.calc_aug_state()
+
         reward = self.track - self.energy_penalty
         reward += self.tall_bonus - self.joints_penalty
 
@@ -102,10 +109,9 @@ class Walker2DCustomEnv(EnvBase):
         # step() should return observation, reward, done (boolean), and info (dict)
         # info can be anything, some people return individual reward components
         # like, {"progress": self.progress, "energy": self.energy_penalty, ...}
-        return self.robot_state, reward, self.done, {}
+        return self.aug_state, reward, self.done, {}
 
     def calc_track_rewards(self):
-
         body_vel_error = self.robot.body_vel - self.body_vel_target
         body_rpy_error = self.robot.body_rpy - self.body_rpy_target
         feet_rel_error = (self.robot.feet_xyz - self.robot.body_xyz) - self.feet_rel_target
@@ -113,6 +119,15 @@ class Walker2DCustomEnv(EnvBase):
         self.body_vel_reward = np.exp( -1.0 * (body_vel_error**2).sum() )
         self.body_rpy_reward = np.exp( -30.0 * (body_rpy_error**2).sum() )
         self.feet_rel_reward = np.exp( -1.0 * (feet_rel_error**2).sum() )
+
+    def calc_aug_state(self):
+        # calculates the augmented state that is to be fed into the network
+        feet_rel = (self.robot.feet_xyz - self.robot.body_xyz).flatten()
+        self.aug_state = np.concatenate((
+            self.robot_state,
+            self.robot.body_vel,
+            self.robot.body_rpy,
+            feet_rel))
 
     def calc_env_state(self, action):
         # in case if neural net explodes

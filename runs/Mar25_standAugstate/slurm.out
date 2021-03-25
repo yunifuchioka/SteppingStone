@@ -1,0 +1,1987 @@
+/home/uni/.pyenv/versions/optim/lib/python3.6/site-packages/torch/cuda/__init__.py:52: UserWarning: CUDA initialization: Found no NVIDIA driver on your system. Please check that you have an NVIDIA GPU and installed a driver from http://www.nvidia.com/Download/index.aspx (Triggered internally at  /pytorch/c10/cuda/CUDAFunctions.cpp:100.)
+  return torch._C._cuda_getDeviceCount() > 0
+WARNING - sacred_utils - No observers have been added to this run
+INFO - sacred_utils - Running command 'main'
+INFO - sacred_utils - Started
+pybullet build time: Dec 23 2020 01:46:51
+==============SETTINGS================
+{'device': 'cpu',
+ 'env': 'mocca_envs:Walker2DCustomEnv-v0',
+ 'episode_steps': 40000,
+ 'experiment_dir': 'runs/2021_03_25__08_09_27__walker_experiment/',
+ 'gae_lambda': 0.95,
+ 'gamma': 0.99,
+ 'log_dir': 'runs/2021_03_25__08_09_27__walker_experiment/logs',
+ 'log_interval': 2,
+ 'lr': 0.0003,
+ 'lr_decay_type': 'exponential',
+ 'mini_batch_size': 1024,
+ 'net': None,
+ 'num_frames': 10000000.0,
+ 'num_mini_batch': 39,
+ 'num_processes': 125,
+ 'num_steps': 320,
+ 'ppo_params': {'clip_param': 0.2,
+                'entropy_coef': 0.0,
+                'eps': 1e-05,
+                'lr': 0.0003,
+                'max_grad_norm': 2.0,
+                'num_mini_batch': 39,
+                'ppo_epoch': 10,
+                'use_clipped_value_loss': False,
+                'value_loss_coef': 1.0},
+ 'replicate_num': 1,
+ 'save_dir': 'runs/2021_03_25__08_09_27__walker_experiment/models',
+ 'save_every': 2000000,
+ 'seed': 16,
+ 'use_gae': True}
+--------------------------------------
+/home/uni/.pyenv/versions/optim/lib/python3.6/site-packages/gym/logger.py:30: UserWarning: [33mWARN: Box bound precision lowered by casting to float32[0m
+  warnings.warn(colorize('%s: %s'%('WARN', msg % args), 'yellow'))
+Updates 1, num timesteps 40000, FPS 984, mean/median reward -45.9/-40.3, min/max reward -149.0/-19.4, entropy 10.05, value loss 20.15, policy loss -0.020
+Updates 2, num timesteps 80000, FPS 969, mean/median reward -42.5/-36.7, min/max reward -124.9/-15.9, entropy 9.91, value loss 16.15, policy loss -0.023
+Updates 3, num timesteps 120000, FPS 965, mean/median reward -37.5/-34.7, min/max reward -113.4/-12.9, entropy 9.72, value loss 14.32, policy loss -0.035
+Updates 4, num timesteps 160000, FPS 963, mean/median reward -28.5/-28.3, min/max reward -51.5/-10.8, entropy 9.52, value loss 11.36, policy loss -0.041
+Updates 5, num timesteps 200000, FPS 961, mean/median reward -24.5/-23.6, min/max reward -47.1/-10.2, entropy 9.28, value loss 7.85, policy loss -0.034
+Updates 6, num timesteps 240000, FPS 960, mean/median reward -21.9/-21.6, min/max reward -41.9/-5.0, entropy 9.03, value loss 6.13, policy loss -0.037
+Updates 7, num timesteps 280000, FPS 960, mean/median reward -20.2/-19.6, min/max reward -36.7/-7.4, entropy 8.75, value loss 4.99, policy loss -0.040
+Updates 8, num timesteps 320000, FPS 960, mean/median reward -17.4/-16.7, min/max reward -39.7/-4.7, entropy 8.48, value loss 4.13, policy loss -0.037
+Updates 9, num timesteps 360000, FPS 960, mean/median reward -15.3/-14.7, min/max reward -31.1/-1.9, entropy 8.19, value loss 3.70, policy loss -0.037
+Updates 10, num timesteps 400000, FPS 959, mean/median reward -12.7/-11.9, min/max reward -26.9/-1.2, entropy 7.91, value loss 3.44, policy loss -0.044
+Updates 11, num timesteps 440000, FPS 959, mean/median reward -10.8/-10.6, min/max reward -22.7/0.1, entropy 7.63, value loss 3.24, policy loss -0.043
+Updates 12, num timesteps 480000, FPS 959, mean/median reward -8.5/-8.8, min/max reward -18.8/6.3, entropy 7.34, value loss 2.98, policy loss -0.044
+Updates 13, num timesteps 520000, FPS 959, mean/median reward -6.3/-6.4, min/max reward -20.2/6.8, entropy 7.06, value loss 2.97, policy loss -0.048
+Updates 14, num timesteps 560000, FPS 959, mean/median reward -2.9/-2.7, min/max reward -17.9/6.1, entropy 6.80, value loss 2.79, policy loss -0.045
+Updates 15, num timesteps 600000, FPS 958, mean/median reward -1.2/-1.4, min/max reward -14.6/12.9, entropy 6.54, value loss 2.68, policy loss -0.045
+Updates 16, num timesteps 640000, FPS 957, mean/median reward 1.0/0.6, min/max reward -12.5/13.6, entropy 6.29, value loss 2.38, policy loss -0.047
+Updates 17, num timesteps 680000, FPS 957, mean/median reward 2.9/2.9, min/max reward -12.9/11.3, entropy 6.07, value loss 2.32, policy loss -0.045
+Updates 18, num timesteps 720000, FPS 957, mean/median reward 5.3/5.6, min/max reward -7.0/14.3, entropy 5.84, value loss 2.15, policy loss -0.043
+Updates 19, num timesteps 760000, FPS 958, mean/median reward 6.6/6.8, min/max reward -3.5/17.2, entropy 5.62, value loss 1.90, policy loss -0.037
+Updates 20, num timesteps 800000, FPS 958, mean/median reward 9.5/10.1, min/max reward -6.3/20.3, entropy 5.40, value loss 1.92, policy loss -0.041
+Updates 21, num timesteps 840000, FPS 959, mean/median reward 12.3/11.7, min/max reward -0.0/23.9, entropy 5.21, value loss 1.93, policy loss -0.040
+Updates 22, num timesteps 880000, FPS 959, mean/median reward 14.5/14.1, min/max reward 2.7/29.4, entropy 5.03, value loss 1.97, policy loss -0.041
+Updates 23, num timesteps 920000, FPS 959, mean/median reward 18.0/17.5, min/max reward 5.8/39.7, entropy 4.87, value loss 2.26, policy loss -0.037
+Updates 24, num timesteps 960000, FPS 959, mean/median reward 20.6/20.4, min/max reward 7.0/39.7, entropy 4.71, value loss 2.44, policy loss -0.040
+Updates 25, num timesteps 1000000, FPS 959, mean/median reward 25.3/24.2, min/max reward 8.8/44.6, entropy 4.58, value loss 2.79, policy loss -0.038
+Updates 26, num timesteps 1040000, FPS 959, mean/median reward 30.2/29.9, min/max reward 11.9/47.3, entropy 4.44, value loss 2.60, policy loss -0.035
+Updates 27, num timesteps 1080000, FPS 959, mean/median reward 34.4/34.4, min/max reward 17.4/58.2, entropy 4.30, value loss 2.61, policy loss -0.038
+Updates 28, num timesteps 1120000, FPS 959, mean/median reward 39.5/39.7, min/max reward 17.9/71.9, entropy 4.17, value loss 2.48, policy loss -0.029
+Updates 29, num timesteps 1160000, FPS 951, mean/median reward 44.3/42.6, min/max reward 27.3/80.8, entropy 4.05, value loss 2.40, policy loss -0.030
+Updates 30, num timesteps 1200000, FPS 948, mean/median reward 48.3/46.7, min/max reward 26.6/84.9, entropy 3.92, value loss 2.52, policy loss -0.030
+Updates 31, num timesteps 1240000, FPS 947, mean/median reward 54.1/51.0, min/max reward 31.1/114.4, entropy 3.81, value loss 2.71, policy loss -0.026
+Updates 32, num timesteps 1280000, FPS 947, mean/median reward 59.0/54.6, min/max reward 31.6/133.2, entropy 3.71, value loss 3.17, policy loss -0.028
+Updates 33, num timesteps 1320000, FPS 946, mean/median reward 61.1/55.9, min/max reward 31.6/149.2, entropy 3.61, value loss 3.16, policy loss -0.023
+Updates 34, num timesteps 1360000, FPS 946, mean/median reward 67.1/61.2, min/max reward 37.6/156.9, entropy 3.51, value loss 3.49, policy loss -0.026
+Updates 35, num timesteps 1400000, FPS 945, mean/median reward 75.8/71.0, min/max reward 39.2/144.9, entropy 3.41, value loss 4.26, policy loss -0.027
+Updates 36, num timesteps 1440000, FPS 945, mean/median reward 87.2/79.6, min/max reward 43.2/237.0, entropy 3.32, value loss 5.12, policy loss -0.021
+Updates 37, num timesteps 1480000, FPS 944, mean/median reward 88.4/82.5, min/max reward 45.1/235.9, entropy 3.23, value loss 4.74, policy loss -0.026
+Updates 38, num timesteps 1520000, FPS 944, mean/median reward 96.8/86.6, min/max reward 49.2/236.4, entropy 3.13, value loss 5.80, policy loss -0.022
+Updates 39, num timesteps 1560000, FPS 943, mean/median reward 115.6/104.2, min/max reward 45.5/284.7, entropy 3.05, value loss 6.48, policy loss -0.023
+Updates 40, num timesteps 1600000, FPS 943, mean/median reward 113.4/97.8, min/max reward 44.4/372.4, entropy 2.96, value loss 6.27, policy loss -0.025
+Updates 41, num timesteps 1640000, FPS 942, mean/median reward 137.5/115.5, min/max reward 57.0/485.6, entropy 2.85, value loss 6.50, policy loss -0.025
+Updates 42, num timesteps 1680000, FPS 942, mean/median reward 166.7/140.7, min/max reward 66.9/590.1, entropy 2.77, value loss 6.25, policy loss -0.021
+Updates 43, num timesteps 1720000, FPS 941, mean/median reward 204.2/152.4, min/max reward 69.4/903.7, entropy 2.69, value loss 7.03, policy loss -0.017
+Updates 44, num timesteps 1760000, FPS 930, mean/median reward 218.0/169.5, min/max reward 64.0/917.5, entropy 2.59, value loss 6.61, policy loss -0.021
+Updates 45, num timesteps 1800000, FPS 930, mean/median reward 254.0/176.9, min/max reward 76.0/911.4, entropy 2.51, value loss 6.71, policy loss -0.019
+Updates 46, num timesteps 1840000, FPS 930, mean/median reward 365.4/272.8, min/max reward 75.7/1206.7, entropy 2.42, value loss 6.84, policy loss -0.016
+Updates 47, num timesteps 1880000, FPS 929, mean/median reward 386.2/290.4, min/max reward 75.7/1271.5, entropy 2.33, value loss 6.14, policy loss -0.015
+Updates 48, num timesteps 1920000, FPS 929, mean/median reward 484.3/342.5, min/max reward 83.6/1275.9, entropy 2.23, value loss 4.57, policy loss -0.016
+Updates 49, num timesteps 1960000, FPS 929, mean/median reward 675.7/622.2, min/max reward 83.2/1333.1, entropy 2.11, value loss 4.57, policy loss -0.014
+Updates 50, num timesteps 2000000, FPS 929, mean/median reward 829.8/986.3, min/max reward 68.2/1358.4, entropy 2.00, value loss 5.21, policy loss -0.018
+Updates 51, num timesteps 2040000, FPS 929, mean/median reward 885.8/1254.6, min/max reward 68.2/1384.3, entropy 1.85, value loss 3.55, policy loss -0.005
+Updates 52, num timesteps 2080000, FPS 929, mean/median reward 950.5/1304.2, min/max reward 68.2/1407.6, entropy 1.70, value loss 2.50, policy loss -0.006
+Updates 53, num timesteps 2120000, FPS 929, mean/median reward 1152.9/1362.4, min/max reward 99.1/1444.3, entropy 1.55, value loss 2.94, policy loss -0.017
+Updates 54, num timesteps 2160000, FPS 928, mean/median reward 1210.9/1389.4, min/max reward 86.2/1464.9, entropy 1.40, value loss 2.38, policy loss -0.008
+Updates 55, num timesteps 2200000, FPS 926, mean/median reward 1235.0/1409.5, min/max reward 86.2/1489.3, entropy 1.22, value loss 1.62, policy loss -0.005
+Updates 56, num timesteps 2240000, FPS 926, mean/median reward 1305.9/1451.7, min/max reward 94.0/1512.0, entropy 1.07, value loss 1.89, policy loss -0.013
+Updates 57, num timesteps 2280000, FPS 925, mean/median reward 1371.2/1483.4, min/max reward 106.0/1542.0, entropy 0.92, value loss 1.50, policy loss -0.003
+Updates 58, num timesteps 2320000, FPS 925, mean/median reward 1400.0/1498.9, min/max reward 81.4/1570.4, entropy 0.77, value loss 1.41, policy loss 0.003
+Updates 59, num timesteps 2360000, FPS 925, mean/median reward 1452.8/1536.6, min/max reward 81.4/1593.4, entropy 0.61, value loss 1.37, policy loss -0.013
+Updates 60, num timesteps 2400000, FPS 925, mean/median reward 1475.3/1563.3, min/max reward 81.4/1607.4, entropy 0.46, value loss 1.26, policy loss -0.008
+Updates 61, num timesteps 2440000, FPS 922, mean/median reward 1514.0/1577.2, min/max reward 159.9/1633.4, entropy 0.31, value loss 1.04, policy loss 0.001
+Updates 62, num timesteps 2480000, FPS 922, mean/median reward 1537.1/1603.5, min/max reward 97.3/1661.9, entropy 0.18, value loss 0.99, policy loss 0.020
+Updates 63, num timesteps 2520000, FPS 922, mean/median reward 1565.7/1631.8, min/max reward 97.3/1681.8, entropy 0.03, value loss 0.93, policy loss -0.009
+Updates 64, num timesteps 2560000, FPS 922, mean/median reward 1613.5/1643.5, min/max reward 106.1/1687.8, entropy -0.10, value loss 1.13, policy loss 0.010
+Updates 65, num timesteps 2600000, FPS 920, mean/median reward 1618.9/1664.9, min/max reward 106.1/1707.7, entropy -0.25, value loss 0.87, policy loss 0.008
+Updates 66, num timesteps 2640000, FPS 920, mean/median reward 1633.4/1689.2, min/max reward 182.9/1727.6, entropy -0.38, value loss 0.76, policy loss -0.009
+Updates 67, num timesteps 2680000, FPS 920, mean/median reward 1630.9/1701.9, min/max reward 118.1/1736.0, entropy -0.51, value loss 0.82, policy loss -0.012
+Updates 68, num timesteps 2720000, FPS 920, mean/median reward 1633.8/1714.8, min/max reward 118.1/1746.4, entropy -0.67, value loss 0.54, policy loss -0.001
+Updates 69, num timesteps 2760000, FPS 918, mean/median reward 1673.7/1733.3, min/max reward 118.1/1765.1, entropy -0.79, value loss 0.75, policy loss -0.000
+Updates 70, num timesteps 2800000, FPS 918, mean/median reward 1684.4/1744.7, min/max reward 148.2/1772.1, entropy -0.95, value loss 0.68, policy loss 0.027
+Updates 71, num timesteps 2840000, FPS 918, mean/median reward 1695.4/1755.9, min/max reward 162.1/1788.7, entropy -1.08, value loss 0.61, policy loss -0.002
+Updates 72, num timesteps 2880000, FPS 918, mean/median reward 1684.2/1772.5, min/max reward 162.1/1801.7, entropy -1.20, value loss 0.66, policy loss 0.001
+Process ForkProcess-125:
+Traceback (most recent call last):
+  File "/home/uni/.pyenv/versions/3.6.10/lib/python3.6/multiprocessing/process.py", line 258, in _bootstrap
+    self.run()
+  File "/home/uni/.pyenv/versions/3.6.10/lib/python3.6/multiprocessing/process.py", line 93, in run
+    self._target(*self._args, **self._kwargs)
+  File "/home/uni/Documents/python/optim/SteppingStone/common/envs_utils.py", line 646, in _subproc_worker
+    cmd, data = pipe.recv()
+  File "/home/uni/.pyenv/versions/3.6.10/lib/python3.6/multiprocessing/connection.py", line 250, in recv
+    buf = self._recv_bytes()
+  File "/home/uni/.pyenv/versions/3.6.10/lib/python3.6/multiprocessing/connection.py", line 407, in _recv_bytes
+    buf = self._recv(4)
+  File "/home/uni/.pyenv/versions/3.6.10/lib/python3.6/multiprocessing/connection.py", line 383, in _recv
+    raise EOFError
+EOFError
+Process ForkProcess-124:
+Traceback (most recent call last):
+  File "/home/uni/.pyenv/versions/3.6.10/lib/python3.6/multiprocessing/process.py", line 258, in _bootstrap
+    self.run()
+  File "/home/uni/.pyenv/versions/3.6.10/lib/python3.6/multiprocessing/process.py", line 93, in run
+    self._target(*self._args, **self._kwargs)
+  File "/home/uni/Documents/python/optim/SteppingStone/common/envs_utils.py", line 646, in _subproc_worker
+    cmd, data = pipe.recv()
+  File "/home/uni/.pyenv/versions/3.6.10/lib/python3.6/multiprocessing/connection.py", line 250, in recv
+    buf = self._recv_bytes()
+  File "/home/uni/.pyenv/versions/3.6.10/lib/python3.6/multiprocessing/connection.py", line 407, in _recv_bytes
+    buf = self._recv(4)
+  File "/home/uni/.pyenv/versions/3.6.10/lib/python3.6/multiprocessing/connection.py", line 383, in _recv
+    raise EOFError
+EOFError
+Process ForkProcess-123:
+Traceback (most recent call last):
+  File "/home/uni/.pyenv/versions/3.6.10/lib/python3.6/multiprocessing/process.py", line 258, in _bootstrap
+    self.run()
+  File "/home/uni/.pyenv/versions/3.6.10/lib/python3.6/multiprocessing/process.py", line 93, in run
+    self._target(*self._args, **self._kwargs)
+  File "/home/uni/Documents/python/optim/SteppingStone/common/envs_utils.py", line 646, in _subproc_worker
+    cmd, data = pipe.recv()
+  File "/home/uni/.pyenv/versions/3.6.10/lib/python3.6/multiprocessing/connection.py", line 250, in recv
+    buf = self._recv_bytes()
+  File "/home/uni/.pyenv/versions/3.6.10/lib/python3.6/multiprocessing/connection.py", line 407, in _recv_bytes
+    buf = self._recv(4)
+  File "/home/uni/.pyenv/versions/3.6.10/lib/python3.6/multiprocessing/connection.py", line 383, in _recv
+    raise EOFError
+EOFError
+Process ForkProcess-122:
+Traceback (most recent call last):
+  File "/home/uni/.pyenv/versions/3.6.10/lib/python3.6/multiprocessing/process.py", line 258, in _bootstrap
+    self.run()
+  File "/home/uni/.pyenv/versions/3.6.10/lib/python3.6/multiprocessing/process.py", line 93, in run
+    self._target(*self._args, **self._kwargs)
+  File "/home/uni/Documents/python/optim/SteppingStone/common/envs_utils.py", line 646, in _subproc_worker
+    cmd, data = pipe.recv()
+  File "/home/uni/.pyenv/versions/3.6.10/lib/python3.6/multiprocessing/connection.py", line 250, in recv
+    buf = self._recv_bytes()
+  File "/home/uni/.pyenv/versions/3.6.10/lib/python3.6/multiprocessing/connection.py", line 407, in _recv_bytes
+    buf = self._recv(4)
+  File "/home/uni/.pyenv/versions/3.6.10/lib/python3.6/multiprocessing/connection.py", line 383, in _recv
+    raise EOFError
+EOFError
+Process ForkProcess-121:
+Traceback (most recent call last):
+  File "/home/uni/.pyenv/versions/3.6.10/lib/python3.6/multiprocessing/process.py", line 258, in _bootstrap
+    self.run()
+  File "/home/uni/.pyenv/versions/3.6.10/lib/python3.6/multiprocessing/process.py", line 93, in run
+    self._target(*self._args, **self._kwargs)
+  File "/home/uni/Documents/python/optim/SteppingStone/common/envs_utils.py", line 646, in _subproc_worker
+    cmd, data = pipe.recv()
+  File "/home/uni/.pyenv/versions/3.6.10/lib/python3.6/multiprocessing/connection.py", line 250, in recv
+    buf = self._recv_bytes()
+  File "/home/uni/.pyenv/versions/3.6.10/lib/python3.6/multiprocessing/connection.py", line 407, in _recv_bytes
+    buf = self._recv(4)
+  File "/home/uni/.pyenv/versions/3.6.10/lib/python3.6/multiprocessing/connection.py", line 383, in _recv
+    raise EOFError
+EOFError
+Process ForkProcess-120:
+Traceback (most recent call last):
+  File "/home/uni/.pyenv/versions/3.6.10/lib/python3.6/multiprocessing/process.py", line 258, in _bootstrap
+    self.run()
+  File "/home/uni/.pyenv/versions/3.6.10/lib/python3.6/multiprocessing/process.py", line 93, in run
+    self._target(*self._args, **self._kwargs)
+  File "/home/uni/Documents/python/optim/SteppingStone/common/envs_utils.py", line 646, in _subproc_worker
+    cmd, data = pipe.recv()
+  File "/home/uni/.pyenv/versions/3.6.10/lib/python3.6/multiprocessing/connection.py", line 250, in recv
+    buf = self._recv_bytes()
+  File "/home/uni/.pyenv/versions/3.6.10/lib/python3.6/multiprocessing/connection.py", line 407, in _recv_bytes
+    buf = self._recv(4)
+  File "/home/uni/.pyenv/versions/3.6.10/lib/python3.6/multiprocessing/connection.py", line 383, in _recv
+    raise EOFError
+EOFError
+Process ForkProcess-119:
+Traceback (most recent call last):
+  File "/home/uni/.pyenv/versions/3.6.10/lib/python3.6/multiprocessing/process.py", line 258, in _bootstrap
+    self.run()
+  File "/home/uni/.pyenv/versions/3.6.10/lib/python3.6/multiprocessing/process.py", line 93, in run
+    self._target(*self._args, **self._kwargs)
+  File "/home/uni/Documents/python/optim/SteppingStone/common/envs_utils.py", line 646, in _subproc_worker
+    cmd, data = pipe.recv()
+  File "/home/uni/.pyenv/versions/3.6.10/lib/python3.6/multiprocessing/connection.py", line 250, in recv
+    buf = self._recv_bytes()
+  File "/home/uni/.pyenv/versions/3.6.10/lib/python3.6/multiprocessing/connection.py", line 407, in _recv_bytes
+    buf = self._recv(4)
+  File "/home/uni/.pyenv/versions/3.6.10/lib/python3.6/multiprocessing/connection.py", line 383, in _recv
+    raise EOFError
+EOFError
+Process ForkProcess-118:
+Traceback (most recent call last):
+  File "/home/uni/.pyenv/versions/3.6.10/lib/python3.6/multiprocessing/process.py", line 258, in _bootstrap
+    self.run()
+  File "/home/uni/.pyenv/versions/3.6.10/lib/python3.6/multiprocessing/process.py", line 93, in run
+    self._target(*self._args, **self._kwargs)
+  File "/home/uni/Documents/python/optim/SteppingStone/common/envs_utils.py", line 646, in _subproc_worker
+    cmd, data = pipe.recv()
+  File "/home/uni/.pyenv/versions/3.6.10/lib/python3.6/multiprocessing/connection.py", line 250, in recv
+    buf = self._recv_bytes()
+  File "/home/uni/.pyenv/versions/3.6.10/lib/python3.6/multiprocessing/connection.py", line 407, in _recv_bytes
+    buf = self._recv(4)
+  File "/home/uni/.pyenv/versions/3.6.10/lib/python3.6/multiprocessing/connection.py", line 383, in _recv
+    raise EOFError
+EOFError
+Process ForkProcess-117:
+Traceback (most recent call last):
+  File "/home/uni/.pyenv/versions/3.6.10/lib/python3.6/multiprocessing/process.py", line 258, in _bootstrap
+    self.run()
+  File "/home/uni/.pyenv/versions/3.6.10/lib/python3.6/multiprocessing/process.py", line 93, in run
+    self._target(*self._args, **self._kwargs)
+  File "/home/uni/Documents/python/optim/SteppingStone/common/envs_utils.py", line 646, in _subproc_worker
+    cmd, data = pipe.recv()
+  File "/home/uni/.pyenv/versions/3.6.10/lib/python3.6/multiprocessing/connection.py", line 250, in recv
+    buf = self._recv_bytes()
+  File "/home/uni/.pyenv/versions/3.6.10/lib/python3.6/multiprocessing/connection.py", line 407, in _recv_bytes
+    buf = self._recv(4)
+  File "/home/uni/.pyenv/versions/3.6.10/lib/python3.6/multiprocessing/connection.py", line 383, in _recv
+    raise EOFError
+EOFError
+Process ForkProcess-116:
+Traceback (most recent call last):
+  File "/home/uni/.pyenv/versions/3.6.10/lib/python3.6/multiprocessing/process.py", line 258, in _bootstrap
+    self.run()
+  File "/home/uni/.pyenv/versions/3.6.10/lib/python3.6/multiprocessing/process.py", line 93, in run
+    self._target(*self._args, **self._kwargs)
+  File "/home/uni/Documents/python/optim/SteppingStone/common/envs_utils.py", line 646, in _subproc_worker
+    cmd, data = pipe.recv()
+  File "/home/uni/.pyenv/versions/3.6.10/lib/python3.6/multiprocessing/connection.py", line 250, in recv
+    buf = self._recv_bytes()
+  File "/home/uni/.pyenv/versions/3.6.10/lib/python3.6/multiprocessing/connection.py", line 407, in _recv_bytes
+    buf = self._recv(4)
+  File "/home/uni/.pyenv/versions/3.6.10/lib/python3.6/multiprocessing/connection.py", line 383, in _recv
+    raise EOFError
+EOFError
+Process ForkProcess-115:
+Traceback (most recent call last):
+  File "/home/uni/.pyenv/versions/3.6.10/lib/python3.6/multiprocessing/process.py", line 258, in _bootstrap
+    self.run()
+  File "/home/uni/.pyenv/versions/3.6.10/lib/python3.6/multiprocessing/process.py", line 93, in run
+    self._target(*self._args, **self._kwargs)
+  File "/home/uni/Documents/python/optim/SteppingStone/common/envs_utils.py", line 646, in _subproc_worker
+    cmd, data = pipe.recv()
+  File "/home/uni/.pyenv/versions/3.6.10/lib/python3.6/multiprocessing/connection.py", line 250, in recv
+    buf = self._recv_bytes()
+  File "/home/uni/.pyenv/versions/3.6.10/lib/python3.6/multiprocessing/connection.py", line 407, in _recv_bytes
+    buf = self._recv(4)
+  File "/home/uni/.pyenv/versions/3.6.10/lib/python3.6/multiprocessing/connection.py", line 383, in _recv
+    raise EOFError
+EOFError
+Process ForkProcess-114:
+Traceback (most recent call last):
+  File "/home/uni/.pyenv/versions/3.6.10/lib/python3.6/multiprocessing/process.py", line 258, in _bootstrap
+    self.run()
+  File "/home/uni/.pyenv/versions/3.6.10/lib/python3.6/multiprocessing/process.py", line 93, in run
+    self._target(*self._args, **self._kwargs)
+  File "/home/uni/Documents/python/optim/SteppingStone/common/envs_utils.py", line 646, in _subproc_worker
+    cmd, data = pipe.recv()
+  File "/home/uni/.pyenv/versions/3.6.10/lib/python3.6/multiprocessing/connection.py", line 250, in recv
+    buf = self._recv_bytes()
+  File "/home/uni/.pyenv/versions/3.6.10/lib/python3.6/multiprocessing/connection.py", line 407, in _recv_bytes
+    buf = self._recv(4)
+  File "/home/uni/.pyenv/versions/3.6.10/lib/python3.6/multiprocessing/connection.py", line 383, in _recv
+    raise EOFError
+EOFError
+Process ForkProcess-113:
+Traceback (most recent call last):
+  File "/home/uni/.pyenv/versions/3.6.10/lib/python3.6/multiprocessing/process.py", line 258, in _bootstrap
+    self.run()
+  File "/home/uni/.pyenv/versions/3.6.10/lib/python3.6/multiprocessing/process.py", line 93, in run
+    self._target(*self._args, **self._kwargs)
+  File "/home/uni/Documents/python/optim/SteppingStone/common/envs_utils.py", line 646, in _subproc_worker
+    cmd, data = pipe.recv()
+  File "/home/uni/.pyenv/versions/3.6.10/lib/python3.6/multiprocessing/connection.py", line 250, in recv
+    buf = self._recv_bytes()
+  File "/home/uni/.pyenv/versions/3.6.10/lib/python3.6/multiprocessing/connection.py", line 407, in _recv_bytes
+    buf = self._recv(4)
+  File "/home/uni/.pyenv/versions/3.6.10/lib/python3.6/multiprocessing/connection.py", line 383, in _recv
+    raise EOFError
+EOFError
+Process ForkProcess-112:
+Traceback (most recent call last):
+  File "/home/uni/.pyenv/versions/3.6.10/lib/python3.6/multiprocessing/process.py", line 258, in _bootstrap
+    self.run()
+  File "/home/uni/.pyenv/versions/3.6.10/lib/python3.6/multiprocessing/process.py", line 93, in run
+    self._target(*self._args, **self._kwargs)
+  File "/home/uni/Documents/python/optim/SteppingStone/common/envs_utils.py", line 646, in _subproc_worker
+    cmd, data = pipe.recv()
+  File "/home/uni/.pyenv/versions/3.6.10/lib/python3.6/multiprocessing/connection.py", line 250, in recv
+    buf = self._recv_bytes()
+  File "/home/uni/.pyenv/versions/3.6.10/lib/python3.6/multiprocessing/connection.py", line 407, in _recv_bytes
+    buf = self._recv(4)
+  File "/home/uni/.pyenv/versions/3.6.10/lib/python3.6/multiprocessing/connection.py", line 383, in _recv
+    raise EOFError
+EOFError
+Process ForkProcess-111:
+Traceback (most recent call last):
+  File "/home/uni/.pyenv/versions/3.6.10/lib/python3.6/multiprocessing/process.py", line 258, in _bootstrap
+    self.run()
+  File "/home/uni/.pyenv/versions/3.6.10/lib/python3.6/multiprocessing/process.py", line 93, in run
+    self._target(*self._args, **self._kwargs)
+  File "/home/uni/Documents/python/optim/SteppingStone/common/envs_utils.py", line 646, in _subproc_worker
+    cmd, data = pipe.recv()
+  File "/home/uni/.pyenv/versions/3.6.10/lib/python3.6/multiprocessing/connection.py", line 250, in recv
+    buf = self._recv_bytes()
+  File "/home/uni/.pyenv/versions/3.6.10/lib/python3.6/multiprocessing/connection.py", line 407, in _recv_bytes
+    buf = self._recv(4)
+  File "/home/uni/.pyenv/versions/3.6.10/lib/python3.6/multiprocessing/connection.py", line 383, in _recv
+    raise EOFError
+EOFError
+Process ForkProcess-110:
+Traceback (most recent call last):
+  File "/home/uni/.pyenv/versions/3.6.10/lib/python3.6/multiprocessing/process.py", line 258, in _bootstrap
+    self.run()
+  File "/home/uni/.pyenv/versions/3.6.10/lib/python3.6/multiprocessing/process.py", line 93, in run
+    self._target(*self._args, **self._kwargs)
+  File "/home/uni/Documents/python/optim/SteppingStone/common/envs_utils.py", line 646, in _subproc_worker
+    cmd, data = pipe.recv()
+  File "/home/uni/.pyenv/versions/3.6.10/lib/python3.6/multiprocessing/connection.py", line 250, in recv
+    buf = self._recv_bytes()
+  File "/home/uni/.pyenv/versions/3.6.10/lib/python3.6/multiprocessing/connection.py", line 407, in _recv_bytes
+    buf = self._recv(4)
+  File "/home/uni/.pyenv/versions/3.6.10/lib/python3.6/multiprocessing/connection.py", line 383, in _recv
+    raise EOFError
+EOFError
+Process ForkProcess-109:
+Traceback (most recent call last):
+  File "/home/uni/.pyenv/versions/3.6.10/lib/python3.6/multiprocessing/process.py", line 258, in _bootstrap
+    self.run()
+  File "/home/uni/.pyenv/versions/3.6.10/lib/python3.6/multiprocessing/process.py", line 93, in run
+    self._target(*self._args, **self._kwargs)
+  File "/home/uni/Documents/python/optim/SteppingStone/common/envs_utils.py", line 646, in _subproc_worker
+    cmd, data = pipe.recv()
+  File "/home/uni/.pyenv/versions/3.6.10/lib/python3.6/multiprocessing/connection.py", line 250, in recv
+    buf = self._recv_bytes()
+  File "/home/uni/.pyenv/versions/3.6.10/lib/python3.6/multiprocessing/connection.py", line 407, in _recv_bytes
+    buf = self._recv(4)
+  File "/home/uni/.pyenv/versions/3.6.10/lib/python3.6/multiprocessing/connection.py", line 383, in _recv
+    raise EOFError
+EOFError
+Process ForkProcess-108:
+Traceback (most recent call last):
+  File "/home/uni/.pyenv/versions/3.6.10/lib/python3.6/multiprocessing/process.py", line 258, in _bootstrap
+    self.run()
+  File "/home/uni/.pyenv/versions/3.6.10/lib/python3.6/multiprocessing/process.py", line 93, in run
+    self._target(*self._args, **self._kwargs)
+  File "/home/uni/Documents/python/optim/SteppingStone/common/envs_utils.py", line 646, in _subproc_worker
+    cmd, data = pipe.recv()
+  File "/home/uni/.pyenv/versions/3.6.10/lib/python3.6/multiprocessing/connection.py", line 250, in recv
+    buf = self._recv_bytes()
+  File "/home/uni/.pyenv/versions/3.6.10/lib/python3.6/multiprocessing/connection.py", line 407, in _recv_bytes
+    buf = self._recv(4)
+  File "/home/uni/.pyenv/versions/3.6.10/lib/python3.6/multiprocessing/connection.py", line 383, in _recv
+    raise EOFError
+EOFError
+Process ForkProcess-107:
+Traceback (most recent call last):
+  File "/home/uni/.pyenv/versions/3.6.10/lib/python3.6/multiprocessing/process.py", line 258, in _bootstrap
+    self.run()
+  File "/home/uni/.pyenv/versions/3.6.10/lib/python3.6/multiprocessing/process.py", line 93, in run
+    self._target(*self._args, **self._kwargs)
+  File "/home/uni/Documents/python/optim/SteppingStone/common/envs_utils.py", line 646, in _subproc_worker
+    cmd, data = pipe.recv()
+  File "/home/uni/.pyenv/versions/3.6.10/lib/python3.6/multiprocessing/connection.py", line 250, in recv
+    buf = self._recv_bytes()
+  File "/home/uni/.pyenv/versions/3.6.10/lib/python3.6/multiprocessing/connection.py", line 407, in _recv_bytes
+    buf = self._recv(4)
+  File "/home/uni/.pyenv/versions/3.6.10/lib/python3.6/multiprocessing/connection.py", line 383, in _recv
+    raise EOFError
+EOFError
+Process ForkProcess-106:
+Traceback (most recent call last):
+  File "/home/uni/.pyenv/versions/3.6.10/lib/python3.6/multiprocessing/process.py", line 258, in _bootstrap
+    self.run()
+  File "/home/uni/.pyenv/versions/3.6.10/lib/python3.6/multiprocessing/process.py", line 93, in run
+    self._target(*self._args, **self._kwargs)
+  File "/home/uni/Documents/python/optim/SteppingStone/common/envs_utils.py", line 646, in _subproc_worker
+    cmd, data = pipe.recv()
+  File "/home/uni/.pyenv/versions/3.6.10/lib/python3.6/multiprocessing/connection.py", line 250, in recv
+    buf = self._recv_bytes()
+  File "/home/uni/.pyenv/versions/3.6.10/lib/python3.6/multiprocessing/connection.py", line 407, in _recv_bytes
+    buf = self._recv(4)
+  File "/home/uni/.pyenv/versions/3.6.10/lib/python3.6/multiprocessing/connection.py", line 383, in _recv
+    raise EOFError
+EOFError
+Process ForkProcess-105:
+Traceback (most recent call last):
+  File "/home/uni/.pyenv/versions/3.6.10/lib/python3.6/multiprocessing/process.py", line 258, in _bootstrap
+    self.run()
+  File "/home/uni/.pyenv/versions/3.6.10/lib/python3.6/multiprocessing/process.py", line 93, in run
+    self._target(*self._args, **self._kwargs)
+  File "/home/uni/Documents/python/optim/SteppingStone/common/envs_utils.py", line 646, in _subproc_worker
+    cmd, data = pipe.recv()
+  File "/home/uni/.pyenv/versions/3.6.10/lib/python3.6/multiprocessing/connection.py", line 250, in recv
+    buf = self._recv_bytes()
+  File "/home/uni/.pyenv/versions/3.6.10/lib/python3.6/multiprocessing/connection.py", line 407, in _recv_bytes
+    buf = self._recv(4)
+  File "/home/uni/.pyenv/versions/3.6.10/lib/python3.6/multiprocessing/connection.py", line 383, in _recv
+    raise EOFError
+EOFError
+Process ForkProcess-104:
+Traceback (most recent call last):
+  File "/home/uni/.pyenv/versions/3.6.10/lib/python3.6/multiprocessing/process.py", line 258, in _bootstrap
+    self.run()
+  File "/home/uni/.pyenv/versions/3.6.10/lib/python3.6/multiprocessing/process.py", line 93, in run
+    self._target(*self._args, **self._kwargs)
+  File "/home/uni/Documents/python/optim/SteppingStone/common/envs_utils.py", line 646, in _subproc_worker
+    cmd, data = pipe.recv()
+  File "/home/uni/.pyenv/versions/3.6.10/lib/python3.6/multiprocessing/connection.py", line 250, in recv
+    buf = self._recv_bytes()
+  File "/home/uni/.pyenv/versions/3.6.10/lib/python3.6/multiprocessing/connection.py", line 407, in _recv_bytes
+    buf = self._recv(4)
+  File "/home/uni/.pyenv/versions/3.6.10/lib/python3.6/multiprocessing/connection.py", line 383, in _recv
+    raise EOFError
+EOFError
+Process ForkProcess-103:
+Traceback (most recent call last):
+  File "/home/uni/.pyenv/versions/3.6.10/lib/python3.6/multiprocessing/process.py", line 258, in _bootstrap
+    self.run()
+  File "/home/uni/.pyenv/versions/3.6.10/lib/python3.6/multiprocessing/process.py", line 93, in run
+    self._target(*self._args, **self._kwargs)
+  File "/home/uni/Documents/python/optim/SteppingStone/common/envs_utils.py", line 646, in _subproc_worker
+    cmd, data = pipe.recv()
+  File "/home/uni/.pyenv/versions/3.6.10/lib/python3.6/multiprocessing/connection.py", line 250, in recv
+    buf = self._recv_bytes()
+  File "/home/uni/.pyenv/versions/3.6.10/lib/python3.6/multiprocessing/connection.py", line 407, in _recv_bytes
+    buf = self._recv(4)
+  File "/home/uni/.pyenv/versions/3.6.10/lib/python3.6/multiprocessing/connection.py", line 383, in _recv
+    raise EOFError
+EOFError
+Process ForkProcess-102:
+Traceback (most recent call last):
+  File "/home/uni/.pyenv/versions/3.6.10/lib/python3.6/multiprocessing/process.py", line 258, in _bootstrap
+    self.run()
+  File "/home/uni/.pyenv/versions/3.6.10/lib/python3.6/multiprocessing/process.py", line 93, in run
+    self._target(*self._args, **self._kwargs)
+  File "/home/uni/Documents/python/optim/SteppingStone/common/envs_utils.py", line 646, in _subproc_worker
+    cmd, data = pipe.recv()
+  File "/home/uni/.pyenv/versions/3.6.10/lib/python3.6/multiprocessing/connection.py", line 250, in recv
+    buf = self._recv_bytes()
+  File "/home/uni/.pyenv/versions/3.6.10/lib/python3.6/multiprocessing/connection.py", line 407, in _recv_bytes
+    buf = self._recv(4)
+  File "/home/uni/.pyenv/versions/3.6.10/lib/python3.6/multiprocessing/connection.py", line 383, in _recv
+    raise EOFError
+EOFError
+Process ForkProcess-101:
+Traceback (most recent call last):
+  File "/home/uni/.pyenv/versions/3.6.10/lib/python3.6/multiprocessing/process.py", line 258, in _bootstrap
+    self.run()
+  File "/home/uni/.pyenv/versions/3.6.10/lib/python3.6/multiprocessing/process.py", line 93, in run
+    self._target(*self._args, **self._kwargs)
+  File "/home/uni/Documents/python/optim/SteppingStone/common/envs_utils.py", line 646, in _subproc_worker
+    cmd, data = pipe.recv()
+  File "/home/uni/.pyenv/versions/3.6.10/lib/python3.6/multiprocessing/connection.py", line 250, in recv
+    buf = self._recv_bytes()
+  File "/home/uni/.pyenv/versions/3.6.10/lib/python3.6/multiprocessing/connection.py", line 407, in _recv_bytes
+    buf = self._recv(4)
+  File "/home/uni/.pyenv/versions/3.6.10/lib/python3.6/multiprocessing/connection.py", line 383, in _recv
+    raise EOFError
+EOFError
+Process ForkProcess-100:
+Traceback (most recent call last):
+  File "/home/uni/.pyenv/versions/3.6.10/lib/python3.6/multiprocessing/process.py", line 258, in _bootstrap
+    self.run()
+  File "/home/uni/.pyenv/versions/3.6.10/lib/python3.6/multiprocessing/process.py", line 93, in run
+    self._target(*self._args, **self._kwargs)
+  File "/home/uni/Documents/python/optim/SteppingStone/common/envs_utils.py", line 646, in _subproc_worker
+    cmd, data = pipe.recv()
+  File "/home/uni/.pyenv/versions/3.6.10/lib/python3.6/multiprocessing/connection.py", line 250, in recv
+    buf = self._recv_bytes()
+  File "/home/uni/.pyenv/versions/3.6.10/lib/python3.6/multiprocessing/connection.py", line 407, in _recv_bytes
+    buf = self._recv(4)
+  File "/home/uni/.pyenv/versions/3.6.10/lib/python3.6/multiprocessing/connection.py", line 383, in _recv
+    raise EOFError
+EOFError
+Process ForkProcess-99:
+Traceback (most recent call last):
+  File "/home/uni/.pyenv/versions/3.6.10/lib/python3.6/multiprocessing/process.py", line 258, in _bootstrap
+    self.run()
+  File "/home/uni/.pyenv/versions/3.6.10/lib/python3.6/multiprocessing/process.py", line 93, in run
+    self._target(*self._args, **self._kwargs)
+  File "/home/uni/Documents/python/optim/SteppingStone/common/envs_utils.py", line 646, in _subproc_worker
+    cmd, data = pipe.recv()
+  File "/home/uni/.pyenv/versions/3.6.10/lib/python3.6/multiprocessing/connection.py", line 250, in recv
+    buf = self._recv_bytes()
+  File "/home/uni/.pyenv/versions/3.6.10/lib/python3.6/multiprocessing/connection.py", line 407, in _recv_bytes
+    buf = self._recv(4)
+  File "/home/uni/.pyenv/versions/3.6.10/lib/python3.6/multiprocessing/connection.py", line 383, in _recv
+    raise EOFError
+EOFError
+Process ForkProcess-98:
+Traceback (most recent call last):
+  File "/home/uni/.pyenv/versions/3.6.10/lib/python3.6/multiprocessing/process.py", line 258, in _bootstrap
+    self.run()
+  File "/home/uni/.pyenv/versions/3.6.10/lib/python3.6/multiprocessing/process.py", line 93, in run
+    self._target(*self._args, **self._kwargs)
+  File "/home/uni/Documents/python/optim/SteppingStone/common/envs_utils.py", line 646, in _subproc_worker
+    cmd, data = pipe.recv()
+  File "/home/uni/.pyenv/versions/3.6.10/lib/python3.6/multiprocessing/connection.py", line 250, in recv
+    buf = self._recv_bytes()
+  File "/home/uni/.pyenv/versions/3.6.10/lib/python3.6/multiprocessing/connection.py", line 407, in _recv_bytes
+    buf = self._recv(4)
+  File "/home/uni/.pyenv/versions/3.6.10/lib/python3.6/multiprocessing/connection.py", line 383, in _recv
+    raise EOFError
+EOFError
+Process ForkProcess-97:
+Traceback (most recent call last):
+  File "/home/uni/.pyenv/versions/3.6.10/lib/python3.6/multiprocessing/process.py", line 258, in _bootstrap
+    self.run()
+  File "/home/uni/.pyenv/versions/3.6.10/lib/python3.6/multiprocessing/process.py", line 93, in run
+    self._target(*self._args, **self._kwargs)
+  File "/home/uni/Documents/python/optim/SteppingStone/common/envs_utils.py", line 646, in _subproc_worker
+    cmd, data = pipe.recv()
+  File "/home/uni/.pyenv/versions/3.6.10/lib/python3.6/multiprocessing/connection.py", line 250, in recv
+    buf = self._recv_bytes()
+  File "/home/uni/.pyenv/versions/3.6.10/lib/python3.6/multiprocessing/connection.py", line 407, in _recv_bytes
+    buf = self._recv(4)
+  File "/home/uni/.pyenv/versions/3.6.10/lib/python3.6/multiprocessing/connection.py", line 383, in _recv
+    raise EOFError
+EOFError
+Process ForkProcess-96:
+Traceback (most recent call last):
+  File "/home/uni/.pyenv/versions/3.6.10/lib/python3.6/multiprocessing/process.py", line 258, in _bootstrap
+    self.run()
+  File "/home/uni/.pyenv/versions/3.6.10/lib/python3.6/multiprocessing/process.py", line 93, in run
+    self._target(*self._args, **self._kwargs)
+  File "/home/uni/Documents/python/optim/SteppingStone/common/envs_utils.py", line 646, in _subproc_worker
+    cmd, data = pipe.recv()
+  File "/home/uni/.pyenv/versions/3.6.10/lib/python3.6/multiprocessing/connection.py", line 250, in recv
+    buf = self._recv_bytes()
+  File "/home/uni/.pyenv/versions/3.6.10/lib/python3.6/multiprocessing/connection.py", line 407, in _recv_bytes
+    buf = self._recv(4)
+  File "/home/uni/.pyenv/versions/3.6.10/lib/python3.6/multiprocessing/connection.py", line 383, in _recv
+    raise EOFError
+EOFError
+Process ForkProcess-95:
+Traceback (most recent call last):
+  File "/home/uni/.pyenv/versions/3.6.10/lib/python3.6/multiprocessing/process.py", line 258, in _bootstrap
+    self.run()
+  File "/home/uni/.pyenv/versions/3.6.10/lib/python3.6/multiprocessing/process.py", line 93, in run
+    self._target(*self._args, **self._kwargs)
+  File "/home/uni/Documents/python/optim/SteppingStone/common/envs_utils.py", line 646, in _subproc_worker
+    cmd, data = pipe.recv()
+  File "/home/uni/.pyenv/versions/3.6.10/lib/python3.6/multiprocessing/connection.py", line 250, in recv
+    buf = self._recv_bytes()
+  File "/home/uni/.pyenv/versions/3.6.10/lib/python3.6/multiprocessing/connection.py", line 407, in _recv_bytes
+    buf = self._recv(4)
+  File "/home/uni/.pyenv/versions/3.6.10/lib/python3.6/multiprocessing/connection.py", line 383, in _recv
+    raise EOFError
+EOFError
+Process ForkProcess-94:
+Traceback (most recent call last):
+  File "/home/uni/.pyenv/versions/3.6.10/lib/python3.6/multiprocessing/process.py", line 258, in _bootstrap
+    self.run()
+  File "/home/uni/.pyenv/versions/3.6.10/lib/python3.6/multiprocessing/process.py", line 93, in run
+    self._target(*self._args, **self._kwargs)
+  File "/home/uni/Documents/python/optim/SteppingStone/common/envs_utils.py", line 646, in _subproc_worker
+    cmd, data = pipe.recv()
+  File "/home/uni/.pyenv/versions/3.6.10/lib/python3.6/multiprocessing/connection.py", line 250, in recv
+    buf = self._recv_bytes()
+  File "/home/uni/.pyenv/versions/3.6.10/lib/python3.6/multiprocessing/connection.py", line 407, in _recv_bytes
+    buf = self._recv(4)
+  File "/home/uni/.pyenv/versions/3.6.10/lib/python3.6/multiprocessing/connection.py", line 383, in _recv
+    raise EOFError
+EOFError
+Process ForkProcess-93:
+Traceback (most recent call last):
+  File "/home/uni/.pyenv/versions/3.6.10/lib/python3.6/multiprocessing/process.py", line 258, in _bootstrap
+    self.run()
+  File "/home/uni/.pyenv/versions/3.6.10/lib/python3.6/multiprocessing/process.py", line 93, in run
+    self._target(*self._args, **self._kwargs)
+  File "/home/uni/Documents/python/optim/SteppingStone/common/envs_utils.py", line 646, in _subproc_worker
+    cmd, data = pipe.recv()
+  File "/home/uni/.pyenv/versions/3.6.10/lib/python3.6/multiprocessing/connection.py", line 250, in recv
+    buf = self._recv_bytes()
+  File "/home/uni/.pyenv/versions/3.6.10/lib/python3.6/multiprocessing/connection.py", line 407, in _recv_bytes
+    buf = self._recv(4)
+  File "/home/uni/.pyenv/versions/3.6.10/lib/python3.6/multiprocessing/connection.py", line 383, in _recv
+    raise EOFError
+EOFError
+Process ForkProcess-92:
+Traceback (most recent call last):
+  File "/home/uni/.pyenv/versions/3.6.10/lib/python3.6/multiprocessing/process.py", line 258, in _bootstrap
+    self.run()
+  File "/home/uni/.pyenv/versions/3.6.10/lib/python3.6/multiprocessing/process.py", line 93, in run
+    self._target(*self._args, **self._kwargs)
+  File "/home/uni/Documents/python/optim/SteppingStone/common/envs_utils.py", line 646, in _subproc_worker
+    cmd, data = pipe.recv()
+  File "/home/uni/.pyenv/versions/3.6.10/lib/python3.6/multiprocessing/connection.py", line 250, in recv
+    buf = self._recv_bytes()
+  File "/home/uni/.pyenv/versions/3.6.10/lib/python3.6/multiprocessing/connection.py", line 407, in _recv_bytes
+    buf = self._recv(4)
+  File "/home/uni/.pyenv/versions/3.6.10/lib/python3.6/multiprocessing/connection.py", line 383, in _recv
+    raise EOFError
+EOFError
+Process ForkProcess-91:
+Traceback (most recent call last):
+  File "/home/uni/.pyenv/versions/3.6.10/lib/python3.6/multiprocessing/process.py", line 258, in _bootstrap
+    self.run()
+  File "/home/uni/.pyenv/versions/3.6.10/lib/python3.6/multiprocessing/process.py", line 93, in run
+    self._target(*self._args, **self._kwargs)
+  File "/home/uni/Documents/python/optim/SteppingStone/common/envs_utils.py", line 646, in _subproc_worker
+    cmd, data = pipe.recv()
+  File "/home/uni/.pyenv/versions/3.6.10/lib/python3.6/multiprocessing/connection.py", line 250, in recv
+    buf = self._recv_bytes()
+  File "/home/uni/.pyenv/versions/3.6.10/lib/python3.6/multiprocessing/connection.py", line 407, in _recv_bytes
+    buf = self._recv(4)
+  File "/home/uni/.pyenv/versions/3.6.10/lib/python3.6/multiprocessing/connection.py", line 383, in _recv
+    raise EOFError
+EOFError
+Process ForkProcess-90:
+Traceback (most recent call last):
+  File "/home/uni/.pyenv/versions/3.6.10/lib/python3.6/multiprocessing/process.py", line 258, in _bootstrap
+    self.run()
+  File "/home/uni/.pyenv/versions/3.6.10/lib/python3.6/multiprocessing/process.py", line 93, in run
+    self._target(*self._args, **self._kwargs)
+  File "/home/uni/Documents/python/optim/SteppingStone/common/envs_utils.py", line 646, in _subproc_worker
+    cmd, data = pipe.recv()
+  File "/home/uni/.pyenv/versions/3.6.10/lib/python3.6/multiprocessing/connection.py", line 250, in recv
+    buf = self._recv_bytes()
+  File "/home/uni/.pyenv/versions/3.6.10/lib/python3.6/multiprocessing/connection.py", line 407, in _recv_bytes
+    buf = self._recv(4)
+  File "/home/uni/.pyenv/versions/3.6.10/lib/python3.6/multiprocessing/connection.py", line 383, in _recv
+    raise EOFError
+EOFError
+Process ForkProcess-89:
+Traceback (most recent call last):
+  File "/home/uni/.pyenv/versions/3.6.10/lib/python3.6/multiprocessing/process.py", line 258, in _bootstrap
+    self.run()
+  File "/home/uni/.pyenv/versions/3.6.10/lib/python3.6/multiprocessing/process.py", line 93, in run
+    self._target(*self._args, **self._kwargs)
+  File "/home/uni/Documents/python/optim/SteppingStone/common/envs_utils.py", line 646, in _subproc_worker
+    cmd, data = pipe.recv()
+  File "/home/uni/.pyenv/versions/3.6.10/lib/python3.6/multiprocessing/connection.py", line 250, in recv
+    buf = self._recv_bytes()
+  File "/home/uni/.pyenv/versions/3.6.10/lib/python3.6/multiprocessing/connection.py", line 407, in _recv_bytes
+    buf = self._recv(4)
+  File "/home/uni/.pyenv/versions/3.6.10/lib/python3.6/multiprocessing/connection.py", line 383, in _recv
+    raise EOFError
+EOFError
+Process ForkProcess-88:
+Traceback (most recent call last):
+  File "/home/uni/.pyenv/versions/3.6.10/lib/python3.6/multiprocessing/process.py", line 258, in _bootstrap
+    self.run()
+  File "/home/uni/.pyenv/versions/3.6.10/lib/python3.6/multiprocessing/process.py", line 93, in run
+    self._target(*self._args, **self._kwargs)
+  File "/home/uni/Documents/python/optim/SteppingStone/common/envs_utils.py", line 646, in _subproc_worker
+    cmd, data = pipe.recv()
+  File "/home/uni/.pyenv/versions/3.6.10/lib/python3.6/multiprocessing/connection.py", line 250, in recv
+    buf = self._recv_bytes()
+  File "/home/uni/.pyenv/versions/3.6.10/lib/python3.6/multiprocessing/connection.py", line 407, in _recv_bytes
+    buf = self._recv(4)
+  File "/home/uni/.pyenv/versions/3.6.10/lib/python3.6/multiprocessing/connection.py", line 383, in _recv
+    raise EOFError
+EOFError
+Process ForkProcess-87:
+Traceback (most recent call last):
+  File "/home/uni/.pyenv/versions/3.6.10/lib/python3.6/multiprocessing/process.py", line 258, in _bootstrap
+    self.run()
+  File "/home/uni/.pyenv/versions/3.6.10/lib/python3.6/multiprocessing/process.py", line 93, in run
+    self._target(*self._args, **self._kwargs)
+  File "/home/uni/Documents/python/optim/SteppingStone/common/envs_utils.py", line 646, in _subproc_worker
+    cmd, data = pipe.recv()
+  File "/home/uni/.pyenv/versions/3.6.10/lib/python3.6/multiprocessing/connection.py", line 250, in recv
+    buf = self._recv_bytes()
+  File "/home/uni/.pyenv/versions/3.6.10/lib/python3.6/multiprocessing/connection.py", line 407, in _recv_bytes
+    buf = self._recv(4)
+  File "/home/uni/.pyenv/versions/3.6.10/lib/python3.6/multiprocessing/connection.py", line 383, in _recv
+    raise EOFError
+EOFError
+Process ForkProcess-86:
+Traceback (most recent call last):
+  File "/home/uni/.pyenv/versions/3.6.10/lib/python3.6/multiprocessing/process.py", line 258, in _bootstrap
+    self.run()
+  File "/home/uni/.pyenv/versions/3.6.10/lib/python3.6/multiprocessing/process.py", line 93, in run
+    self._target(*self._args, **self._kwargs)
+  File "/home/uni/Documents/python/optim/SteppingStone/common/envs_utils.py", line 646, in _subproc_worker
+    cmd, data = pipe.recv()
+  File "/home/uni/.pyenv/versions/3.6.10/lib/python3.6/multiprocessing/connection.py", line 250, in recv
+    buf = self._recv_bytes()
+  File "/home/uni/.pyenv/versions/3.6.10/lib/python3.6/multiprocessing/connection.py", line 407, in _recv_bytes
+    buf = self._recv(4)
+  File "/home/uni/.pyenv/versions/3.6.10/lib/python3.6/multiprocessing/connection.py", line 383, in _recv
+    raise EOFError
+EOFError
+Process ForkProcess-85:
+Traceback (most recent call last):
+  File "/home/uni/.pyenv/versions/3.6.10/lib/python3.6/multiprocessing/process.py", line 258, in _bootstrap
+    self.run()
+  File "/home/uni/.pyenv/versions/3.6.10/lib/python3.6/multiprocessing/process.py", line 93, in run
+    self._target(*self._args, **self._kwargs)
+  File "/home/uni/Documents/python/optim/SteppingStone/common/envs_utils.py", line 646, in _subproc_worker
+    cmd, data = pipe.recv()
+  File "/home/uni/.pyenv/versions/3.6.10/lib/python3.6/multiprocessing/connection.py", line 250, in recv
+    buf = self._recv_bytes()
+  File "/home/uni/.pyenv/versions/3.6.10/lib/python3.6/multiprocessing/connection.py", line 407, in _recv_bytes
+    buf = self._recv(4)
+  File "/home/uni/.pyenv/versions/3.6.10/lib/python3.6/multiprocessing/connection.py", line 383, in _recv
+    raise EOFError
+EOFError
+Process ForkProcess-84:
+Traceback (most recent call last):
+  File "/home/uni/.pyenv/versions/3.6.10/lib/python3.6/multiprocessing/process.py", line 258, in _bootstrap
+    self.run()
+  File "/home/uni/.pyenv/versions/3.6.10/lib/python3.6/multiprocessing/process.py", line 93, in run
+    self._target(*self._args, **self._kwargs)
+  File "/home/uni/Documents/python/optim/SteppingStone/common/envs_utils.py", line 646, in _subproc_worker
+    cmd, data = pipe.recv()
+  File "/home/uni/.pyenv/versions/3.6.10/lib/python3.6/multiprocessing/connection.py", line 250, in recv
+    buf = self._recv_bytes()
+  File "/home/uni/.pyenv/versions/3.6.10/lib/python3.6/multiprocessing/connection.py", line 407, in _recv_bytes
+    buf = self._recv(4)
+  File "/home/uni/.pyenv/versions/3.6.10/lib/python3.6/multiprocessing/connection.py", line 383, in _recv
+    raise EOFError
+EOFError
+Process ForkProcess-83:
+Traceback (most recent call last):
+  File "/home/uni/.pyenv/versions/3.6.10/lib/python3.6/multiprocessing/process.py", line 258, in _bootstrap
+    self.run()
+  File "/home/uni/.pyenv/versions/3.6.10/lib/python3.6/multiprocessing/process.py", line 93, in run
+    self._target(*self._args, **self._kwargs)
+  File "/home/uni/Documents/python/optim/SteppingStone/common/envs_utils.py", line 646, in _subproc_worker
+    cmd, data = pipe.recv()
+  File "/home/uni/.pyenv/versions/3.6.10/lib/python3.6/multiprocessing/connection.py", line 250, in recv
+    buf = self._recv_bytes()
+  File "/home/uni/.pyenv/versions/3.6.10/lib/python3.6/multiprocessing/connection.py", line 407, in _recv_bytes
+    buf = self._recv(4)
+  File "/home/uni/.pyenv/versions/3.6.10/lib/python3.6/multiprocessing/connection.py", line 383, in _recv
+    raise EOFError
+EOFError
+Process ForkProcess-82:
+Traceback (most recent call last):
+  File "/home/uni/.pyenv/versions/3.6.10/lib/python3.6/multiprocessing/process.py", line 258, in _bootstrap
+    self.run()
+  File "/home/uni/.pyenv/versions/3.6.10/lib/python3.6/multiprocessing/process.py", line 93, in run
+    self._target(*self._args, **self._kwargs)
+  File "/home/uni/Documents/python/optim/SteppingStone/common/envs_utils.py", line 646, in _subproc_worker
+    cmd, data = pipe.recv()
+  File "/home/uni/.pyenv/versions/3.6.10/lib/python3.6/multiprocessing/connection.py", line 250, in recv
+    buf = self._recv_bytes()
+  File "/home/uni/.pyenv/versions/3.6.10/lib/python3.6/multiprocessing/connection.py", line 407, in _recv_bytes
+    buf = self._recv(4)
+  File "/home/uni/.pyenv/versions/3.6.10/lib/python3.6/multiprocessing/connection.py", line 383, in _recv
+    raise EOFError
+EOFError
+Process ForkProcess-81:
+Traceback (most recent call last):
+  File "/home/uni/.pyenv/versions/3.6.10/lib/python3.6/multiprocessing/process.py", line 258, in _bootstrap
+    self.run()
+  File "/home/uni/.pyenv/versions/3.6.10/lib/python3.6/multiprocessing/process.py", line 93, in run
+    self._target(*self._args, **self._kwargs)
+  File "/home/uni/Documents/python/optim/SteppingStone/common/envs_utils.py", line 646, in _subproc_worker
+    cmd, data = pipe.recv()
+  File "/home/uni/.pyenv/versions/3.6.10/lib/python3.6/multiprocessing/connection.py", line 250, in recv
+    buf = self._recv_bytes()
+  File "/home/uni/.pyenv/versions/3.6.10/lib/python3.6/multiprocessing/connection.py", line 407, in _recv_bytes
+    buf = self._recv(4)
+  File "/home/uni/.pyenv/versions/3.6.10/lib/python3.6/multiprocessing/connection.py", line 383, in _recv
+    raise EOFError
+EOFError
+Process ForkProcess-80:
+Traceback (most recent call last):
+  File "/home/uni/.pyenv/versions/3.6.10/lib/python3.6/multiprocessing/process.py", line 258, in _bootstrap
+    self.run()
+  File "/home/uni/.pyenv/versions/3.6.10/lib/python3.6/multiprocessing/process.py", line 93, in run
+    self._target(*self._args, **self._kwargs)
+  File "/home/uni/Documents/python/optim/SteppingStone/common/envs_utils.py", line 646, in _subproc_worker
+    cmd, data = pipe.recv()
+  File "/home/uni/.pyenv/versions/3.6.10/lib/python3.6/multiprocessing/connection.py", line 250, in recv
+    buf = self._recv_bytes()
+  File "/home/uni/.pyenv/versions/3.6.10/lib/python3.6/multiprocessing/connection.py", line 407, in _recv_bytes
+    buf = self._recv(4)
+  File "/home/uni/.pyenv/versions/3.6.10/lib/python3.6/multiprocessing/connection.py", line 383, in _recv
+    raise EOFError
+EOFError
+Process ForkProcess-79:
+Traceback (most recent call last):
+  File "/home/uni/.pyenv/versions/3.6.10/lib/python3.6/multiprocessing/process.py", line 258, in _bootstrap
+    self.run()
+  File "/home/uni/.pyenv/versions/3.6.10/lib/python3.6/multiprocessing/process.py", line 93, in run
+    self._target(*self._args, **self._kwargs)
+  File "/home/uni/Documents/python/optim/SteppingStone/common/envs_utils.py", line 646, in _subproc_worker
+    cmd, data = pipe.recv()
+  File "/home/uni/.pyenv/versions/3.6.10/lib/python3.6/multiprocessing/connection.py", line 250, in recv
+    buf = self._recv_bytes()
+  File "/home/uni/.pyenv/versions/3.6.10/lib/python3.6/multiprocessing/connection.py", line 407, in _recv_bytes
+    buf = self._recv(4)
+  File "/home/uni/.pyenv/versions/3.6.10/lib/python3.6/multiprocessing/connection.py", line 383, in _recv
+    raise EOFError
+EOFError
+Process ForkProcess-78:
+Traceback (most recent call last):
+  File "/home/uni/.pyenv/versions/3.6.10/lib/python3.6/multiprocessing/process.py", line 258, in _bootstrap
+    self.run()
+  File "/home/uni/.pyenv/versions/3.6.10/lib/python3.6/multiprocessing/process.py", line 93, in run
+    self._target(*self._args, **self._kwargs)
+  File "/home/uni/Documents/python/optim/SteppingStone/common/envs_utils.py", line 646, in _subproc_worker
+    cmd, data = pipe.recv()
+  File "/home/uni/.pyenv/versions/3.6.10/lib/python3.6/multiprocessing/connection.py", line 250, in recv
+    buf = self._recv_bytes()
+  File "/home/uni/.pyenv/versions/3.6.10/lib/python3.6/multiprocessing/connection.py", line 407, in _recv_bytes
+    buf = self._recv(4)
+  File "/home/uni/.pyenv/versions/3.6.10/lib/python3.6/multiprocessing/connection.py", line 383, in _recv
+    raise EOFError
+EOFError
+Process ForkProcess-77:
+Traceback (most recent call last):
+  File "/home/uni/.pyenv/versions/3.6.10/lib/python3.6/multiprocessing/process.py", line 258, in _bootstrap
+    self.run()
+  File "/home/uni/.pyenv/versions/3.6.10/lib/python3.6/multiprocessing/process.py", line 93, in run
+    self._target(*self._args, **self._kwargs)
+  File "/home/uni/Documents/python/optim/SteppingStone/common/envs_utils.py", line 646, in _subproc_worker
+    cmd, data = pipe.recv()
+  File "/home/uni/.pyenv/versions/3.6.10/lib/python3.6/multiprocessing/connection.py", line 250, in recv
+    buf = self._recv_bytes()
+  File "/home/uni/.pyenv/versions/3.6.10/lib/python3.6/multiprocessing/connection.py", line 407, in _recv_bytes
+    buf = self._recv(4)
+  File "/home/uni/.pyenv/versions/3.6.10/lib/python3.6/multiprocessing/connection.py", line 383, in _recv
+    raise EOFError
+EOFError
+Process ForkProcess-76:
+Traceback (most recent call last):
+  File "/home/uni/.pyenv/versions/3.6.10/lib/python3.6/multiprocessing/process.py", line 258, in _bootstrap
+    self.run()
+  File "/home/uni/.pyenv/versions/3.6.10/lib/python3.6/multiprocessing/process.py", line 93, in run
+    self._target(*self._args, **self._kwargs)
+  File "/home/uni/Documents/python/optim/SteppingStone/common/envs_utils.py", line 646, in _subproc_worker
+    cmd, data = pipe.recv()
+  File "/home/uni/.pyenv/versions/3.6.10/lib/python3.6/multiprocessing/connection.py", line 250, in recv
+    buf = self._recv_bytes()
+  File "/home/uni/.pyenv/versions/3.6.10/lib/python3.6/multiprocessing/connection.py", line 407, in _recv_bytes
+    buf = self._recv(4)
+  File "/home/uni/.pyenv/versions/3.6.10/lib/python3.6/multiprocessing/connection.py", line 383, in _recv
+    raise EOFError
+EOFError
+Process ForkProcess-75:
+Traceback (most recent call last):
+  File "/home/uni/.pyenv/versions/3.6.10/lib/python3.6/multiprocessing/process.py", line 258, in _bootstrap
+    self.run()
+  File "/home/uni/.pyenv/versions/3.6.10/lib/python3.6/multiprocessing/process.py", line 93, in run
+    self._target(*self._args, **self._kwargs)
+  File "/home/uni/Documents/python/optim/SteppingStone/common/envs_utils.py", line 646, in _subproc_worker
+    cmd, data = pipe.recv()
+  File "/home/uni/.pyenv/versions/3.6.10/lib/python3.6/multiprocessing/connection.py", line 250, in recv
+    buf = self._recv_bytes()
+  File "/home/uni/.pyenv/versions/3.6.10/lib/python3.6/multiprocessing/connection.py", line 407, in _recv_bytes
+    buf = self._recv(4)
+  File "/home/uni/.pyenv/versions/3.6.10/lib/python3.6/multiprocessing/connection.py", line 383, in _recv
+    raise EOFError
+EOFError
+Process ForkProcess-74:
+Traceback (most recent call last):
+  File "/home/uni/.pyenv/versions/3.6.10/lib/python3.6/multiprocessing/process.py", line 258, in _bootstrap
+    self.run()
+  File "/home/uni/.pyenv/versions/3.6.10/lib/python3.6/multiprocessing/process.py", line 93, in run
+    self._target(*self._args, **self._kwargs)
+  File "/home/uni/Documents/python/optim/SteppingStone/common/envs_utils.py", line 646, in _subproc_worker
+    cmd, data = pipe.recv()
+  File "/home/uni/.pyenv/versions/3.6.10/lib/python3.6/multiprocessing/connection.py", line 250, in recv
+    buf = self._recv_bytes()
+  File "/home/uni/.pyenv/versions/3.6.10/lib/python3.6/multiprocessing/connection.py", line 407, in _recv_bytes
+    buf = self._recv(4)
+  File "/home/uni/.pyenv/versions/3.6.10/lib/python3.6/multiprocessing/connection.py", line 383, in _recv
+    raise EOFError
+EOFError
+Process ForkProcess-73:
+Traceback (most recent call last):
+  File "/home/uni/.pyenv/versions/3.6.10/lib/python3.6/multiprocessing/process.py", line 258, in _bootstrap
+    self.run()
+  File "/home/uni/.pyenv/versions/3.6.10/lib/python3.6/multiprocessing/process.py", line 93, in run
+    self._target(*self._args, **self._kwargs)
+  File "/home/uni/Documents/python/optim/SteppingStone/common/envs_utils.py", line 646, in _subproc_worker
+    cmd, data = pipe.recv()
+  File "/home/uni/.pyenv/versions/3.6.10/lib/python3.6/multiprocessing/connection.py", line 250, in recv
+    buf = self._recv_bytes()
+  File "/home/uni/.pyenv/versions/3.6.10/lib/python3.6/multiprocessing/connection.py", line 407, in _recv_bytes
+    buf = self._recv(4)
+  File "/home/uni/.pyenv/versions/3.6.10/lib/python3.6/multiprocessing/connection.py", line 383, in _recv
+    raise EOFError
+EOFError
+Process ForkProcess-72:
+Traceback (most recent call last):
+  File "/home/uni/.pyenv/versions/3.6.10/lib/python3.6/multiprocessing/process.py", line 258, in _bootstrap
+    self.run()
+  File "/home/uni/.pyenv/versions/3.6.10/lib/python3.6/multiprocessing/process.py", line 93, in run
+    self._target(*self._args, **self._kwargs)
+  File "/home/uni/Documents/python/optim/SteppingStone/common/envs_utils.py", line 646, in _subproc_worker
+    cmd, data = pipe.recv()
+  File "/home/uni/.pyenv/versions/3.6.10/lib/python3.6/multiprocessing/connection.py", line 250, in recv
+    buf = self._recv_bytes()
+  File "/home/uni/.pyenv/versions/3.6.10/lib/python3.6/multiprocessing/connection.py", line 407, in _recv_bytes
+    buf = self._recv(4)
+  File "/home/uni/.pyenv/versions/3.6.10/lib/python3.6/multiprocessing/connection.py", line 383, in _recv
+    raise EOFError
+EOFError
+Process ForkProcess-71:
+Traceback (most recent call last):
+  File "/home/uni/.pyenv/versions/3.6.10/lib/python3.6/multiprocessing/process.py", line 258, in _bootstrap
+    self.run()
+  File "/home/uni/.pyenv/versions/3.6.10/lib/python3.6/multiprocessing/process.py", line 93, in run
+    self._target(*self._args, **self._kwargs)
+  File "/home/uni/Documents/python/optim/SteppingStone/common/envs_utils.py", line 646, in _subproc_worker
+    cmd, data = pipe.recv()
+  File "/home/uni/.pyenv/versions/3.6.10/lib/python3.6/multiprocessing/connection.py", line 250, in recv
+    buf = self._recv_bytes()
+  File "/home/uni/.pyenv/versions/3.6.10/lib/python3.6/multiprocessing/connection.py", line 407, in _recv_bytes
+    buf = self._recv(4)
+  File "/home/uni/.pyenv/versions/3.6.10/lib/python3.6/multiprocessing/connection.py", line 383, in _recv
+    raise EOFError
+EOFError
+Process ForkProcess-70:
+Traceback (most recent call last):
+  File "/home/uni/.pyenv/versions/3.6.10/lib/python3.6/multiprocessing/process.py", line 258, in _bootstrap
+    self.run()
+  File "/home/uni/.pyenv/versions/3.6.10/lib/python3.6/multiprocessing/process.py", line 93, in run
+    self._target(*self._args, **self._kwargs)
+  File "/home/uni/Documents/python/optim/SteppingStone/common/envs_utils.py", line 646, in _subproc_worker
+    cmd, data = pipe.recv()
+  File "/home/uni/.pyenv/versions/3.6.10/lib/python3.6/multiprocessing/connection.py", line 250, in recv
+    buf = self._recv_bytes()
+  File "/home/uni/.pyenv/versions/3.6.10/lib/python3.6/multiprocessing/connection.py", line 407, in _recv_bytes
+    buf = self._recv(4)
+  File "/home/uni/.pyenv/versions/3.6.10/lib/python3.6/multiprocessing/connection.py", line 383, in _recv
+    raise EOFError
+EOFError
+Process ForkProcess-69:
+Traceback (most recent call last):
+  File "/home/uni/.pyenv/versions/3.6.10/lib/python3.6/multiprocessing/process.py", line 258, in _bootstrap
+    self.run()
+  File "/home/uni/.pyenv/versions/3.6.10/lib/python3.6/multiprocessing/process.py", line 93, in run
+    self._target(*self._args, **self._kwargs)
+  File "/home/uni/Documents/python/optim/SteppingStone/common/envs_utils.py", line 646, in _subproc_worker
+    cmd, data = pipe.recv()
+  File "/home/uni/.pyenv/versions/3.6.10/lib/python3.6/multiprocessing/connection.py", line 250, in recv
+    buf = self._recv_bytes()
+  File "/home/uni/.pyenv/versions/3.6.10/lib/python3.6/multiprocessing/connection.py", line 407, in _recv_bytes
+    buf = self._recv(4)
+  File "/home/uni/.pyenv/versions/3.6.10/lib/python3.6/multiprocessing/connection.py", line 383, in _recv
+    raise EOFError
+EOFError
+Process ForkProcess-68:
+Traceback (most recent call last):
+  File "/home/uni/.pyenv/versions/3.6.10/lib/python3.6/multiprocessing/process.py", line 258, in _bootstrap
+    self.run()
+  File "/home/uni/.pyenv/versions/3.6.10/lib/python3.6/multiprocessing/process.py", line 93, in run
+    self._target(*self._args, **self._kwargs)
+  File "/home/uni/Documents/python/optim/SteppingStone/common/envs_utils.py", line 646, in _subproc_worker
+    cmd, data = pipe.recv()
+  File "/home/uni/.pyenv/versions/3.6.10/lib/python3.6/multiprocessing/connection.py", line 250, in recv
+    buf = self._recv_bytes()
+  File "/home/uni/.pyenv/versions/3.6.10/lib/python3.6/multiprocessing/connection.py", line 407, in _recv_bytes
+    buf = self._recv(4)
+  File "/home/uni/.pyenv/versions/3.6.10/lib/python3.6/multiprocessing/connection.py", line 383, in _recv
+    raise EOFError
+EOFError
+Process ForkProcess-67:
+Traceback (most recent call last):
+  File "/home/uni/.pyenv/versions/3.6.10/lib/python3.6/multiprocessing/process.py", line 258, in _bootstrap
+    self.run()
+  File "/home/uni/.pyenv/versions/3.6.10/lib/python3.6/multiprocessing/process.py", line 93, in run
+    self._target(*self._args, **self._kwargs)
+  File "/home/uni/Documents/python/optim/SteppingStone/common/envs_utils.py", line 646, in _subproc_worker
+    cmd, data = pipe.recv()
+  File "/home/uni/.pyenv/versions/3.6.10/lib/python3.6/multiprocessing/connection.py", line 250, in recv
+    buf = self._recv_bytes()
+  File "/home/uni/.pyenv/versions/3.6.10/lib/python3.6/multiprocessing/connection.py", line 407, in _recv_bytes
+    buf = self._recv(4)
+  File "/home/uni/.pyenv/versions/3.6.10/lib/python3.6/multiprocessing/connection.py", line 383, in _recv
+    raise EOFError
+EOFError
+Process ForkProcess-66:
+Traceback (most recent call last):
+  File "/home/uni/.pyenv/versions/3.6.10/lib/python3.6/multiprocessing/process.py", line 258, in _bootstrap
+    self.run()
+  File "/home/uni/.pyenv/versions/3.6.10/lib/python3.6/multiprocessing/process.py", line 93, in run
+    self._target(*self._args, **self._kwargs)
+  File "/home/uni/Documents/python/optim/SteppingStone/common/envs_utils.py", line 646, in _subproc_worker
+    cmd, data = pipe.recv()
+  File "/home/uni/.pyenv/versions/3.6.10/lib/python3.6/multiprocessing/connection.py", line 250, in recv
+    buf = self._recv_bytes()
+  File "/home/uni/.pyenv/versions/3.6.10/lib/python3.6/multiprocessing/connection.py", line 407, in _recv_bytes
+    buf = self._recv(4)
+  File "/home/uni/.pyenv/versions/3.6.10/lib/python3.6/multiprocessing/connection.py", line 383, in _recv
+    raise EOFError
+EOFError
+Process ForkProcess-65:
+Traceback (most recent call last):
+  File "/home/uni/.pyenv/versions/3.6.10/lib/python3.6/multiprocessing/process.py", line 258, in _bootstrap
+    self.run()
+  File "/home/uni/.pyenv/versions/3.6.10/lib/python3.6/multiprocessing/process.py", line 93, in run
+    self._target(*self._args, **self._kwargs)
+  File "/home/uni/Documents/python/optim/SteppingStone/common/envs_utils.py", line 646, in _subproc_worker
+    cmd, data = pipe.recv()
+  File "/home/uni/.pyenv/versions/3.6.10/lib/python3.6/multiprocessing/connection.py", line 250, in recv
+    buf = self._recv_bytes()
+  File "/home/uni/.pyenv/versions/3.6.10/lib/python3.6/multiprocessing/connection.py", line 407, in _recv_bytes
+    buf = self._recv(4)
+  File "/home/uni/.pyenv/versions/3.6.10/lib/python3.6/multiprocessing/connection.py", line 383, in _recv
+    raise EOFError
+EOFError
+Process ForkProcess-64:
+Traceback (most recent call last):
+  File "/home/uni/.pyenv/versions/3.6.10/lib/python3.6/multiprocessing/process.py", line 258, in _bootstrap
+    self.run()
+  File "/home/uni/.pyenv/versions/3.6.10/lib/python3.6/multiprocessing/process.py", line 93, in run
+    self._target(*self._args, **self._kwargs)
+  File "/home/uni/Documents/python/optim/SteppingStone/common/envs_utils.py", line 646, in _subproc_worker
+    cmd, data = pipe.recv()
+  File "/home/uni/.pyenv/versions/3.6.10/lib/python3.6/multiprocessing/connection.py", line 250, in recv
+    buf = self._recv_bytes()
+  File "/home/uni/.pyenv/versions/3.6.10/lib/python3.6/multiprocessing/connection.py", line 407, in _recv_bytes
+    buf = self._recv(4)
+  File "/home/uni/.pyenv/versions/3.6.10/lib/python3.6/multiprocessing/connection.py", line 383, in _recv
+    raise EOFError
+EOFError
+Process ForkProcess-63:
+Traceback (most recent call last):
+  File "/home/uni/.pyenv/versions/3.6.10/lib/python3.6/multiprocessing/process.py", line 258, in _bootstrap
+    self.run()
+  File "/home/uni/.pyenv/versions/3.6.10/lib/python3.6/multiprocessing/process.py", line 93, in run
+    self._target(*self._args, **self._kwargs)
+  File "/home/uni/Documents/python/optim/SteppingStone/common/envs_utils.py", line 646, in _subproc_worker
+    cmd, data = pipe.recv()
+  File "/home/uni/.pyenv/versions/3.6.10/lib/python3.6/multiprocessing/connection.py", line 250, in recv
+    buf = self._recv_bytes()
+  File "/home/uni/.pyenv/versions/3.6.10/lib/python3.6/multiprocessing/connection.py", line 407, in _recv_bytes
+    buf = self._recv(4)
+  File "/home/uni/.pyenv/versions/3.6.10/lib/python3.6/multiprocessing/connection.py", line 383, in _recv
+    raise EOFError
+EOFError
+Process ForkProcess-62:
+Traceback (most recent call last):
+  File "/home/uni/.pyenv/versions/3.6.10/lib/python3.6/multiprocessing/process.py", line 258, in _bootstrap
+    self.run()
+  File "/home/uni/.pyenv/versions/3.6.10/lib/python3.6/multiprocessing/process.py", line 93, in run
+    self._target(*self._args, **self._kwargs)
+  File "/home/uni/Documents/python/optim/SteppingStone/common/envs_utils.py", line 646, in _subproc_worker
+    cmd, data = pipe.recv()
+  File "/home/uni/.pyenv/versions/3.6.10/lib/python3.6/multiprocessing/connection.py", line 250, in recv
+    buf = self._recv_bytes()
+  File "/home/uni/.pyenv/versions/3.6.10/lib/python3.6/multiprocessing/connection.py", line 407, in _recv_bytes
+    buf = self._recv(4)
+  File "/home/uni/.pyenv/versions/3.6.10/lib/python3.6/multiprocessing/connection.py", line 383, in _recv
+    raise EOFError
+EOFError
+Process ForkProcess-61:
+Traceback (most recent call last):
+  File "/home/uni/.pyenv/versions/3.6.10/lib/python3.6/multiprocessing/process.py", line 258, in _bootstrap
+    self.run()
+  File "/home/uni/.pyenv/versions/3.6.10/lib/python3.6/multiprocessing/process.py", line 93, in run
+    self._target(*self._args, **self._kwargs)
+  File "/home/uni/Documents/python/optim/SteppingStone/common/envs_utils.py", line 646, in _subproc_worker
+    cmd, data = pipe.recv()
+  File "/home/uni/.pyenv/versions/3.6.10/lib/python3.6/multiprocessing/connection.py", line 250, in recv
+    buf = self._recv_bytes()
+  File "/home/uni/.pyenv/versions/3.6.10/lib/python3.6/multiprocessing/connection.py", line 407, in _recv_bytes
+    buf = self._recv(4)
+  File "/home/uni/.pyenv/versions/3.6.10/lib/python3.6/multiprocessing/connection.py", line 383, in _recv
+    raise EOFError
+EOFError
+Process ForkProcess-60:
+Traceback (most recent call last):
+  File "/home/uni/.pyenv/versions/3.6.10/lib/python3.6/multiprocessing/process.py", line 258, in _bootstrap
+    self.run()
+  File "/home/uni/.pyenv/versions/3.6.10/lib/python3.6/multiprocessing/process.py", line 93, in run
+    self._target(*self._args, **self._kwargs)
+  File "/home/uni/Documents/python/optim/SteppingStone/common/envs_utils.py", line 646, in _subproc_worker
+    cmd, data = pipe.recv()
+  File "/home/uni/.pyenv/versions/3.6.10/lib/python3.6/multiprocessing/connection.py", line 250, in recv
+    buf = self._recv_bytes()
+  File "/home/uni/.pyenv/versions/3.6.10/lib/python3.6/multiprocessing/connection.py", line 407, in _recv_bytes
+    buf = self._recv(4)
+  File "/home/uni/.pyenv/versions/3.6.10/lib/python3.6/multiprocessing/connection.py", line 383, in _recv
+    raise EOFError
+EOFError
+Process ForkProcess-59:
+Traceback (most recent call last):
+  File "/home/uni/.pyenv/versions/3.6.10/lib/python3.6/multiprocessing/process.py", line 258, in _bootstrap
+    self.run()
+  File "/home/uni/.pyenv/versions/3.6.10/lib/python3.6/multiprocessing/process.py", line 93, in run
+    self._target(*self._args, **self._kwargs)
+  File "/home/uni/Documents/python/optim/SteppingStone/common/envs_utils.py", line 646, in _subproc_worker
+    cmd, data = pipe.recv()
+  File "/home/uni/.pyenv/versions/3.6.10/lib/python3.6/multiprocessing/connection.py", line 250, in recv
+    buf = self._recv_bytes()
+  File "/home/uni/.pyenv/versions/3.6.10/lib/python3.6/multiprocessing/connection.py", line 407, in _recv_bytes
+    buf = self._recv(4)
+  File "/home/uni/.pyenv/versions/3.6.10/lib/python3.6/multiprocessing/connection.py", line 383, in _recv
+    raise EOFError
+EOFError
+Process ForkProcess-58:
+Traceback (most recent call last):
+  File "/home/uni/.pyenv/versions/3.6.10/lib/python3.6/multiprocessing/process.py", line 258, in _bootstrap
+    self.run()
+  File "/home/uni/.pyenv/versions/3.6.10/lib/python3.6/multiprocessing/process.py", line 93, in run
+    self._target(*self._args, **self._kwargs)
+  File "/home/uni/Documents/python/optim/SteppingStone/common/envs_utils.py", line 646, in _subproc_worker
+    cmd, data = pipe.recv()
+  File "/home/uni/.pyenv/versions/3.6.10/lib/python3.6/multiprocessing/connection.py", line 250, in recv
+    buf = self._recv_bytes()
+  File "/home/uni/.pyenv/versions/3.6.10/lib/python3.6/multiprocessing/connection.py", line 407, in _recv_bytes
+    buf = self._recv(4)
+  File "/home/uni/.pyenv/versions/3.6.10/lib/python3.6/multiprocessing/connection.py", line 383, in _recv
+    raise EOFError
+EOFError
+Process ForkProcess-57:
+Traceback (most recent call last):
+  File "/home/uni/.pyenv/versions/3.6.10/lib/python3.6/multiprocessing/process.py", line 258, in _bootstrap
+    self.run()
+  File "/home/uni/.pyenv/versions/3.6.10/lib/python3.6/multiprocessing/process.py", line 93, in run
+    self._target(*self._args, **self._kwargs)
+  File "/home/uni/Documents/python/optim/SteppingStone/common/envs_utils.py", line 646, in _subproc_worker
+    cmd, data = pipe.recv()
+  File "/home/uni/.pyenv/versions/3.6.10/lib/python3.6/multiprocessing/connection.py", line 250, in recv
+    buf = self._recv_bytes()
+  File "/home/uni/.pyenv/versions/3.6.10/lib/python3.6/multiprocessing/connection.py", line 407, in _recv_bytes
+    buf = self._recv(4)
+  File "/home/uni/.pyenv/versions/3.6.10/lib/python3.6/multiprocessing/connection.py", line 383, in _recv
+    raise EOFError
+EOFError
+Process ForkProcess-56:
+Traceback (most recent call last):
+  File "/home/uni/.pyenv/versions/3.6.10/lib/python3.6/multiprocessing/process.py", line 258, in _bootstrap
+    self.run()
+  File "/home/uni/.pyenv/versions/3.6.10/lib/python3.6/multiprocessing/process.py", line 93, in run
+    self._target(*self._args, **self._kwargs)
+  File "/home/uni/Documents/python/optim/SteppingStone/common/envs_utils.py", line 646, in _subproc_worker
+    cmd, data = pipe.recv()
+  File "/home/uni/.pyenv/versions/3.6.10/lib/python3.6/multiprocessing/connection.py", line 250, in recv
+    buf = self._recv_bytes()
+  File "/home/uni/.pyenv/versions/3.6.10/lib/python3.6/multiprocessing/connection.py", line 407, in _recv_bytes
+    buf = self._recv(4)
+  File "/home/uni/.pyenv/versions/3.6.10/lib/python3.6/multiprocessing/connection.py", line 383, in _recv
+    raise EOFError
+EOFError
+Process ForkProcess-55:
+Traceback (most recent call last):
+  File "/home/uni/.pyenv/versions/3.6.10/lib/python3.6/multiprocessing/process.py", line 258, in _bootstrap
+    self.run()
+  File "/home/uni/.pyenv/versions/3.6.10/lib/python3.6/multiprocessing/process.py", line 93, in run
+    self._target(*self._args, **self._kwargs)
+  File "/home/uni/Documents/python/optim/SteppingStone/common/envs_utils.py", line 646, in _subproc_worker
+    cmd, data = pipe.recv()
+  File "/home/uni/.pyenv/versions/3.6.10/lib/python3.6/multiprocessing/connection.py", line 250, in recv
+    buf = self._recv_bytes()
+  File "/home/uni/.pyenv/versions/3.6.10/lib/python3.6/multiprocessing/connection.py", line 407, in _recv_bytes
+    buf = self._recv(4)
+  File "/home/uni/.pyenv/versions/3.6.10/lib/python3.6/multiprocessing/connection.py", line 383, in _recv
+    raise EOFError
+EOFError
+Process ForkProcess-54:
+Traceback (most recent call last):
+  File "/home/uni/.pyenv/versions/3.6.10/lib/python3.6/multiprocessing/process.py", line 258, in _bootstrap
+    self.run()
+  File "/home/uni/.pyenv/versions/3.6.10/lib/python3.6/multiprocessing/process.py", line 93, in run
+    self._target(*self._args, **self._kwargs)
+  File "/home/uni/Documents/python/optim/SteppingStone/common/envs_utils.py", line 646, in _subproc_worker
+    cmd, data = pipe.recv()
+  File "/home/uni/.pyenv/versions/3.6.10/lib/python3.6/multiprocessing/connection.py", line 250, in recv
+    buf = self._recv_bytes()
+  File "/home/uni/.pyenv/versions/3.6.10/lib/python3.6/multiprocessing/connection.py", line 407, in _recv_bytes
+    buf = self._recv(4)
+  File "/home/uni/.pyenv/versions/3.6.10/lib/python3.6/multiprocessing/connection.py", line 383, in _recv
+    raise EOFError
+EOFError
+Process ForkProcess-53:
+Traceback (most recent call last):
+  File "/home/uni/.pyenv/versions/3.6.10/lib/python3.6/multiprocessing/process.py", line 258, in _bootstrap
+    self.run()
+  File "/home/uni/.pyenv/versions/3.6.10/lib/python3.6/multiprocessing/process.py", line 93, in run
+    self._target(*self._args, **self._kwargs)
+  File "/home/uni/Documents/python/optim/SteppingStone/common/envs_utils.py", line 646, in _subproc_worker
+    cmd, data = pipe.recv()
+  File "/home/uni/.pyenv/versions/3.6.10/lib/python3.6/multiprocessing/connection.py", line 250, in recv
+    buf = self._recv_bytes()
+  File "/home/uni/.pyenv/versions/3.6.10/lib/python3.6/multiprocessing/connection.py", line 407, in _recv_bytes
+    buf = self._recv(4)
+  File "/home/uni/.pyenv/versions/3.6.10/lib/python3.6/multiprocessing/connection.py", line 383, in _recv
+    raise EOFError
+EOFError
+Process ForkProcess-52:
+Traceback (most recent call last):
+  File "/home/uni/.pyenv/versions/3.6.10/lib/python3.6/multiprocessing/process.py", line 258, in _bootstrap
+    self.run()
+  File "/home/uni/.pyenv/versions/3.6.10/lib/python3.6/multiprocessing/process.py", line 93, in run
+    self._target(*self._args, **self._kwargs)
+  File "/home/uni/Documents/python/optim/SteppingStone/common/envs_utils.py", line 646, in _subproc_worker
+    cmd, data = pipe.recv()
+  File "/home/uni/.pyenv/versions/3.6.10/lib/python3.6/multiprocessing/connection.py", line 250, in recv
+    buf = self._recv_bytes()
+  File "/home/uni/.pyenv/versions/3.6.10/lib/python3.6/multiprocessing/connection.py", line 407, in _recv_bytes
+    buf = self._recv(4)
+  File "/home/uni/.pyenv/versions/3.6.10/lib/python3.6/multiprocessing/connection.py", line 383, in _recv
+    raise EOFError
+EOFError
+Process ForkProcess-51:
+Traceback (most recent call last):
+  File "/home/uni/.pyenv/versions/3.6.10/lib/python3.6/multiprocessing/process.py", line 258, in _bootstrap
+    self.run()
+  File "/home/uni/.pyenv/versions/3.6.10/lib/python3.6/multiprocessing/process.py", line 93, in run
+    self._target(*self._args, **self._kwargs)
+  File "/home/uni/Documents/python/optim/SteppingStone/common/envs_utils.py", line 646, in _subproc_worker
+    cmd, data = pipe.recv()
+  File "/home/uni/.pyenv/versions/3.6.10/lib/python3.6/multiprocessing/connection.py", line 250, in recv
+    buf = self._recv_bytes()
+  File "/home/uni/.pyenv/versions/3.6.10/lib/python3.6/multiprocessing/connection.py", line 407, in _recv_bytes
+    buf = self._recv(4)
+  File "/home/uni/.pyenv/versions/3.6.10/lib/python3.6/multiprocessing/connection.py", line 383, in _recv
+    raise EOFError
+EOFError
+Process ForkProcess-50:
+Traceback (most recent call last):
+  File "/home/uni/.pyenv/versions/3.6.10/lib/python3.6/multiprocessing/process.py", line 258, in _bootstrap
+    self.run()
+  File "/home/uni/.pyenv/versions/3.6.10/lib/python3.6/multiprocessing/process.py", line 93, in run
+    self._target(*self._args, **self._kwargs)
+  File "/home/uni/Documents/python/optim/SteppingStone/common/envs_utils.py", line 646, in _subproc_worker
+    cmd, data = pipe.recv()
+  File "/home/uni/.pyenv/versions/3.6.10/lib/python3.6/multiprocessing/connection.py", line 250, in recv
+    buf = self._recv_bytes()
+  File "/home/uni/.pyenv/versions/3.6.10/lib/python3.6/multiprocessing/connection.py", line 407, in _recv_bytes
+    buf = self._recv(4)
+  File "/home/uni/.pyenv/versions/3.6.10/lib/python3.6/multiprocessing/connection.py", line 383, in _recv
+    raise EOFError
+EOFError
+Process ForkProcess-49:
+Traceback (most recent call last):
+  File "/home/uni/.pyenv/versions/3.6.10/lib/python3.6/multiprocessing/process.py", line 258, in _bootstrap
+    self.run()
+  File "/home/uni/.pyenv/versions/3.6.10/lib/python3.6/multiprocessing/process.py", line 93, in run
+    self._target(*self._args, **self._kwargs)
+  File "/home/uni/Documents/python/optim/SteppingStone/common/envs_utils.py", line 646, in _subproc_worker
+    cmd, data = pipe.recv()
+  File "/home/uni/.pyenv/versions/3.6.10/lib/python3.6/multiprocessing/connection.py", line 250, in recv
+    buf = self._recv_bytes()
+  File "/home/uni/.pyenv/versions/3.6.10/lib/python3.6/multiprocessing/connection.py", line 407, in _recv_bytes
+    buf = self._recv(4)
+  File "/home/uni/.pyenv/versions/3.6.10/lib/python3.6/multiprocessing/connection.py", line 383, in _recv
+    raise EOFError
+EOFError
+Process ForkProcess-48:
+Traceback (most recent call last):
+  File "/home/uni/.pyenv/versions/3.6.10/lib/python3.6/multiprocessing/process.py", line 258, in _bootstrap
+    self.run()
+  File "/home/uni/.pyenv/versions/3.6.10/lib/python3.6/multiprocessing/process.py", line 93, in run
+    self._target(*self._args, **self._kwargs)
+  File "/home/uni/Documents/python/optim/SteppingStone/common/envs_utils.py", line 646, in _subproc_worker
+    cmd, data = pipe.recv()
+  File "/home/uni/.pyenv/versions/3.6.10/lib/python3.6/multiprocessing/connection.py", line 250, in recv
+    buf = self._recv_bytes()
+  File "/home/uni/.pyenv/versions/3.6.10/lib/python3.6/multiprocessing/connection.py", line 407, in _recv_bytes
+    buf = self._recv(4)
+  File "/home/uni/.pyenv/versions/3.6.10/lib/python3.6/multiprocessing/connection.py", line 383, in _recv
+    raise EOFError
+EOFError
+Process ForkProcess-47:
+Traceback (most recent call last):
+  File "/home/uni/.pyenv/versions/3.6.10/lib/python3.6/multiprocessing/process.py", line 258, in _bootstrap
+    self.run()
+  File "/home/uni/.pyenv/versions/3.6.10/lib/python3.6/multiprocessing/process.py", line 93, in run
+    self._target(*self._args, **self._kwargs)
+  File "/home/uni/Documents/python/optim/SteppingStone/common/envs_utils.py", line 646, in _subproc_worker
+    cmd, data = pipe.recv()
+  File "/home/uni/.pyenv/versions/3.6.10/lib/python3.6/multiprocessing/connection.py", line 250, in recv
+    buf = self._recv_bytes()
+  File "/home/uni/.pyenv/versions/3.6.10/lib/python3.6/multiprocessing/connection.py", line 407, in _recv_bytes
+    buf = self._recv(4)
+  File "/home/uni/.pyenv/versions/3.6.10/lib/python3.6/multiprocessing/connection.py", line 383, in _recv
+    raise EOFError
+EOFError
+Process ForkProcess-46:
+Traceback (most recent call last):
+  File "/home/uni/.pyenv/versions/3.6.10/lib/python3.6/multiprocessing/process.py", line 258, in _bootstrap
+    self.run()
+  File "/home/uni/.pyenv/versions/3.6.10/lib/python3.6/multiprocessing/process.py", line 93, in run
+    self._target(*self._args, **self._kwargs)
+  File "/home/uni/Documents/python/optim/SteppingStone/common/envs_utils.py", line 646, in _subproc_worker
+    cmd, data = pipe.recv()
+  File "/home/uni/.pyenv/versions/3.6.10/lib/python3.6/multiprocessing/connection.py", line 250, in recv
+    buf = self._recv_bytes()
+  File "/home/uni/.pyenv/versions/3.6.10/lib/python3.6/multiprocessing/connection.py", line 407, in _recv_bytes
+    buf = self._recv(4)
+  File "/home/uni/.pyenv/versions/3.6.10/lib/python3.6/multiprocessing/connection.py", line 383, in _recv
+    raise EOFError
+EOFError
+Process ForkProcess-45:
+Traceback (most recent call last):
+  File "/home/uni/.pyenv/versions/3.6.10/lib/python3.6/multiprocessing/process.py", line 258, in _bootstrap
+    self.run()
+  File "/home/uni/.pyenv/versions/3.6.10/lib/python3.6/multiprocessing/process.py", line 93, in run
+    self._target(*self._args, **self._kwargs)
+  File "/home/uni/Documents/python/optim/SteppingStone/common/envs_utils.py", line 646, in _subproc_worker
+    cmd, data = pipe.recv()
+  File "/home/uni/.pyenv/versions/3.6.10/lib/python3.6/multiprocessing/connection.py", line 250, in recv
+    buf = self._recv_bytes()
+  File "/home/uni/.pyenv/versions/3.6.10/lib/python3.6/multiprocessing/connection.py", line 407, in _recv_bytes
+    buf = self._recv(4)
+  File "/home/uni/.pyenv/versions/3.6.10/lib/python3.6/multiprocessing/connection.py", line 383, in _recv
+    raise EOFError
+EOFError
+Process ForkProcess-44:
+Traceback (most recent call last):
+  File "/home/uni/.pyenv/versions/3.6.10/lib/python3.6/multiprocessing/process.py", line 258, in _bootstrap
+    self.run()
+  File "/home/uni/.pyenv/versions/3.6.10/lib/python3.6/multiprocessing/process.py", line 93, in run
+    self._target(*self._args, **self._kwargs)
+  File "/home/uni/Documents/python/optim/SteppingStone/common/envs_utils.py", line 646, in _subproc_worker
+    cmd, data = pipe.recv()
+  File "/home/uni/.pyenv/versions/3.6.10/lib/python3.6/multiprocessing/connection.py", line 250, in recv
+    buf = self._recv_bytes()
+  File "/home/uni/.pyenv/versions/3.6.10/lib/python3.6/multiprocessing/connection.py", line 407, in _recv_bytes
+    buf = self._recv(4)
+  File "/home/uni/.pyenv/versions/3.6.10/lib/python3.6/multiprocessing/connection.py", line 383, in _recv
+    raise EOFError
+EOFError
+Process ForkProcess-43:
+Traceback (most recent call last):
+  File "/home/uni/.pyenv/versions/3.6.10/lib/python3.6/multiprocessing/process.py", line 258, in _bootstrap
+    self.run()
+  File "/home/uni/.pyenv/versions/3.6.10/lib/python3.6/multiprocessing/process.py", line 93, in run
+    self._target(*self._args, **self._kwargs)
+  File "/home/uni/Documents/python/optim/SteppingStone/common/envs_utils.py", line 646, in _subproc_worker
+    cmd, data = pipe.recv()
+  File "/home/uni/.pyenv/versions/3.6.10/lib/python3.6/multiprocessing/connection.py", line 250, in recv
+    buf = self._recv_bytes()
+  File "/home/uni/.pyenv/versions/3.6.10/lib/python3.6/multiprocessing/connection.py", line 407, in _recv_bytes
+    buf = self._recv(4)
+  File "/home/uni/.pyenv/versions/3.6.10/lib/python3.6/multiprocessing/connection.py", line 383, in _recv
+    raise EOFError
+EOFError
+Process ForkProcess-42:
+Traceback (most recent call last):
+  File "/home/uni/.pyenv/versions/3.6.10/lib/python3.6/multiprocessing/process.py", line 258, in _bootstrap
+    self.run()
+  File "/home/uni/.pyenv/versions/3.6.10/lib/python3.6/multiprocessing/process.py", line 93, in run
+    self._target(*self._args, **self._kwargs)
+  File "/home/uni/Documents/python/optim/SteppingStone/common/envs_utils.py", line 646, in _subproc_worker
+    cmd, data = pipe.recv()
+  File "/home/uni/.pyenv/versions/3.6.10/lib/python3.6/multiprocessing/connection.py", line 250, in recv
+    buf = self._recv_bytes()
+  File "/home/uni/.pyenv/versions/3.6.10/lib/python3.6/multiprocessing/connection.py", line 407, in _recv_bytes
+    buf = self._recv(4)
+  File "/home/uni/.pyenv/versions/3.6.10/lib/python3.6/multiprocessing/connection.py", line 383, in _recv
+    raise EOFError
+EOFError
+Process ForkProcess-41:
+Traceback (most recent call last):
+  File "/home/uni/.pyenv/versions/3.6.10/lib/python3.6/multiprocessing/process.py", line 258, in _bootstrap
+    self.run()
+  File "/home/uni/.pyenv/versions/3.6.10/lib/python3.6/multiprocessing/process.py", line 93, in run
+    self._target(*self._args, **self._kwargs)
+  File "/home/uni/Documents/python/optim/SteppingStone/common/envs_utils.py", line 646, in _subproc_worker
+    cmd, data = pipe.recv()
+  File "/home/uni/.pyenv/versions/3.6.10/lib/python3.6/multiprocessing/connection.py", line 250, in recv
+    buf = self._recv_bytes()
+  File "/home/uni/.pyenv/versions/3.6.10/lib/python3.6/multiprocessing/connection.py", line 407, in _recv_bytes
+    buf = self._recv(4)
+  File "/home/uni/.pyenv/versions/3.6.10/lib/python3.6/multiprocessing/connection.py", line 383, in _recv
+    raise EOFError
+EOFError
+Process ForkProcess-40:
+Traceback (most recent call last):
+  File "/home/uni/.pyenv/versions/3.6.10/lib/python3.6/multiprocessing/process.py", line 258, in _bootstrap
+    self.run()
+  File "/home/uni/.pyenv/versions/3.6.10/lib/python3.6/multiprocessing/process.py", line 93, in run
+    self._target(*self._args, **self._kwargs)
+  File "/home/uni/Documents/python/optim/SteppingStone/common/envs_utils.py", line 646, in _subproc_worker
+    cmd, data = pipe.recv()
+  File "/home/uni/.pyenv/versions/3.6.10/lib/python3.6/multiprocessing/connection.py", line 250, in recv
+    buf = self._recv_bytes()
+  File "/home/uni/.pyenv/versions/3.6.10/lib/python3.6/multiprocessing/connection.py", line 407, in _recv_bytes
+    buf = self._recv(4)
+  File "/home/uni/.pyenv/versions/3.6.10/lib/python3.6/multiprocessing/connection.py", line 383, in _recv
+    raise EOFError
+EOFError
+Process ForkProcess-39:
+Traceback (most recent call last):
+  File "/home/uni/.pyenv/versions/3.6.10/lib/python3.6/multiprocessing/process.py", line 258, in _bootstrap
+    self.run()
+  File "/home/uni/.pyenv/versions/3.6.10/lib/python3.6/multiprocessing/process.py", line 93, in run
+    self._target(*self._args, **self._kwargs)
+  File "/home/uni/Documents/python/optim/SteppingStone/common/envs_utils.py", line 646, in _subproc_worker
+    cmd, data = pipe.recv()
+  File "/home/uni/.pyenv/versions/3.6.10/lib/python3.6/multiprocessing/connection.py", line 250, in recv
+    buf = self._recv_bytes()
+  File "/home/uni/.pyenv/versions/3.6.10/lib/python3.6/multiprocessing/connection.py", line 407, in _recv_bytes
+    buf = self._recv(4)
+  File "/home/uni/.pyenv/versions/3.6.10/lib/python3.6/multiprocessing/connection.py", line 383, in _recv
+    raise EOFError
+EOFError
+Process ForkProcess-38:
+Traceback (most recent call last):
+  File "/home/uni/.pyenv/versions/3.6.10/lib/python3.6/multiprocessing/process.py", line 258, in _bootstrap
+    self.run()
+  File "/home/uni/.pyenv/versions/3.6.10/lib/python3.6/multiprocessing/process.py", line 93, in run
+    self._target(*self._args, **self._kwargs)
+  File "/home/uni/Documents/python/optim/SteppingStone/common/envs_utils.py", line 646, in _subproc_worker
+    cmd, data = pipe.recv()
+  File "/home/uni/.pyenv/versions/3.6.10/lib/python3.6/multiprocessing/connection.py", line 250, in recv
+    buf = self._recv_bytes()
+  File "/home/uni/.pyenv/versions/3.6.10/lib/python3.6/multiprocessing/connection.py", line 407, in _recv_bytes
+    buf = self._recv(4)
+  File "/home/uni/.pyenv/versions/3.6.10/lib/python3.6/multiprocessing/connection.py", line 383, in _recv
+    raise EOFError
+EOFError
+Process ForkProcess-37:
+Traceback (most recent call last):
+  File "/home/uni/.pyenv/versions/3.6.10/lib/python3.6/multiprocessing/process.py", line 258, in _bootstrap
+    self.run()
+  File "/home/uni/.pyenv/versions/3.6.10/lib/python3.6/multiprocessing/process.py", line 93, in run
+    self._target(*self._args, **self._kwargs)
+  File "/home/uni/Documents/python/optim/SteppingStone/common/envs_utils.py", line 646, in _subproc_worker
+    cmd, data = pipe.recv()
+  File "/home/uni/.pyenv/versions/3.6.10/lib/python3.6/multiprocessing/connection.py", line 250, in recv
+    buf = self._recv_bytes()
+  File "/home/uni/.pyenv/versions/3.6.10/lib/python3.6/multiprocessing/connection.py", line 407, in _recv_bytes
+    buf = self._recv(4)
+  File "/home/uni/.pyenv/versions/3.6.10/lib/python3.6/multiprocessing/connection.py", line 383, in _recv
+    raise EOFError
+EOFError
+Process ForkProcess-36:
+Traceback (most recent call last):
+  File "/home/uni/.pyenv/versions/3.6.10/lib/python3.6/multiprocessing/process.py", line 258, in _bootstrap
+    self.run()
+  File "/home/uni/.pyenv/versions/3.6.10/lib/python3.6/multiprocessing/process.py", line 93, in run
+    self._target(*self._args, **self._kwargs)
+  File "/home/uni/Documents/python/optim/SteppingStone/common/envs_utils.py", line 646, in _subproc_worker
+    cmd, data = pipe.recv()
+  File "/home/uni/.pyenv/versions/3.6.10/lib/python3.6/multiprocessing/connection.py", line 250, in recv
+    buf = self._recv_bytes()
+  File "/home/uni/.pyenv/versions/3.6.10/lib/python3.6/multiprocessing/connection.py", line 407, in _recv_bytes
+    buf = self._recv(4)
+  File "/home/uni/.pyenv/versions/3.6.10/lib/python3.6/multiprocessing/connection.py", line 383, in _recv
+    raise EOFError
+EOFError
+Process ForkProcess-35:
+Traceback (most recent call last):
+  File "/home/uni/.pyenv/versions/3.6.10/lib/python3.6/multiprocessing/process.py", line 258, in _bootstrap
+    self.run()
+  File "/home/uni/.pyenv/versions/3.6.10/lib/python3.6/multiprocessing/process.py", line 93, in run
+    self._target(*self._args, **self._kwargs)
+  File "/home/uni/Documents/python/optim/SteppingStone/common/envs_utils.py", line 646, in _subproc_worker
+    cmd, data = pipe.recv()
+  File "/home/uni/.pyenv/versions/3.6.10/lib/python3.6/multiprocessing/connection.py", line 250, in recv
+    buf = self._recv_bytes()
+  File "/home/uni/.pyenv/versions/3.6.10/lib/python3.6/multiprocessing/connection.py", line 407, in _recv_bytes
+    buf = self._recv(4)
+  File "/home/uni/.pyenv/versions/3.6.10/lib/python3.6/multiprocessing/connection.py", line 383, in _recv
+    raise EOFError
+EOFError
+Process ForkProcess-34:
+Traceback (most recent call last):
+  File "/home/uni/.pyenv/versions/3.6.10/lib/python3.6/multiprocessing/process.py", line 258, in _bootstrap
+    self.run()
+  File "/home/uni/.pyenv/versions/3.6.10/lib/python3.6/multiprocessing/process.py", line 93, in run
+    self._target(*self._args, **self._kwargs)
+  File "/home/uni/Documents/python/optim/SteppingStone/common/envs_utils.py", line 646, in _subproc_worker
+    cmd, data = pipe.recv()
+  File "/home/uni/.pyenv/versions/3.6.10/lib/python3.6/multiprocessing/connection.py", line 250, in recv
+    buf = self._recv_bytes()
+  File "/home/uni/.pyenv/versions/3.6.10/lib/python3.6/multiprocessing/connection.py", line 407, in _recv_bytes
+    buf = self._recv(4)
+  File "/home/uni/.pyenv/versions/3.6.10/lib/python3.6/multiprocessing/connection.py", line 383, in _recv
+    raise EOFError
+EOFError
+Process ForkProcess-33:
+Traceback (most recent call last):
+  File "/home/uni/.pyenv/versions/3.6.10/lib/python3.6/multiprocessing/process.py", line 258, in _bootstrap
+    self.run()
+  File "/home/uni/.pyenv/versions/3.6.10/lib/python3.6/multiprocessing/process.py", line 93, in run
+    self._target(*self._args, **self._kwargs)
+  File "/home/uni/Documents/python/optim/SteppingStone/common/envs_utils.py", line 646, in _subproc_worker
+    cmd, data = pipe.recv()
+  File "/home/uni/.pyenv/versions/3.6.10/lib/python3.6/multiprocessing/connection.py", line 250, in recv
+    buf = self._recv_bytes()
+  File "/home/uni/.pyenv/versions/3.6.10/lib/python3.6/multiprocessing/connection.py", line 407, in _recv_bytes
+    buf = self._recv(4)
+  File "/home/uni/.pyenv/versions/3.6.10/lib/python3.6/multiprocessing/connection.py", line 383, in _recv
+    raise EOFError
+EOFError
+Process ForkProcess-32:
+Traceback (most recent call last):
+  File "/home/uni/.pyenv/versions/3.6.10/lib/python3.6/multiprocessing/process.py", line 258, in _bootstrap
+    self.run()
+  File "/home/uni/.pyenv/versions/3.6.10/lib/python3.6/multiprocessing/process.py", line 93, in run
+    self._target(*self._args, **self._kwargs)
+  File "/home/uni/Documents/python/optim/SteppingStone/common/envs_utils.py", line 646, in _subproc_worker
+    cmd, data = pipe.recv()
+  File "/home/uni/.pyenv/versions/3.6.10/lib/python3.6/multiprocessing/connection.py", line 250, in recv
+    buf = self._recv_bytes()
+  File "/home/uni/.pyenv/versions/3.6.10/lib/python3.6/multiprocessing/connection.py", line 407, in _recv_bytes
+    buf = self._recv(4)
+  File "/home/uni/.pyenv/versions/3.6.10/lib/python3.6/multiprocessing/connection.py", line 383, in _recv
+    raise EOFError
+EOFError
+Process ForkProcess-31:
+Traceback (most recent call last):
+  File "/home/uni/.pyenv/versions/3.6.10/lib/python3.6/multiprocessing/process.py", line 258, in _bootstrap
+    self.run()
+  File "/home/uni/.pyenv/versions/3.6.10/lib/python3.6/multiprocessing/process.py", line 93, in run
+    self._target(*self._args, **self._kwargs)
+  File "/home/uni/Documents/python/optim/SteppingStone/common/envs_utils.py", line 646, in _subproc_worker
+    cmd, data = pipe.recv()
+  File "/home/uni/.pyenv/versions/3.6.10/lib/python3.6/multiprocessing/connection.py", line 250, in recv
+    buf = self._recv_bytes()
+  File "/home/uni/.pyenv/versions/3.6.10/lib/python3.6/multiprocessing/connection.py", line 407, in _recv_bytes
+    buf = self._recv(4)
+  File "/home/uni/.pyenv/versions/3.6.10/lib/python3.6/multiprocessing/connection.py", line 383, in _recv
+    raise EOFError
+EOFError
+Process ForkProcess-30:
+Traceback (most recent call last):
+  File "/home/uni/.pyenv/versions/3.6.10/lib/python3.6/multiprocessing/process.py", line 258, in _bootstrap
+    self.run()
+  File "/home/uni/.pyenv/versions/3.6.10/lib/python3.6/multiprocessing/process.py", line 93, in run
+    self._target(*self._args, **self._kwargs)
+  File "/home/uni/Documents/python/optim/SteppingStone/common/envs_utils.py", line 646, in _subproc_worker
+    cmd, data = pipe.recv()
+  File "/home/uni/.pyenv/versions/3.6.10/lib/python3.6/multiprocessing/connection.py", line 250, in recv
+    buf = self._recv_bytes()
+  File "/home/uni/.pyenv/versions/3.6.10/lib/python3.6/multiprocessing/connection.py", line 407, in _recv_bytes
+    buf = self._recv(4)
+  File "/home/uni/.pyenv/versions/3.6.10/lib/python3.6/multiprocessing/connection.py", line 383, in _recv
+    raise EOFError
+EOFError
+Process ForkProcess-29:
+Traceback (most recent call last):
+  File "/home/uni/.pyenv/versions/3.6.10/lib/python3.6/multiprocessing/process.py", line 258, in _bootstrap
+    self.run()
+  File "/home/uni/.pyenv/versions/3.6.10/lib/python3.6/multiprocessing/process.py", line 93, in run
+    self._target(*self._args, **self._kwargs)
+  File "/home/uni/Documents/python/optim/SteppingStone/common/envs_utils.py", line 646, in _subproc_worker
+    cmd, data = pipe.recv()
+  File "/home/uni/.pyenv/versions/3.6.10/lib/python3.6/multiprocessing/connection.py", line 250, in recv
+    buf = self._recv_bytes()
+  File "/home/uni/.pyenv/versions/3.6.10/lib/python3.6/multiprocessing/connection.py", line 407, in _recv_bytes
+    buf = self._recv(4)
+  File "/home/uni/.pyenv/versions/3.6.10/lib/python3.6/multiprocessing/connection.py", line 383, in _recv
+    raise EOFError
+EOFError
+Process ForkProcess-28:
+Traceback (most recent call last):
+  File "/home/uni/.pyenv/versions/3.6.10/lib/python3.6/multiprocessing/process.py", line 258, in _bootstrap
+    self.run()
+  File "/home/uni/.pyenv/versions/3.6.10/lib/python3.6/multiprocessing/process.py", line 93, in run
+    self._target(*self._args, **self._kwargs)
+  File "/home/uni/Documents/python/optim/SteppingStone/common/envs_utils.py", line 646, in _subproc_worker
+    cmd, data = pipe.recv()
+  File "/home/uni/.pyenv/versions/3.6.10/lib/python3.6/multiprocessing/connection.py", line 250, in recv
+    buf = self._recv_bytes()
+  File "/home/uni/.pyenv/versions/3.6.10/lib/python3.6/multiprocessing/connection.py", line 407, in _recv_bytes
+    buf = self._recv(4)
+  File "/home/uni/.pyenv/versions/3.6.10/lib/python3.6/multiprocessing/connection.py", line 383, in _recv
+    raise EOFError
+EOFError
+Process ForkProcess-27:
+Traceback (most recent call last):
+  File "/home/uni/.pyenv/versions/3.6.10/lib/python3.6/multiprocessing/process.py", line 258, in _bootstrap
+    self.run()
+  File "/home/uni/.pyenv/versions/3.6.10/lib/python3.6/multiprocessing/process.py", line 93, in run
+    self._target(*self._args, **self._kwargs)
+  File "/home/uni/Documents/python/optim/SteppingStone/common/envs_utils.py", line 646, in _subproc_worker
+    cmd, data = pipe.recv()
+  File "/home/uni/.pyenv/versions/3.6.10/lib/python3.6/multiprocessing/connection.py", line 250, in recv
+    buf = self._recv_bytes()
+  File "/home/uni/.pyenv/versions/3.6.10/lib/python3.6/multiprocessing/connection.py", line 407, in _recv_bytes
+    buf = self._recv(4)
+  File "/home/uni/.pyenv/versions/3.6.10/lib/python3.6/multiprocessing/connection.py", line 383, in _recv
+    raise EOFError
+EOFError
+Process ForkProcess-26:
+Traceback (most recent call last):
+  File "/home/uni/.pyenv/versions/3.6.10/lib/python3.6/multiprocessing/process.py", line 258, in _bootstrap
+    self.run()
+  File "/home/uni/.pyenv/versions/3.6.10/lib/python3.6/multiprocessing/process.py", line 93, in run
+    self._target(*self._args, **self._kwargs)
+  File "/home/uni/Documents/python/optim/SteppingStone/common/envs_utils.py", line 646, in _subproc_worker
+    cmd, data = pipe.recv()
+  File "/home/uni/.pyenv/versions/3.6.10/lib/python3.6/multiprocessing/connection.py", line 250, in recv
+    buf = self._recv_bytes()
+  File "/home/uni/.pyenv/versions/3.6.10/lib/python3.6/multiprocessing/connection.py", line 407, in _recv_bytes
+    buf = self._recv(4)
+  File "/home/uni/.pyenv/versions/3.6.10/lib/python3.6/multiprocessing/connection.py", line 383, in _recv
+    raise EOFError
+EOFError
+Process ForkProcess-25:
+Traceback (most recent call last):
+  File "/home/uni/.pyenv/versions/3.6.10/lib/python3.6/multiprocessing/process.py", line 258, in _bootstrap
+    self.run()
+  File "/home/uni/.pyenv/versions/3.6.10/lib/python3.6/multiprocessing/process.py", line 93, in run
+    self._target(*self._args, **self._kwargs)
+  File "/home/uni/Documents/python/optim/SteppingStone/common/envs_utils.py", line 646, in _subproc_worker
+    cmd, data = pipe.recv()
+  File "/home/uni/.pyenv/versions/3.6.10/lib/python3.6/multiprocessing/connection.py", line 250, in recv
+    buf = self._recv_bytes()
+  File "/home/uni/.pyenv/versions/3.6.10/lib/python3.6/multiprocessing/connection.py", line 407, in _recv_bytes
+    buf = self._recv(4)
+  File "/home/uni/.pyenv/versions/3.6.10/lib/python3.6/multiprocessing/connection.py", line 383, in _recv
+    raise EOFError
+EOFError
+Process ForkProcess-24:
+Traceback (most recent call last):
+  File "/home/uni/.pyenv/versions/3.6.10/lib/python3.6/multiprocessing/process.py", line 258, in _bootstrap
+    self.run()
+  File "/home/uni/.pyenv/versions/3.6.10/lib/python3.6/multiprocessing/process.py", line 93, in run
+    self._target(*self._args, **self._kwargs)
+  File "/home/uni/Documents/python/optim/SteppingStone/common/envs_utils.py", line 646, in _subproc_worker
+    cmd, data = pipe.recv()
+  File "/home/uni/.pyenv/versions/3.6.10/lib/python3.6/multiprocessing/connection.py", line 250, in recv
+    buf = self._recv_bytes()
+  File "/home/uni/.pyenv/versions/3.6.10/lib/python3.6/multiprocessing/connection.py", line 407, in _recv_bytes
+    buf = self._recv(4)
+  File "/home/uni/.pyenv/versions/3.6.10/lib/python3.6/multiprocessing/connection.py", line 383, in _recv
+    raise EOFError
+EOFError
+Process ForkProcess-23:
+Traceback (most recent call last):
+  File "/home/uni/.pyenv/versions/3.6.10/lib/python3.6/multiprocessing/process.py", line 258, in _bootstrap
+    self.run()
+  File "/home/uni/.pyenv/versions/3.6.10/lib/python3.6/multiprocessing/process.py", line 93, in run
+    self._target(*self._args, **self._kwargs)
+  File "/home/uni/Documents/python/optim/SteppingStone/common/envs_utils.py", line 646, in _subproc_worker
+    cmd, data = pipe.recv()
+  File "/home/uni/.pyenv/versions/3.6.10/lib/python3.6/multiprocessing/connection.py", line 250, in recv
+    buf = self._recv_bytes()
+  File "/home/uni/.pyenv/versions/3.6.10/lib/python3.6/multiprocessing/connection.py", line 407, in _recv_bytes
+    buf = self._recv(4)
+  File "/home/uni/.pyenv/versions/3.6.10/lib/python3.6/multiprocessing/connection.py", line 383, in _recv
+    raise EOFError
+EOFError
+Process ForkProcess-22:
+Traceback (most recent call last):
+  File "/home/uni/.pyenv/versions/3.6.10/lib/python3.6/multiprocessing/process.py", line 258, in _bootstrap
+    self.run()
+  File "/home/uni/.pyenv/versions/3.6.10/lib/python3.6/multiprocessing/process.py", line 93, in run
+    self._target(*self._args, **self._kwargs)
+  File "/home/uni/Documents/python/optim/SteppingStone/common/envs_utils.py", line 646, in _subproc_worker
+    cmd, data = pipe.recv()
+  File "/home/uni/.pyenv/versions/3.6.10/lib/python3.6/multiprocessing/connection.py", line 250, in recv
+    buf = self._recv_bytes()
+  File "/home/uni/.pyenv/versions/3.6.10/lib/python3.6/multiprocessing/connection.py", line 407, in _recv_bytes
+    buf = self._recv(4)
+  File "/home/uni/.pyenv/versions/3.6.10/lib/python3.6/multiprocessing/connection.py", line 383, in _recv
+    raise EOFError
+EOFError
+Process ForkProcess-21:
+Traceback (most recent call last):
+  File "/home/uni/.pyenv/versions/3.6.10/lib/python3.6/multiprocessing/process.py", line 258, in _bootstrap
+    self.run()
+  File "/home/uni/.pyenv/versions/3.6.10/lib/python3.6/multiprocessing/process.py", line 93, in run
+    self._target(*self._args, **self._kwargs)
+  File "/home/uni/Documents/python/optim/SteppingStone/common/envs_utils.py", line 646, in _subproc_worker
+    cmd, data = pipe.recv()
+  File "/home/uni/.pyenv/versions/3.6.10/lib/python3.6/multiprocessing/connection.py", line 250, in recv
+    buf = self._recv_bytes()
+  File "/home/uni/.pyenv/versions/3.6.10/lib/python3.6/multiprocessing/connection.py", line 407, in _recv_bytes
+    buf = self._recv(4)
+  File "/home/uni/.pyenv/versions/3.6.10/lib/python3.6/multiprocessing/connection.py", line 383, in _recv
+    raise EOFError
+EOFError
+Process ForkProcess-20:
+Traceback (most recent call last):
+  File "/home/uni/.pyenv/versions/3.6.10/lib/python3.6/multiprocessing/process.py", line 258, in _bootstrap
+    self.run()
+  File "/home/uni/.pyenv/versions/3.6.10/lib/python3.6/multiprocessing/process.py", line 93, in run
+    self._target(*self._args, **self._kwargs)
+  File "/home/uni/Documents/python/optim/SteppingStone/common/envs_utils.py", line 646, in _subproc_worker
+    cmd, data = pipe.recv()
+  File "/home/uni/.pyenv/versions/3.6.10/lib/python3.6/multiprocessing/connection.py", line 250, in recv
+    buf = self._recv_bytes()
+  File "/home/uni/.pyenv/versions/3.6.10/lib/python3.6/multiprocessing/connection.py", line 407, in _recv_bytes
+    buf = self._recv(4)
+  File "/home/uni/.pyenv/versions/3.6.10/lib/python3.6/multiprocessing/connection.py", line 383, in _recv
+    raise EOFError
+EOFError
+Process ForkProcess-19:
+Traceback (most recent call last):
+  File "/home/uni/.pyenv/versions/3.6.10/lib/python3.6/multiprocessing/process.py", line 258, in _bootstrap
+    self.run()
+  File "/home/uni/.pyenv/versions/3.6.10/lib/python3.6/multiprocessing/process.py", line 93, in run
+    self._target(*self._args, **self._kwargs)
+  File "/home/uni/Documents/python/optim/SteppingStone/common/envs_utils.py", line 646, in _subproc_worker
+    cmd, data = pipe.recv()
+  File "/home/uni/.pyenv/versions/3.6.10/lib/python3.6/multiprocessing/connection.py", line 250, in recv
+    buf = self._recv_bytes()
+  File "/home/uni/.pyenv/versions/3.6.10/lib/python3.6/multiprocessing/connection.py", line 407, in _recv_bytes
+    buf = self._recv(4)
+  File "/home/uni/.pyenv/versions/3.6.10/lib/python3.6/multiprocessing/connection.py", line 383, in _recv
+    raise EOFError
+EOFError
+Process ForkProcess-18:
+Traceback (most recent call last):
+  File "/home/uni/.pyenv/versions/3.6.10/lib/python3.6/multiprocessing/process.py", line 258, in _bootstrap
+    self.run()
+  File "/home/uni/.pyenv/versions/3.6.10/lib/python3.6/multiprocessing/process.py", line 93, in run
+    self._target(*self._args, **self._kwargs)
+  File "/home/uni/Documents/python/optim/SteppingStone/common/envs_utils.py", line 646, in _subproc_worker
+    cmd, data = pipe.recv()
+  File "/home/uni/.pyenv/versions/3.6.10/lib/python3.6/multiprocessing/connection.py", line 250, in recv
+    buf = self._recv_bytes()
+  File "/home/uni/.pyenv/versions/3.6.10/lib/python3.6/multiprocessing/connection.py", line 407, in _recv_bytes
+    buf = self._recv(4)
+  File "/home/uni/.pyenv/versions/3.6.10/lib/python3.6/multiprocessing/connection.py", line 383, in _recv
+    raise EOFError
+EOFError
+Process ForkProcess-17:
+Traceback (most recent call last):
+  File "/home/uni/.pyenv/versions/3.6.10/lib/python3.6/multiprocessing/process.py", line 258, in _bootstrap
+    self.run()
+  File "/home/uni/.pyenv/versions/3.6.10/lib/python3.6/multiprocessing/process.py", line 93, in run
+    self._target(*self._args, **self._kwargs)
+  File "/home/uni/Documents/python/optim/SteppingStone/common/envs_utils.py", line 646, in _subproc_worker
+    cmd, data = pipe.recv()
+  File "/home/uni/.pyenv/versions/3.6.10/lib/python3.6/multiprocessing/connection.py", line 250, in recv
+    buf = self._recv_bytes()
+  File "/home/uni/.pyenv/versions/3.6.10/lib/python3.6/multiprocessing/connection.py", line 407, in _recv_bytes
+    buf = self._recv(4)
+  File "/home/uni/.pyenv/versions/3.6.10/lib/python3.6/multiprocessing/connection.py", line 383, in _recv
+    raise EOFError
+EOFError
+Process ForkProcess-16:
+Traceback (most recent call last):
+  File "/home/uni/.pyenv/versions/3.6.10/lib/python3.6/multiprocessing/process.py", line 258, in _bootstrap
+    self.run()
+  File "/home/uni/.pyenv/versions/3.6.10/lib/python3.6/multiprocessing/process.py", line 93, in run
+    self._target(*self._args, **self._kwargs)
+  File "/home/uni/Documents/python/optim/SteppingStone/common/envs_utils.py", line 646, in _subproc_worker
+    cmd, data = pipe.recv()
+  File "/home/uni/.pyenv/versions/3.6.10/lib/python3.6/multiprocessing/connection.py", line 250, in recv
+    buf = self._recv_bytes()
+  File "/home/uni/.pyenv/versions/3.6.10/lib/python3.6/multiprocessing/connection.py", line 407, in _recv_bytes
+    buf = self._recv(4)
+  File "/home/uni/.pyenv/versions/3.6.10/lib/python3.6/multiprocessing/connection.py", line 383, in _recv
+    raise EOFError
+EOFError
+Process ForkProcess-15:
+Traceback (most recent call last):
+  File "/home/uni/.pyenv/versions/3.6.10/lib/python3.6/multiprocessing/process.py", line 258, in _bootstrap
+    self.run()
+  File "/home/uni/.pyenv/versions/3.6.10/lib/python3.6/multiprocessing/process.py", line 93, in run
+    self._target(*self._args, **self._kwargs)
+  File "/home/uni/Documents/python/optim/SteppingStone/common/envs_utils.py", line 646, in _subproc_worker
+    cmd, data = pipe.recv()
+  File "/home/uni/.pyenv/versions/3.6.10/lib/python3.6/multiprocessing/connection.py", line 250, in recv
+    buf = self._recv_bytes()
+  File "/home/uni/.pyenv/versions/3.6.10/lib/python3.6/multiprocessing/connection.py", line 407, in _recv_bytes
+    buf = self._recv(4)
+  File "/home/uni/.pyenv/versions/3.6.10/lib/python3.6/multiprocessing/connection.py", line 383, in _recv
+    raise EOFError
+EOFError
+Process ForkProcess-14:
+Traceback (most recent call last):
+  File "/home/uni/.pyenv/versions/3.6.10/lib/python3.6/multiprocessing/process.py", line 258, in _bootstrap
+    self.run()
+  File "/home/uni/.pyenv/versions/3.6.10/lib/python3.6/multiprocessing/process.py", line 93, in run
+    self._target(*self._args, **self._kwargs)
+  File "/home/uni/Documents/python/optim/SteppingStone/common/envs_utils.py", line 646, in _subproc_worker
+    cmd, data = pipe.recv()
+  File "/home/uni/.pyenv/versions/3.6.10/lib/python3.6/multiprocessing/connection.py", line 250, in recv
+    buf = self._recv_bytes()
+  File "/home/uni/.pyenv/versions/3.6.10/lib/python3.6/multiprocessing/connection.py", line 407, in _recv_bytes
+    buf = self._recv(4)
+  File "/home/uni/.pyenv/versions/3.6.10/lib/python3.6/multiprocessing/connection.py", line 383, in _recv
+    raise EOFError
+EOFError
+Process ForkProcess-13:
+Traceback (most recent call last):
+  File "/home/uni/.pyenv/versions/3.6.10/lib/python3.6/multiprocessing/process.py", line 258, in _bootstrap
+    self.run()
+  File "/home/uni/.pyenv/versions/3.6.10/lib/python3.6/multiprocessing/process.py", line 93, in run
+    self._target(*self._args, **self._kwargs)
+  File "/home/uni/Documents/python/optim/SteppingStone/common/envs_utils.py", line 646, in _subproc_worker
+    cmd, data = pipe.recv()
+  File "/home/uni/.pyenv/versions/3.6.10/lib/python3.6/multiprocessing/connection.py", line 250, in recv
+    buf = self._recv_bytes()
+  File "/home/uni/.pyenv/versions/3.6.10/lib/python3.6/multiprocessing/connection.py", line 407, in _recv_bytes
+    buf = self._recv(4)
+  File "/home/uni/.pyenv/versions/3.6.10/lib/python3.6/multiprocessing/connection.py", line 383, in _recv
+    raise EOFError
+EOFError
+Process ForkProcess-12:
+Traceback (most recent call last):
+  File "/home/uni/.pyenv/versions/3.6.10/lib/python3.6/multiprocessing/process.py", line 258, in _bootstrap
+    self.run()
+  File "/home/uni/.pyenv/versions/3.6.10/lib/python3.6/multiprocessing/process.py", line 93, in run
+    self._target(*self._args, **self._kwargs)
+  File "/home/uni/Documents/python/optim/SteppingStone/common/envs_utils.py", line 646, in _subproc_worker
+    cmd, data = pipe.recv()
+  File "/home/uni/.pyenv/versions/3.6.10/lib/python3.6/multiprocessing/connection.py", line 250, in recv
+    buf = self._recv_bytes()
+  File "/home/uni/.pyenv/versions/3.6.10/lib/python3.6/multiprocessing/connection.py", line 407, in _recv_bytes
+    buf = self._recv(4)
+  File "/home/uni/.pyenv/versions/3.6.10/lib/python3.6/multiprocessing/connection.py", line 383, in _recv
+    raise EOFError
+EOFError
+Process ForkProcess-11:
+Traceback (most recent call last):
+  File "/home/uni/.pyenv/versions/3.6.10/lib/python3.6/multiprocessing/process.py", line 258, in _bootstrap
+    self.run()
+  File "/home/uni/.pyenv/versions/3.6.10/lib/python3.6/multiprocessing/process.py", line 93, in run
+    self._target(*self._args, **self._kwargs)
+  File "/home/uni/Documents/python/optim/SteppingStone/common/envs_utils.py", line 646, in _subproc_worker
+    cmd, data = pipe.recv()
+  File "/home/uni/.pyenv/versions/3.6.10/lib/python3.6/multiprocessing/connection.py", line 250, in recv
+    buf = self._recv_bytes()
+  File "/home/uni/.pyenv/versions/3.6.10/lib/python3.6/multiprocessing/connection.py", line 407, in _recv_bytes
+    buf = self._recv(4)
+  File "/home/uni/.pyenv/versions/3.6.10/lib/python3.6/multiprocessing/connection.py", line 383, in _recv
+    raise EOFError
+EOFError
+Process ForkProcess-10:
+Traceback (most recent call last):
+  File "/home/uni/.pyenv/versions/3.6.10/lib/python3.6/multiprocessing/process.py", line 258, in _bootstrap
+    self.run()
+  File "/home/uni/.pyenv/versions/3.6.10/lib/python3.6/multiprocessing/process.py", line 93, in run
+    self._target(*self._args, **self._kwargs)
+  File "/home/uni/Documents/python/optim/SteppingStone/common/envs_utils.py", line 646, in _subproc_worker
+    cmd, data = pipe.recv()
+  File "/home/uni/.pyenv/versions/3.6.10/lib/python3.6/multiprocessing/connection.py", line 250, in recv
+    buf = self._recv_bytes()
+  File "/home/uni/.pyenv/versions/3.6.10/lib/python3.6/multiprocessing/connection.py", line 407, in _recv_bytes
+    buf = self._recv(4)
+  File "/home/uni/.pyenv/versions/3.6.10/lib/python3.6/multiprocessing/connection.py", line 383, in _recv
+    raise EOFError
+EOFError
+Process ForkProcess-9:
+Traceback (most recent call last):
+  File "/home/uni/.pyenv/versions/3.6.10/lib/python3.6/multiprocessing/process.py", line 258, in _bootstrap
+    self.run()
+  File "/home/uni/.pyenv/versions/3.6.10/lib/python3.6/multiprocessing/process.py", line 93, in run
+    self._target(*self._args, **self._kwargs)
+  File "/home/uni/Documents/python/optim/SteppingStone/common/envs_utils.py", line 646, in _subproc_worker
+    cmd, data = pipe.recv()
+  File "/home/uni/.pyenv/versions/3.6.10/lib/python3.6/multiprocessing/connection.py", line 250, in recv
+    buf = self._recv_bytes()
+  File "/home/uni/.pyenv/versions/3.6.10/lib/python3.6/multiprocessing/connection.py", line 407, in _recv_bytes
+    buf = self._recv(4)
+  File "/home/uni/.pyenv/versions/3.6.10/lib/python3.6/multiprocessing/connection.py", line 383, in _recv
+    raise EOFError
+EOFError
+Process ForkProcess-8:
+Traceback (most recent call last):
+  File "/home/uni/.pyenv/versions/3.6.10/lib/python3.6/multiprocessing/process.py", line 258, in _bootstrap
+    self.run()
+  File "/home/uni/.pyenv/versions/3.6.10/lib/python3.6/multiprocessing/process.py", line 93, in run
+    self._target(*self._args, **self._kwargs)
+  File "/home/uni/Documents/python/optim/SteppingStone/common/envs_utils.py", line 646, in _subproc_worker
+    cmd, data = pipe.recv()
+  File "/home/uni/.pyenv/versions/3.6.10/lib/python3.6/multiprocessing/connection.py", line 250, in recv
+    buf = self._recv_bytes()
+  File "/home/uni/.pyenv/versions/3.6.10/lib/python3.6/multiprocessing/connection.py", line 407, in _recv_bytes
+    buf = self._recv(4)
+  File "/home/uni/.pyenv/versions/3.6.10/lib/python3.6/multiprocessing/connection.py", line 383, in _recv
+    raise EOFError
+EOFError
+Process ForkProcess-7:
+Traceback (most recent call last):
+  File "/home/uni/.pyenv/versions/3.6.10/lib/python3.6/multiprocessing/process.py", line 258, in _bootstrap
+    self.run()
+  File "/home/uni/.pyenv/versions/3.6.10/lib/python3.6/multiprocessing/process.py", line 93, in run
+    self._target(*self._args, **self._kwargs)
+  File "/home/uni/Documents/python/optim/SteppingStone/common/envs_utils.py", line 646, in _subproc_worker
+    cmd, data = pipe.recv()
+  File "/home/uni/.pyenv/versions/3.6.10/lib/python3.6/multiprocessing/connection.py", line 250, in recv
+    buf = self._recv_bytes()
+  File "/home/uni/.pyenv/versions/3.6.10/lib/python3.6/multiprocessing/connection.py", line 407, in _recv_bytes
+    buf = self._recv(4)
+  File "/home/uni/.pyenv/versions/3.6.10/lib/python3.6/multiprocessing/connection.py", line 383, in _recv
+    raise EOFError
+EOFError
+Process ForkProcess-6:
+Traceback (most recent call last):
+  File "/home/uni/.pyenv/versions/3.6.10/lib/python3.6/multiprocessing/process.py", line 258, in _bootstrap
+    self.run()
+  File "/home/uni/.pyenv/versions/3.6.10/lib/python3.6/multiprocessing/process.py", line 93, in run
+    self._target(*self._args, **self._kwargs)
+  File "/home/uni/Documents/python/optim/SteppingStone/common/envs_utils.py", line 646, in _subproc_worker
+    cmd, data = pipe.recv()
+  File "/home/uni/.pyenv/versions/3.6.10/lib/python3.6/multiprocessing/connection.py", line 250, in recv
+    buf = self._recv_bytes()
+  File "/home/uni/.pyenv/versions/3.6.10/lib/python3.6/multiprocessing/connection.py", line 407, in _recv_bytes
+    buf = self._recv(4)
+  File "/home/uni/.pyenv/versions/3.6.10/lib/python3.6/multiprocessing/connection.py", line 383, in _recv
+    raise EOFError
+EOFError
+Process ForkProcess-5:
+Traceback (most recent call last):
+  File "/home/uni/.pyenv/versions/3.6.10/lib/python3.6/multiprocessing/process.py", line 258, in _bootstrap
+    self.run()
+  File "/home/uni/.pyenv/versions/3.6.10/lib/python3.6/multiprocessing/process.py", line 93, in run
+    self._target(*self._args, **self._kwargs)
+  File "/home/uni/Documents/python/optim/SteppingStone/common/envs_utils.py", line 646, in _subproc_worker
+    cmd, data = pipe.recv()
+  File "/home/uni/.pyenv/versions/3.6.10/lib/python3.6/multiprocessing/connection.py", line 250, in recv
+    buf = self._recv_bytes()
+  File "/home/uni/.pyenv/versions/3.6.10/lib/python3.6/multiprocessing/connection.py", line 407, in _recv_bytes
+    buf = self._recv(4)
+  File "/home/uni/.pyenv/versions/3.6.10/lib/python3.6/multiprocessing/connection.py", line 383, in _recv
+    raise EOFError
+EOFError
+Process ForkProcess-4:
+Traceback (most recent call last):
+  File "/home/uni/.pyenv/versions/3.6.10/lib/python3.6/multiprocessing/process.py", line 258, in _bootstrap
+    self.run()
+  File "/home/uni/.pyenv/versions/3.6.10/lib/python3.6/multiprocessing/process.py", line 93, in run
+    self._target(*self._args, **self._kwargs)
+  File "/home/uni/Documents/python/optim/SteppingStone/common/envs_utils.py", line 646, in _subproc_worker
+    cmd, data = pipe.recv()
+  File "/home/uni/.pyenv/versions/3.6.10/lib/python3.6/multiprocessing/connection.py", line 250, in recv
+    buf = self._recv_bytes()
+  File "/home/uni/.pyenv/versions/3.6.10/lib/python3.6/multiprocessing/connection.py", line 407, in _recv_bytes
+    buf = self._recv(4)
+  File "/home/uni/.pyenv/versions/3.6.10/lib/python3.6/multiprocessing/connection.py", line 383, in _recv
+    raise EOFError
+EOFError
+Process ForkProcess-3:
+Traceback (most recent call last):
+  File "/home/uni/.pyenv/versions/3.6.10/lib/python3.6/multiprocessing/process.py", line 258, in _bootstrap
+    self.run()
+  File "/home/uni/.pyenv/versions/3.6.10/lib/python3.6/multiprocessing/process.py", line 93, in run
+    self._target(*self._args, **self._kwargs)
+  File "/home/uni/Documents/python/optim/SteppingStone/common/envs_utils.py", line 646, in _subproc_worker
+    cmd, data = pipe.recv()
+  File "/home/uni/.pyenv/versions/3.6.10/lib/python3.6/multiprocessing/connection.py", line 250, in recv
+    buf = self._recv_bytes()
+  File "/home/uni/.pyenv/versions/3.6.10/lib/python3.6/multiprocessing/connection.py", line 407, in _recv_bytes
+    buf = self._recv(4)
+  File "/home/uni/.pyenv/versions/3.6.10/lib/python3.6/multiprocessing/connection.py", line 383, in _recv
+    raise EOFError
+EOFError
+Process ForkProcess-2:
+Traceback (most recent call last):
+  File "/home/uni/.pyenv/versions/3.6.10/lib/python3.6/multiprocessing/process.py", line 258, in _bootstrap
+    self.run()
+  File "/home/uni/.pyenv/versions/3.6.10/lib/python3.6/multiprocessing/process.py", line 93, in run
+    self._target(*self._args, **self._kwargs)
+  File "/home/uni/Documents/python/optim/SteppingStone/common/envs_utils.py", line 646, in _subproc_worker
+    cmd, data = pipe.recv()
+  File "/home/uni/.pyenv/versions/3.6.10/lib/python3.6/multiprocessing/connection.py", line 250, in recv
+    buf = self._recv_bytes()
+  File "/home/uni/.pyenv/versions/3.6.10/lib/python3.6/multiprocessing/connection.py", line 407, in _recv_bytes
+    buf = self._recv(4)
+  File "/home/uni/.pyenv/versions/3.6.10/lib/python3.6/multiprocessing/connection.py", line 383, in _recv
+    raise EOFError
+EOFError
+Process ForkProcess-1:
+Traceback (most recent call last):
+  File "/home/uni/.pyenv/versions/3.6.10/lib/python3.6/multiprocessing/process.py", line 258, in _bootstrap
+    self.run()
+  File "/home/uni/.pyenv/versions/3.6.10/lib/python3.6/multiprocessing/process.py", line 93, in run
+    self._target(*self._args, **self._kwargs)
+  File "/home/uni/Documents/python/optim/SteppingStone/common/envs_utils.py", line 646, in _subproc_worker
+    cmd, data = pipe.recv()
+  File "/home/uni/.pyenv/versions/3.6.10/lib/python3.6/multiprocessing/connection.py", line 250, in recv
+    buf = self._recv_bytes()
+  File "/home/uni/.pyenv/versions/3.6.10/lib/python3.6/multiprocessing/connection.py", line 407, in _recv_bytes
+    buf = self._recv(4)
+  File "/home/uni/.pyenv/versions/3.6.10/lib/python3.6/multiprocessing/connection.py", line 383, in _recv
+    raise EOFError
+EOFError
