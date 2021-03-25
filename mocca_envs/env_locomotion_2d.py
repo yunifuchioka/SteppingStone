@@ -27,11 +27,15 @@ class Walker2DCustomEnv(EnvBase):
         self.stall_torque_cost = 0.1
         self.joints_at_limit_cost = 0.7
 
-        self.body_xyz_track_weight = 1.0
-        self.body_rpy_track_weight = 1.0
+        self.body_vel_track_weight = 0.2
+        self.body_rpy_track_weight = 0.2
+        self.feet_rel_track_weight = 0.6
 
-        self.body_xyz_target = np.array([0, 0, 1.0])
+        self.body_vel_target = np.array([0, 0, 0])
         self.body_rpy_target = np.array([0, 0, 0])
+        self.feet_rel_target = np.array([
+            [0.0, 0.0, -1.0],
+            [0.0, 0.0, -1.0]])
 
         # Observation space is just robot's state, see robot.calc_state()
         high = np.inf * np.ones(self.robot.observation_space.shape[0])
@@ -102,11 +106,13 @@ class Walker2DCustomEnv(EnvBase):
 
     def calc_track_rewards(self):
 
-        body_xyz_error = self.robot.body_xyz - self.body_xyz_target
+        body_vel_error = self.robot.body_vel - self.body_vel_target
         body_rpy_error = self.robot.body_rpy - self.body_rpy_target
+        feet_rel_error = (self.robot.feet_xyz - self.robot.body_xyz) - self.feet_rel_target
 
-        self.body_xyz_reward = np.exp( -1.0 * (body_xyz_error**2).sum() )
-        self.body_rpy_reward = np.exp( -2.0 * (body_rpy_error**2).sum() )
+        self.body_vel_reward = np.exp( -1.0 * (body_vel_error**2).sum() )
+        self.body_rpy_reward = np.exp( -30.0 * (body_rpy_error**2).sum() )
+        self.feet_rel_reward = np.exp( -1.0 * (feet_rel_error**2).sum() )
 
     def calc_env_state(self, action):
         # in case if neural net explodes
@@ -116,8 +122,10 @@ class Walker2DCustomEnv(EnvBase):
 
         # calculate rewards
         self.calc_track_rewards()
-        self.track = self.body_xyz_track_weight * self.body_xyz_reward \
-            + self.body_rpy_track_weight * self.body_rpy_reward
+        self.track = \
+            + self.body_vel_track_weight * self.body_vel_reward \
+            + self.body_rpy_track_weight * self.body_rpy_reward \
+            + self.feet_rel_track_weight * self.feet_rel_reward
 
         # standard energy penalty based on applied action
         self.energy_penalty = self.electricity_cost * float(
@@ -140,7 +148,7 @@ class Walker2DCustomEnv(EnvBase):
         #   numerical differences due to np.float32 casting
         if (self.robot_state[0] > self.termination_height
                 and np.abs(self.robot_state[4]) < np.pi):
-            self.tall_bonus = 0.0
+            self.tall_bonus = 1.0
         else:
             self.tall_bonus = -1.0
 
