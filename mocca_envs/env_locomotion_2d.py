@@ -22,15 +22,10 @@ class Walker2DCustomEnv(EnvBase):
         # initialize simulator, robot, and ground
         super().__init__(self.robot_class, **kwargs)
 
-        # used for calculating energy penalty
-        self.electricity_cost = 2.0
-        self.stall_torque_cost = 0.1
-        self.joints_at_limit_cost = 0.7
-
         # reference tracking reward weights
-        self.body_vel_track_weight = 0.2
-        self.body_rpy_track_weight = 0.2
-        self.feet_rel_track_weight = 0.6
+        self.body_vel_track_weight = 0.1
+        self.body_rpy_track_weight = 0.1
+        self.feet_rel_track_weight = 0.8
 
         # reference trajectories for tracking. Values are assumed to have been pre-interpolated to have
         # the same time frequency as this environment, ie 1/self.control_step Hz
@@ -42,8 +37,10 @@ class Walker2DCustomEnv(EnvBase):
         self.body_vel_target = np.zeros((self.traj_len, 3))
         self.body_rpy_target = np.zeros((self.traj_len, 3))
         self.feet_rel_target = np.stack((
-            0*time, 0*time, -1*np.ones(self.traj_len),
-            0*time, 0*time, -1*np.ones(self.traj_len)
+            #0 * time, 0 * time, -0.7 * np.ones(self.traj_len),
+            #0 * time, 0 * time, -1 * np.ones(self.traj_len)
+            0*time, 0*time, -1 + 0.3*np.maximum(np.sin(time), 0),
+            0*time, 0*time, -1 + 0.3*np.maximum(-np.sin(time), 0)
         ), axis=1).reshape(self.traj_len, 2, 3)
 
         # Observation space is the augmented state, see calc_aug_state()
@@ -108,8 +105,8 @@ class Walker2DCustomEnv(EnvBase):
         # calculate the augmented state to be input into the network
         self.calc_aug_state()
 
-        reward = self.track - self.energy_penalty
-        reward += self.tall_bonus - self.joints_penalty
+        #reward = self.track_reward * self.joint_limit_reward * self.energy_reward
+        reward = self.track_reward * self.joint_limit_reward
 
         # for rendering only, in the pybullet gui, press
         # <space> to pause, 'r' to reset, etc
@@ -157,23 +154,14 @@ class Walker2DCustomEnv(EnvBase):
 
         # calculate rewards
         self.calc_track_rewards()
-        self.track = \
+        self.track_reward = \
             + self.body_vel_track_weight * self.body_vel_reward \
             + self.body_rpy_track_weight * self.body_rpy_reward \
             + self.feet_rel_track_weight * self.feet_rel_reward
 
-        # standard energy penalty based on applied action
-        self.energy_penalty = self.electricity_cost * float(
-            np.abs(action * self.robot.joint_speeds).mean()
-        )
-        self.energy_penalty += self.stall_torque_cost * float(np.square(action).mean())
-
-        # penalize joints near maximum range of motion
-        # helps prevent getting stuck in local minima
-        # also pybullet doesn't enforce joint limits, so kind of necessary
-        self.joints_penalty = float(
-            self.joints_at_limit_cost * self.robot.joints_at_limit
-        )
+        energy_used = np.abs(action * self.robot.joint_speeds).mean()
+        self.energy_reward = np.exp( -10.0 * (energy_used**2).sum() )
+        self.joint_limit_reward = np.exp( -0.05 * self.robot.joints_at_limit**2 )
 
         # tall bonus encourages robot to stay upright
         # note1: roll and pitch, corresponding to self.robot_state[4:6], are defined so that
