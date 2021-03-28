@@ -35,13 +35,15 @@ class Walker2DCustomEnv(EnvBase):
         #  eg. by trajectory optimization
         self.traj_len = 1200
         time = np.linspace(0, self.control_step*self.traj_len, self.traj_len)
-        self.body_vel_target = np.zeros((self.traj_len, 3))
+        self.body_vel_target = np.stack((
+            1.0*np.ones(self.traj_len),
+            0*time,
+            0*time
+        ), axis=1)
         self.body_rpy_target = np.zeros((self.traj_len, 3))
         self.feet_rel_target = np.stack((
-            #0 * time, 0 * time, -0.7 * np.ones(self.traj_len),
-            #0 * time, 0 * time, -1 * np.ones(self.traj_len)
-            0*time, 0*time, -1 + 0.4*np.maximum(np.sin(2*time), 0),
-            0*time, 0*time, -1 + 0.4*np.maximum(-np.sin(2*time), 0)
+            0*time, 0*time, -1 + 0.4*np.maximum(np.sin(3*time), 0),
+            0*time, 0*time, -1 + 0.4*np.maximum(-np.sin(3*time), 0)
         ), axis=1).reshape(self.traj_len, 2, 3)
         self.feet_contact_target = np.stack((
             1*(self.feet_rel_target[:,0,2] == min(self.feet_rel_target[:,0,2])),
