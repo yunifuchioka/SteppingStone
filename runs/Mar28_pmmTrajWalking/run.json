@@ -1,0 +1,56 @@
+{
+  "experiment_info": {
+    "base_dir": "/home/yuni/SteppingStone/common",
+    "dependencies": [
+      "numpy==1.19.4",
+      "sacred==0.8.1",
+      "torch==1.7.0+cu101"
+    ],
+    "mainfile": "sacred_utils.py",
+    "name": "sacred_utils",
+    "repositories": [
+      {
+        "commit": "81fd7296f954430b154db7934cd2708cf3f768cb",
+        "dirty": false,
+        "url": "https://github.com/yunifuchioka/SteppingStone.git"
+      }
+    ],
+    "sources": [
+      [
+        "sacred_utils.py",
+        "4065247d7341441f2a3aa79f46bb20e8"
+      ]
+    ]
+  },
+  "host_info": {
+    "ENV": {},
+    "cpu": "AMD Ryzen Threadripper 2970WX 24-Core Processor",
+    "gpus": {
+      "driver_version": "430.64",
+      "gpus": [
+        {
+          "model": "GeForce RTX 2070",
+          "persistence_mode": false,
+          "total_memory": 7974
+        }
+      ]
+    },
+    "hostname": "moccamachine",
+    "os": [
+      "Linux",
+      "Linux-4.15.0-99-generic-x86_64-with-glibc2.17"
+    ],
+    "python_version": "3.8.6"
+  },
+  "start_time": [
+    2021,
+    3,
+    28,
+    22,
+    28,
+    12,
+    6,
+    87,
+    -1
+  ]
+}
