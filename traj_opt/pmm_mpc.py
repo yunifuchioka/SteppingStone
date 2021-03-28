@@ -2,7 +2,9 @@ import numpy as np
 from numpy import pi
 import casadi as ca
 
-from scipy.interpolate import CubicSpline
+import pickle
+
+from scipy.interpolate import CubicSpline, interp1d
 from scipy.interpolate import interp1d
 from scipy.spatial.transform import Rotation
 
@@ -23,7 +25,7 @@ torso_size = np.array([0, 0.2, 0.3])  # x,y,z length of torso
 foot_size = np.array([0.2, 0, 0])  # x,y,z length of feet
 
 m = 39.3  # mass of torso
-zc = leg_len[0] + leg_len[1] + torso_size[2] - 0.1  # nominal height of torso
+zc = 1.0 # nominal height of torso
 g = np.array([0, 0, -9.81])  # gravitational acceleration
 mu = 0.8  # friciton coefficient
 
@@ -36,7 +38,7 @@ Rs_l = Rs_r
 ps_l = ps_r
 # ps_l = np.array([0, 0, 0.3])[:,None]
 
-tf = 8  # final time of interval
+tf = 20  # final time of interval
 N = int(tf * 4)  # number of hermite-simpson finite elements. Total # of points = 2*N+1
 t = np.linspace(0, tf, 2 * N + 1)  # discretized time
 
@@ -48,7 +50,7 @@ Qcd = np.full((nj3), 10)
 RF = np.full((nj3), 0.0001)
 
 # footstep planner parameters
-stride = np.array([0, torso_size[1], 0.3])  # forward step length, leg width, max foot height
+stride = np.array([0.4, torso_size[1], 0.1])  # forward step length, leg width, max foot height
 stride_std = np.array([0.0, 0.0, 0.0])  # random std dev of step x and y locations
 T_step = 0.5  # step period
 duty = 0.5  # duty cycle - proportion of gait where foot is on the ground
@@ -308,35 +310,45 @@ opti.solver('ipopt', p_opts, s_opts)
 sol = opti.solve()
 
 # extract NLP output as numpy array
-XR_sol = np.array(sol.value(XR))[:nr, :]
+XR_sol = np.array(sol.value(XR))
 XC_sol = np.array(sol.value(XC))
 UF_sol = np.array(sol.value(UF))
 
-# trajectory to be used for RL
-pmm_traj_raw = np.vstack((
-    XC_sol[3, :],  # right heel x
-    XC_sol[5, :],  # right heel z
-    XC_sol[9, :],  # left heel x
-    XC_sol[11, :],  # left heel z
-    XR_sol[0, :],  # COM x
-    XR_sol[2, :],  # COM z
-))
+t_RL = np.linspace(0, tf, tf * 60)  # time points with 60Hz frequency, to be consistent with RL
 
-t_RL = np.linspace(0, tf, tf * 60)  # timepoints with 60Hz frequency, to be consistent with RL
-pmm_traj_interpolator = CubicSpline(t, pmm_traj_raw, axis=1)
-pmm_traj = pmm_traj_interpolator(t_RL)  # pmm trajectory with time spacing that is consistent with RL
+body_vel_target_raw = XR_sol[nr:,:].T # extract raw velocity
+body_vel_target_raw[:,1] = np.zeros(t.shape) # remove y component for walker2d
+body_vel_target_interpolator = CubicSpline(t, body_vel_target_raw, axis=0)
+body_vel_target = body_vel_target_interpolator(t_RL) # interpolate to have same frequency as RL
 
-"""
-# check what trajectory looks like
-plt.plot(t_RL, pmm_traj[0::2].T)
-plt.title("x trajectories")
-plt.show()
-plt.plot(t_RL, pmm_traj[1::2].T)
-plt.title("y trajectories")
-plt.show()
-"""
+body_rpy_target = np.zeros(body_vel_target.shape) # point mass model so body is assumed to be upright
 
-np.save('../trajectories/pmm_stepInPlace1.npy', pmm_traj)
+feet_pos_abs = np.vstack((XC_sol[:3,:], XC_sol[6:9,:])).T # absolute toe positions
+body_pos_abs = XR_sol[:nr,:].T # absolute body positions
+feet_rel_target_raw = feet_pos_abs - np.tile(body_pos_abs, (1,2)) # toe positions relative to body
+feet_rel_target_raw[:,1] = np.zeros(t.shape) # remove y component for walker2d
+feet_rel_target_raw[:,4] = np.zeros(t.shape) # remove y component for walker2d
+feet_rel_target_interpolator = CubicSpline(t, feet_rel_target_raw, axis=0)
+feet_rel_target = feet_rel_target_interpolator(t_RL) # interpolate to have same frequency as RL
+feet_rel_target = feet_rel_target.reshape(t_RL.shape[0], 2,3) # reshape to match Walker2DCustomEnv.robot.feet_xyz
+
+force_zero_tol = 1e-6 # value under which a ground reaction force is considered to be zero
+ground_normal_force = np.vstack((UF_sol[2,:], UF_sol[8,:])).T # of toes
+# feet considered to be in contact with ground with ground reaction force is active
+feet_contact_target_raw = 1*(abs(ground_normal_force) > force_zero_tol)
+# interpolate contact trajectory using zero order hold
+feet_contact_target_interpolator = interp1d(t, feet_contact_target_raw, axis=0, kind="zero")
+feet_contact_target = feet_contact_target_interpolator(t_RL)
+
+traj_dict = {
+    "traj_len": body_vel_target.shape[0],
+    "body_vel_target": body_vel_target,
+    "body_rpy_target": body_rpy_target,
+    "feet_rel_target": feet_rel_target,
+    "feet_contact_target": feet_contact_target
+}
+
+pickle.dump( traj_dict, open( "trajectories/pmm_traj1.p", "wb" ) )
 
 """
 

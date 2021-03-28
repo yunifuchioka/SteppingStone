@@ -1,10 +1,10 @@
 import gym
 import numpy as np
+import pickle
 
 from mocca_envs.bullet_objects import VSphere
 from mocca_envs.env_base import EnvBase
 from mocca_envs.robots import Crab2D, Walker2D
-
 
 class Walker2DCustomEnv(EnvBase):
 
@@ -31,34 +31,12 @@ class Walker2DCustomEnv(EnvBase):
         # reference trajectories for tracking. Values are assumed to have been pre-interpolated to have
         # the same time frequency as this environment, ie 1/self.control_step Hz
         # axis 0 is time, and the remaining dimensions match the dimension of the corresponding variable
-        # TODO: replace lines below with loading externally calculated trajectories,
-        #  eg. by trajectory optimization
-        self.traj_len = 1200
-        time = np.linspace(0, self.control_step*self.traj_len, self.traj_len)
-        self.body_vel_target = np.stack((
-            1.0*np.ones(self.traj_len),
-            0*time,
-            0*time
-        ), axis=1)
-        self.body_rpy_target = np.zeros((self.traj_len, 3))
-        self.feet_rel_target = np.stack((
-            0*time, 0*time, -1 + 0.4*np.maximum(np.sin(3*time), 0),
-            0*time, 0*time, -1 + 0.4*np.maximum(-np.sin(3*time), 0)
-        ), axis=1).reshape(self.traj_len, 2, 3)
-        self.feet_contact_target = np.stack((
-            1*(self.feet_rel_target[:,0,2] == min(self.feet_rel_target[:,0,2])),
-            1*(self.feet_rel_target[:,1,2] == min(self.feet_rel_target[:,1,2])),
-        ), axis=1)
-        """
-        import matplotlib.pyplot as plt
-        plt.plot(self.feet_contact_target[:,0])
-        plt.plot(self.feet_rel_target[:,0,2])
-        plt.show()
-        plt.plot(self.feet_contact_target[:, 1])
-        plt.plot(self.feet_rel_target[:, 1, 2])
-        plt.show()
-        import ipdb; ipdb.set_trace()
-        """
+        traj_dict = pickle.load( open( "trajectories/pmm_traj1.p", "rb" ) )
+        self.traj_len = traj_dict["traj_len"]
+        self.body_vel_target = traj_dict["body_vel_target"]
+        self.body_rpy_target = traj_dict["body_rpy_target"]
+        self.feet_rel_target = traj_dict["feet_rel_target"]
+        self.feet_contact_target = traj_dict["feet_contact_target"]
 
         # Observation space is the augmented state, see calc_aug_state()
         self.reset() # must be called for self.aug_state to be initialized properly
