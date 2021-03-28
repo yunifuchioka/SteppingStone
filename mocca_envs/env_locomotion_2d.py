@@ -40,8 +40,8 @@ class Walker2DCustomEnv(EnvBase):
         self.feet_rel_target = np.stack((
             #0 * time, 0 * time, -0.7 * np.ones(self.traj_len),
             #0 * time, 0 * time, -1 * np.ones(self.traj_len)
-            0*time, 0*time, -1 + 0.3*np.maximum(np.sin(time), 0),
-            0*time, 0*time, -1 + 0.3*np.maximum(-np.sin(time), 0)
+            0*time, 0*time, -1 + 0.4*np.maximum(np.sin(2*time), 0),
+            0*time, 0*time, -1 + 0.4*np.maximum(-np.sin(2*time), 0)
         ), axis=1).reshape(self.traj_len, 2, 3)
         self.feet_contact_target = np.stack((
             1*(self.feet_rel_target[:,0,2] == min(self.feet_rel_target[:,0,2])),
@@ -120,8 +120,7 @@ class Walker2DCustomEnv(EnvBase):
         # calculate the augmented state to be input into the network
         self.calc_aug_state()
 
-        #reward = self.track_reward * self.joint_limit_reward * self.energy_reward
-        reward = self.track_reward * self.joint_limit_reward
+        reward = self.track_reward * self.joint_limit_reward * self.energy_reward
 
         # for rendering only, in the pybullet gui, press
         # <space> to pause, 'r' to reset, etc
@@ -180,7 +179,7 @@ class Walker2DCustomEnv(EnvBase):
             + self.feet_contact_track_weight * self.feet_contact_reward
 
         energy_used = np.abs(action * self.robot.joint_speeds).mean()
-        self.energy_reward = np.exp( -10.0 * (energy_used**2).sum() )
+        self.energy_reward = np.exp( -0.1 * (energy_used**2).sum() )
         self.joint_limit_reward = np.exp( -0.05 * self.robot.joints_at_limit**2 )
 
         # tall bonus encourages robot to stay upright
