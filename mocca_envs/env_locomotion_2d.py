@@ -25,7 +25,8 @@ class Walker2DCustomEnv(EnvBase):
         # reference tracking reward weights
         self.body_vel_track_weight = 0.1
         self.body_rpy_track_weight = 0.1
-        self.feet_rel_track_weight = 0.8
+        self.feet_rel_track_weight = 0.4
+        self.feet_contact_track_weight = 0.4
 
         # reference trajectories for tracking. Values are assumed to have been pre-interpolated to have
         # the same time frequency as this environment, ie 1/self.control_step Hz
@@ -42,6 +43,20 @@ class Walker2DCustomEnv(EnvBase):
             0*time, 0*time, -1 + 0.3*np.maximum(np.sin(time), 0),
             0*time, 0*time, -1 + 0.3*np.maximum(-np.sin(time), 0)
         ), axis=1).reshape(self.traj_len, 2, 3)
+        self.feet_contact_target = np.stack((
+            1*(self.feet_rel_target[:,0,2] == min(self.feet_rel_target[:,0,2])),
+            1*(self.feet_rel_target[:,1,2] == min(self.feet_rel_target[:,1,2])),
+        ), axis=1)
+        """
+        import matplotlib.pyplot as plt
+        plt.plot(self.feet_contact_target[:,0])
+        plt.plot(self.feet_rel_target[:,0,2])
+        plt.show()
+        plt.plot(self.feet_contact_target[:, 1])
+        plt.plot(self.feet_rel_target[:, 1, 2])
+        plt.show()
+        import ipdb; ipdb.set_trace()
+        """
 
         # Observation space is the augmented state, see calc_aug_state()
         self.reset() # must be called for self.aug_state to be initialized properly
@@ -127,10 +142,12 @@ class Walker2DCustomEnv(EnvBase):
         body_vel_error = self.robot.body_vel - self.body_vel_target[self.traj_idx]
         body_rpy_error = self.robot.body_rpy - self.body_rpy_target[self.traj_idx]
         feet_rel_error = (self.robot.feet_xyz - self.robot.body_xyz) - self.feet_rel_target[self.traj_idx]
+        feet_contact_error = self.robot.feet_contact - self.feet_contact_target[self.traj_idx]
 
         self.body_vel_reward = np.exp( -1.0 * (body_vel_error**2).sum() )
         self.body_rpy_reward = np.exp( -30.0 * (body_rpy_error**2).sum() )
         self.feet_rel_reward = np.exp( -1.0 * (feet_rel_error**2).sum() )
+        self.feet_contact_reward = np.exp( -1.0 * (feet_contact_error**2).sum() )
 
     def calc_aug_state(self):
         # calculates the augmented state that is to be fed into the network
@@ -141,9 +158,11 @@ class Walker2DCustomEnv(EnvBase):
             self.robot.body_vel,
             self.robot.body_rpy,
             feet_rel_flat,
+            # foot contact state already part of robot state
             self.body_vel_target[self.traj_idx],
             self.body_rpy_target[self.traj_idx],
-            feet_rel_target_flat
+            feet_rel_target_flat,
+            self.feet_contact_target[self.traj_idx]
         ))
 
     def calc_env_state(self, action):
@@ -157,7 +176,8 @@ class Walker2DCustomEnv(EnvBase):
         self.track_reward = \
             + self.body_vel_track_weight * self.body_vel_reward \
             + self.body_rpy_track_weight * self.body_rpy_reward \
-            + self.feet_rel_track_weight * self.feet_rel_reward
+            + self.feet_rel_track_weight * self.feet_rel_reward \
+            + self.feet_contact_track_weight * self.feet_contact_reward
 
         energy_used = np.abs(action * self.robot.joint_speeds).mean()
         self.energy_reward = np.exp( -10.0 * (energy_used**2).sum() )
