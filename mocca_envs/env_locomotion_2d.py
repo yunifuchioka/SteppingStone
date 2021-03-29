@@ -31,7 +31,7 @@ class Walker2DCustomEnv(EnvBase):
         # reference trajectories for tracking. Values are assumed to have been pre-interpolated to have
         # the same time frequency as this environment, ie 1/self.control_step Hz
         # axis 0 is time, and the remaining dimensions match the dimension of the corresponding variable
-        traj_dict = pickle.load( open( "trajectories/pmm_traj1.p", "rb" ) )
+        traj_dict = pickle.load( open( "trajectories/pmm_traj2.p", "rb" ) )
         self.traj_len = traj_dict["traj_len"]
         self.body_vel_target = traj_dict["body_vel_target"]
         self.body_rpy_target = traj_dict["body_rpy_target"]
