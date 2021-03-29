@@ -50,10 +50,10 @@ Qcd = np.full((nj3), 10)
 RF = np.full((nj3), 0.0001)
 
 # footstep planner parameters
-stride = np.array([0.4, torso_size[1], 0.1])  # forward step length, leg width, max foot height
+stride = np.array([0.6, torso_size[1], 0.1])  # forward step length, leg width, max foot height
 stride_std = np.array([0.0, 0.0, 0.0])  # random std dev of step x and y locations
 T_step = 0.5  # step period
-duty = 0.5  # duty cycle - proportion of gait where foot is on the ground
+duty = 0.3  # duty cycle - proportion of gait where foot is on the ground
 
 # desired trajectory planning #############################################################
 num_steps = int(tf / T_step)  # number of footsteps to take
@@ -348,7 +348,7 @@ traj_dict = {
     "feet_contact_target": feet_contact_target
 }
 
-pickle.dump( traj_dict, open( "trajectories/pmm_traj1.p", "wb" ) )
+pickle.dump( traj_dict, open( "trajectories/pmm_traj2.p", "wb" ) )
 
 """
 
